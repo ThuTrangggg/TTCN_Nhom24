@@ -67,6 +67,7 @@
                         <h6 class="collapse-header">Custom Components:</h6>
                         <a class="collapse-item" href="buttons.html">Dự án </a>
                         <a class="collapse-item" href="cards.html"> loại dự án </a>
+                        <a class="collapse-item" href="buttons.html">Dự án </a>
                     </div>
                 </div>
             </li>
