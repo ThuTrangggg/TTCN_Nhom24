@@ -1,0 +1,393 @@
+/* Reset css */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-family: "Lato", sans-serif;
+    scroll-behavior: smooth;
+}
+
+.row{
+    margin-left: -8px;
+    margin-right: -8px;
+}
+
+.row::after{ /*Thay bbằng class clear*/
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.col{
+    float: left;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.mt-8{
+    margin-top: 8px !important;
+}
+
+.mt-16{
+    margin-top: 16px;
+}
+
+.col-third{
+    width: 33.333%;
+}
+
+.col-half{
+    width: 50%;
+}
+
+.col-full{
+    width: 100%;
+}
+/* 1.Vij tris
+2. Kích thước
+3.Màu săsc
+4.Kieru dáng */
+#main{
+
+}
+
+.text-white{
+    color: white !important;
+}
+
+.text-center{
+    text-align: center !important; 
+}
+
+#header{
+    height: 46px;
+    background-color: #000;
+    position: fixed; /* cố định header */
+    right: 0; /*để header chiếm ngang hết màn hình*/
+    left: 0; /*để header chiếm ngang hết màn hình*/
+    top: 0;
+    z-index: 1;
+}
+
+#nav{
+    display: inline-block;
+}
+
+#nav, .subnav{
+    list-style: none;
+}
+
+#nav> li{
+    display: inline-block;
+
+}
+#nav li{
+    position: relative;
+}
+
+#nav >li >a{
+    text-transform: uppercase;
+}
+
+#nav li a{  /* > : thẻ trực tiếp, thẻ a trực tiếp từ li trực tiếp từ nav */
+    text-decoration: none;
+    line-height: 46px;
+    padding: 0 24px;
+    display: block;
+    color: #fff;
+    font-size: 15px;
+}
+
+#nav li:hover .subnav{
+    display: block;
+}
+
+#nav > li:hover > a,
+#nav .subnav li:hover a{
+    color: #000;
+    background-color: #ccc;
+}
+
+
+#nav .subnav{
+    display: none;
+    background-color: #fff;
+    position: absolute;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    min-width: 160px;
+    top: 100% /*subnav cách thẻ cha = chiều cao của thẻ cha*/
+}
+
+
+#nav .subnav a{
+    color: #000;
+    padding: 0 16px;
+    line-height: 38px;
+}
+
+#nav .nav-arrow-down {
+    font-size: 14px;
+}
+
+#header .search-btn{
+    float: right;
+    padding: 0 21px;
+}
+
+#header .search-btn:hover{
+    background-color: #f44336;
+    cursor: pointer;
+}
+
+#header .search-icon{
+    line-height: 46px;
+    color: #fff;
+    font-size: 20px;
+}
+
+#slider{
+    position: relative;
+    margin-top: 46px;
+    padding-top: 50%; /* 50% chiều ngang của chính nó*/
+    background: url('https://media.licdn.com/dms/image/C5622AQH7zdlxsGHyZA/feedshare-shrink_2048_1536/0/1675414782250?e=2147483647&v=beta&t=M5K-it-OcgVccP6Sl9Ko5diQkRvukWfhm0Yj2jlxg8g') top center /cover no-repeat;
+}
+
+#slider .text-content{
+    position: absolute;
+    color: #fff;
+    bottom: 48px;
+    /* left: 50%; cawn giữa cách 3 chữ New York và txt des=> sử dụng position
+   transform: translateX(-50%); */
+    text-align: center;
+    width: 100%; /*=> căn giữa cách 1
+    right: 0; => căn giữa cách 2
+    left: 0;*/
+}
+
+#slider .text-heading{
+    font-weight: 400;
+    font-size: 24px;
+}
+
+#slider .text-description{
+    font-size: 15px;
+    margin-top: 25px;
+    font-weight: 600;
+}
+
+
+#content{
+}
+
+#content .content-section{
+    width: 767px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 64px 0 112px;
+}
+
+#content .section-heading,
+#content .section-sub-heading{
+    text-align: center;
+}
+
+#content .section-heading{
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: 4px;
+}
+
+#content .section-sub-heading{
+    font-size: 15px;
+    margin: 25px 0;
+    font-style: italic; /* chữ nghiêng*/
+    opacity: 0.6;
+}
+
+#content .about-text{
+    font-size: 15px;
+    text-align: justify;
+    line-height: 1.5;
+}
+
+#content .member-list{
+    margin-top: 48px;
+    /* overflow: hidden; Cách 1: Khắc phục vấn đề của float: thẻ cha không ôm được hết thẻ con ; Cách 2 clear*/
+}
+
+#content .member-item{
+    /* float: left;
+    width: 33.333333%;  Sử dụng col-third col*/
+    /* text-align: center; căn giữa cả Name và member-img sử dụng class text-center */
+
+}
+
+#content .member-name{
+    font-size: 15px;
+}
+
+#content .member-img{
+    width: 154px;
+    margin-top: 15px;
+    border-radius: 4px;
+}
+
+.clear{
+    clear: both; /*Vì sử dụng float nên thẻ cha không ôm hết đưuọc thẻ con member-item*/
+}
+
+/* Tour section */
+.tour-section{
+    background-color: #000;
+
+}
+
+.tickets-list{
+    background-color: #fff;
+    margin-top: 40px;
+    list-style: none;
+}
+
+.tickets-list li{
+    font-size: 15px;
+    padding: 10px 16px;
+    border-bottom: 1px solid #ddd;
+    color: #757575;
+}
+
+.tickets-list .Sold-out{
+    background-color: #f44336;
+    color: #fff;
+    padding: 3px 4px;
+    margin-left: 16px;
+}
+
+
+.tickets-list .quantity{
+    float: right;
+    width: 24px;
+    height: 24px;
+    background-color: #000;
+    color: #fff;
+    line-height: 24px;
+    border-radius: 50%;
+    text-align: center;
+    margin-top: -2px;
+}
+
+/* Places */
+.place-lists{
+    margin-top: 32px;
+}
+
+.place-item{
+    /* width: 33.3333%; Chia 3 ddeer lên cùng 1 hàng */ /*Thay = col-third*/
+}
+
+.place-img{
+    width: 100%; /*Để thẻ img có width = width của cha place item*/
+    display: block; /*Do img có display = inline => khi đứng cạnh block xuất hiện khoảng cách => đổi display thành block đẻ khắc phục*/
+}
+
+.place-img:hover{
+    opacity: 0.6;
+}
+
+.place-body{
+    background-color: #fff;
+    padding: 16px;
+    font-size: 15px;
+}
+
+.place-heading{
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.place-time{
+    margin-top: 15px;
+    opacity: 0.5;
+}
+
+.place-desc{
+    margin-top: 15px;
+    line-height: 1.4;
+}
+
+.btn{
+    background-color: #000;
+    text-decoration: none;
+    padding: 11px 16px;
+    color: #fff;
+    display: inline-block;
+    margin-top: 15px;
+    border: none;
+}
+
+.btn:hover{
+    background-color: #ccc;
+    color: #000;
+    cursor: pointer;
+}
+
+
+.contact-content{
+    margin-top: 48px;
+}
+.contact-info{
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.contact-info i[class*="ti-"]{
+    width: 30px;
+    display: inline-block;
+}
+
+.contact-form{
+    font-size: 15px;
+
+}
+
+.contact-form .form-control{
+    padding: 10px;
+    border: 1px solid #ccc;
+    width: 100%;
+    outline: none;
+}
+
+.map-section img{
+    width: 100%;
+    filter: grayscale(50%);
+}
+
+#footer{
+    padding: 64px 16px;
+    text-align: center;
+}
+
+#footer .socials-list a{
+    color: rgba(0, 0, 0, 0.6);
+    text-decoration: none;
+}
+#footer .socials-list a:hover,
+#footer .copyright a:hover{
+    opacity: 0.4;
+}
+
+#footer .copyright{
+    margin-top: 15px;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+#footer .copyright a{
+    color: rgba(0, 0, 0, 0.6);
+
+}
+
+#footer .socials-list i{
+    font-size: 22px;
+}
