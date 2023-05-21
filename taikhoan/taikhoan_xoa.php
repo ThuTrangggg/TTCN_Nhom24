@@ -2,8 +2,9 @@
 <?php 
     include("../connect.php");
 
-    $sanpham_id=$_GET['sanphamid'];
-    $sql1 = "SELECT DISTINCT tbl_sanpham.sanpham_id FROM tbl_giohang JOIN tbl_sanpham ON  tbl_giohang.sanpham_id=tbl_sanpham.sanpham_id WHERE tbl_sanpham.sanpham_id = '".$sanpham_id."' ";
+    $taiKhoan_id=$_GET['id'];
+    $sql1 = "SELECT id FROM tbl_giohang JOIN tbl_sanpham ON  tbl_giohang.sanpham_id=tbl_sanpham.sanpham_id 
+    WHERE tbl_sanpham.sanpham_id = '".$sanpham_id."' ";
     $kq1 = mysqli_query($ket_noi, $sql1);
     $so_luong = mysqli_num_rows($kq1);
     if($so_luong==0)
