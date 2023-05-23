@@ -2,6 +2,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <base href="../">
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 <?php include '../connect.php';
 ?>
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -101,7 +103,7 @@
 
                                                     </td>
                                                     <td>
-                                                        <a class="btn btn-danger" href="taikhoan/taikhoan_xoa.php?id=<?= $taikhoan["id"]; ?>">Xóa</a>
+                                                        <a class="btn btn-danger" href="taikhoan/danhsachtaikhoan.php" onclick="alert('Không xóa được')">Xóa</a>
                                                     </td>
                                                 </tr>
 
