@@ -44,3 +44,8 @@ display: none;
 .btn-frm li:hover .btn{
     background-color: aliceblue;
 }
+
+table.dataTable>thead .sorting:after,
+table.dataTable>thead .sorting::before{
+    content: "";
+}
