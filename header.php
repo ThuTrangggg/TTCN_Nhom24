@@ -188,8 +188,4 @@
         </nav>
 
     </head>
-    
-<?php
-	include("footer.php");
-	?>
 </html>
