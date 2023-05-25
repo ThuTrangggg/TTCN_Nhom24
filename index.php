@@ -4,7 +4,9 @@
 
 <head>
 
-    <?php include 'head.php'?>
+    <?php include 'head.php';
+        
+    ?>
 
 </head>
 
@@ -340,7 +342,7 @@
 
             </div>
             <!-- End of Main Content -->
-
+<?php include 'Chat/chat.php'?>
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
