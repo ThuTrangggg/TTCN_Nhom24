@@ -12,11 +12,11 @@
         $ketQuaTruyVan = $conn->query($sql);
         if($ketQuaTruyVan->num_rows >0 ){
         while($ytuong = $ketQuaTruyVan->fetch_assoc()){
-                $duanid=$_POST['duan_id'];
-                $NVid=$_POST['nhanvien_id'];
-                $tenyt=$_POST['tenytuong'];
-                $noidung=$_POST['noidung'];
-                $ngay=$_POST['ngaylap'];
+                $duanid=$ytuong['duan_id'];
+                $NVid=$ytuong['nhanvien_id'];
+                $tenyt=$ytuong['tenytuong'];
+                $noidung=$ytuong['noidung'];
+                $ngay=$ytuong['ngaylap'];
             }
         }
     ?>
