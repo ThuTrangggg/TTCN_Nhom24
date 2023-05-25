@@ -88,25 +88,85 @@ Apero Vision Lab: Xây dựng các sản phẩm công nghệ lõi AI phục vụ
                 <div class="content-section">
                     <h2 class="section-heading text-white">ỨNG DỤNG </h2> <!--Sử dụng lại ở các phần dưới -->
                     <p class="section-sub-heading text-white">Sản phẩm nổi bật </p>
-                   <!-- Tickets -->
-                    <!-- <ul class="tickets-list">
+                    </script>
+                         <div class="card-body"> 
+                             <div class="table-responsive"> 
+                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0"> 
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Ảnh </th>
+                                            <th>Tên dự án </th>
+                                            <th>Tình trạng</th>
+                                        </tr>
+                                    </thead>
+                                    
+                    <?php
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "nhom_24";
+// tạo kết nối
+$conn = new mysqli($servername, $username, $password, $dbname);
+// kiểm kết nối
+if ($conn->connect_error) {
+die("Connection failed: " . $conn->connect_error);
+}
+$sql = "SELECT id, hinhanh, tenduan, tinhtrang FROM duan";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+// Load dữ liệu lên website
+while ($duan = $result->fetch_assoc()) {
+    ?>
+            <tbody>
+                <tr>
+                    <td><?= $duan['id'] ?></td>
+                    <td>
+                        <img width="100px" src="<?= $duan['hinhanh'] ?>" alt="">
+                    </td>
+                    <td><?= $duan['tenduan'] ?></td>
+                    <td><?= $duan['tinhtrang'] ?></td>
+                    
+
+            </tbody>
+    <?php 
+        }
+    }
+    ?>
+</table>
+</div>
+</div>
+</div>
+
+</div>
+
+<!-- while($colum = $result->fetch_assoc()) {
+ echo "id: " . $colum["id"]. " - Tên dự án: " . $colum["tenduan"].  " - hình ảnh: ". $colum["hinhanh"]. " - Tình trạng: ". $colum["tinhtrang"]."<br>";
+}
+} else {
+echo "0 results";
+ }
+$conn->close();
+?> -->
+                
+                <!-- <ul class="tickets-list">
                         <li>September <span class="Sold-out">Sold out</span></li>
                         <li>October <span class="Sold-out">Sold out</span></li>
                         <li>November <span class="quantity">3</span></li>
-                    </ul> -->
+                    </ul>-->
 
                     <!-- Places -->
-                    
-                    <div class="place-lists row">
+                    <!-- <div class="place-lists row">
                         <div class="place-item col col-third">
                             <img src="./assets/img/newyork.jpg" alt="Newyork" class="place-img">
                             <div class="place-body">
                                 <h3 class="place-heading">Newyork</h3>
                                 <p class="place-time">Fri 27 Nov 2016</p>
                                 <p class="place-desc">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                                <a href="" class="btn">Buy Tickets</a> 
+                                <a href="" class="btn">Buy Tickets</a>
                             </div>
-                        </div> 
+                        </div>
                         <div class="place-item col col-third">
                             <img src="./assets/img/paris.jpg" alt="Newyork" class="place-img">
                             <div class="place-body">
@@ -124,8 +184,8 @@ Apero Vision Lab: Xây dựng các sản phẩm công nghệ lõi AI phục vụ
                                 <p class="place-desc">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
                                 <a href="" class="btn">Buy Tickets</a>
                             </div>
-                        </div>
-                        <!-- <div class="clear"></div>  Sử dụng để khắc phục vấn đề float : Đã thay thế bằng row::after-->
+                        </div> --> 
+                         <!-- <div class="clear"></div>  Sử dụng để khắc phục vấn đề float : Đã thay thế bằng row::after -->
                     </div>
                 </div>
             </div>
@@ -189,6 +249,9 @@ Apero Vision Lab: Xây dựng các sản phẩm công nghệ lõi AI phục vụ
         </div>
         
     </div>
+    <?php
+	include("footer.php");
+	?>
     <!-- <a href="">New</a> -->
 </body>
 </html>

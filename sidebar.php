@@ -1,6 +1,8 @@
-<?php include 'connect.php' ?>
-<!DOCTYPE html>
-<html lang="en">
+<?php include 'connect.php';
+include 'head.php'
+
+?>
+<link rel="stylesheet" href="css/style2.css">
 <body id="page-top">
 
     <!-- Page Wrapper -->
@@ -64,7 +66,7 @@
             </li>
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+                <a class="nav-link collapsed" href="nhansu/danhsachnhansu.php" aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>NHÂN SỰ </span>
                 </a>
@@ -73,10 +75,6 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <!-- Heading -->
-            <div class="sidebar-heading">dsa
-                Addons
-            </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
