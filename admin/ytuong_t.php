@@ -1,22 +1,23 @@
-<?php include 'connect.php' ?>
+<?php include '../connect.php'?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <?php include 'head.php'?>
+    <base href="../">
+    <?php include '../head.php'?>
     </head>
     <body id="page-top">
         <!-- Page Wrapper -->
         <div id="wrapper">
 
             <!-- Sidebar -->
-            <?php include 'sidebar.php'?>
+            <?php include '../sidebar.php' ?>
 
             <!-- Content Wrapper -->
             <div id="content-wrapper" class="d-flex flex-column">
 
                 <!-- Main Content -->
                 <div id="content">
-                    <?php include 'header.php' ?>
+                    <?php include '../header.php' ?>
                     <div class="container-fluid">
 
                         <!-- Page Heading -->
@@ -81,5 +82,5 @@
             </div>
         </div>
     </body>
-    <?php include("footer.php");?>
+    <?php include("../footer.php");?>
 </html>
