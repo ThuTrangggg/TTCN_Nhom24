@@ -76,7 +76,7 @@
                                     // $sql = "SELECT hinhanh,tenduan,loaiduan_id,tenytuong,tenbaocao,tenKHQC, noidung
                                     // from duan join ytuong
                                     // on duan_id = ytuong.duan_id order by duan.ytuong asc, id";
-                                    $sql = "SELECT  hinhanh,tenduan,loaiduan_id,tenytuong,tenbaocao,tinhtrang,chiphi
+                                    $sql = "SELECT duan.id,hinhanh,tenduan,loaiduan_id,tenytuong,tenbaocao,tinhtrang,chiphi
                                     FROM duan INNER JOIN ytuong ON duan.id = ytuong.duan_id
                                     INNER JOIN baocao as b ON duan.id = b.duan_id";
                                     
@@ -145,18 +145,27 @@
                             <label for="txttenduan">Tên dự án </label>
                             <input class="form-control" id="txttenduan" type="text" placeholder="Tên dự án" name="txttenduan" />
                         </div>
-                        <div class="form-floating mb-3">
+                        <!-- <div class="form-floating mb-3">
                             <label for="txtmaloaiduan">Mã loại dự án </label>
                             <input class="form-control" id="txtmaloaiduan" type="text" placeholder="Mã loại dự án " name="txtmaloaiduan" />
-                        </div>
+                        </div> -->
                         <div class="form-floating mb-3">
+                            <label for="txtmaloaiduan">mã loại dự án </label>
+                            <select class="form-control"  name="txtmaloaiduan" id="txtmaloaiduan">
+                                <Option value="#"></Option>
+                                <option value="1">1</option>
+                                <option value="2">2 </option>
+                                <option value="3">3</option>
+                            </select>
+                        </div>
+                        <!-- <div class="form-floating mb-3">
                             <label for="txtytuong">Ý tưởng </label>
                             <input class="form-control" id="txtytuong" type="text" placeholder="Ý tưởng" name="txtytuong" />
-                        </div>
-                        <div class="form-floating mb-3">
+                        </div> -->
+                        <!-- <div class="form-floating mb-3">
                             <label for="txttenbaocao">Tên báo cáo  </label>
                             <input class="form-control" id="txttenbaocao" type="text" placeholder="Tên báo cáo " name="txttenbaocao" />
-                        </div>
+                        </div> -->
                         <div class="form-floating mb-3">
                             <label for="txttinhtrang">Tình trạng </label>
                             <select class="form-control"  name="txttinhtrang" id="txttinhtrang">
