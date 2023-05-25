@@ -1,4 +1,3 @@
-<?php include '../header.php' ?>
 <!DOCTYPE html>
 <html lang="en">
 <base href="../">
@@ -6,19 +5,21 @@
 
 <?php include '../connect.php';
 ?>
-    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+<link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 <body>
 
     <!-- Page Wrapper -->
+    <?php include '../sidebar.php' ?>
     <div id="wrapper" style="width: 100%">
 
         <!-- Sidebar -->
-        <?php include '../sidebar.php' ?>
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
+            <?php include '../header.php';
+            ?>
 
             <!-- Main Content -->
             <div id="content">
@@ -131,15 +132,18 @@
             <!-- End of Footer -->
 
         </div>
+        <?php
+        include '../Chat/chat.php'
+        ?>
         <!-- End of Content Wrapper -->
-        <div id="frmAdd" class="justify-content-center">
+        <div id="frmAdd" class="justify-content-center frmAdd">
             <div class="card shadow-lg border-0 rounded-lg mt-5">
                 <div class="card-header">
                     <h3 class="text-center font-weight-light my-4">Thêm mới tài khoản</h3>
                 </div>
                 <div class="card-body">
                     <form method="POST" action="taikhoan/dstk_them_code.php" enctype="multipart/form-data">
-                        <input type="hidden" name="taikhoan_id" id="" value="<?=$taikhoan['id']?>">
+                        <input type="hidden" name="taikhoan_id" id="" value="<?= $taikhoan['id'] ?>">
                         <div class="form-floating mb-3">
                             <label for="txttentaikhoan">Tên tài khoản</label>
                             <input class="form-control" id="txttentaikhoan" type="text" placeholder="Tên tài khoản" name="txttentaikhoan" />
@@ -154,7 +158,7 @@
                         </div>
                         <div class="form-floating mb-3">
                             <label for="txtrole">Role</label>
-                            <select class="form-control"  name="txtrole" id="txtrole">
+                            <select class="form-control" name="txtrole" id="txtrole">
                                 <Option value="#"></Option>
                                 <option value="1">PM</option>
                                 <option value="2">Nhân viên</option>
