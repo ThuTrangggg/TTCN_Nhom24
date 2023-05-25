@@ -64,11 +64,11 @@
                                             <h1 class="form-heading">Đăng nhập</h1>
                                             <div class="form-group">
                     			                <i class="far fa-user"></i>
-                                                <input id="email" name="email" type="email" class="form-input" placeholder="Email">
+                                                <input id="email" name="email" type="text" class="form-input" placeholder="Email">
                                             </div>
                                             <div class="form-group">
                                                 <i class="fas fa-key"></i>
-                                                <input id="password" name="matkhau" type="password" class="form-input" placeholder="Mật khẩu">
+                                                <input id="" name="matkhau" type="text" class="form-input" placeholder="Mật khẩu">
                                                 <div id="eye">
                                                     <i class="far fa-eye"></i>
                                                 </div>
