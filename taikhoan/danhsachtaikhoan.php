@@ -1,35 +1,15 @@
+<?php include '../header.php' ?>
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <base href="../">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>SB Admin 2 - Tables</title>
-
-    <!-- Custom fonts for this template -->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this page -->
-    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
-</head>
+<base href="../">
 <?php include '../connect.php';
-
 ?>
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 <body>
 
     <!-- Page Wrapper -->
-    <div id="wrapper">
+    <div id="wrapper" style="width: 100%">
 
         <!-- Sidebar -->
         <?php include '../sidebar.php' ?>
@@ -52,14 +32,14 @@
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Danh sách tài khoản
-                            <div class="btn btn-add" onclick="openFrmAdd()">Thêm</div>
+                                <div class="btn btn-add" onclick="openFrmAdd()">Thêm</div>
                             </h6>
                         </div>
-                        <script> 
-                        function openFrmAdd(){
-                            document.getElementById("frmAdd").style.backgroundColor = red;
-                        }
-                    </script>
+                        <script>
+                            function openFrmAdd() {
+                                document.getElementById("frmAdd").style.display = 'block'
+                            }
+                        </script>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -91,7 +71,9 @@
                                         </tr>
                                     </tfoot>
                                     <?php
-                                    $sql = "SELECT * from taikhoan join role on role.id = taikhoan.role_id";
+                                    $sql = "SELECT taikhoan.id, ngaylap, tentaikhoan,matkhau,email,img,role_id, vitri 
+                                    from taikhoan join role
+                                    on taikhoan.role_id = role.id order by taikhoan.role_id asc, id";
                                     $result = $conn->query($sql);
                                     if ($result->num_rows > 0) {
                                         $i = 1;
@@ -101,7 +83,7 @@
                                                 <tr>
                                                     <td><?= $i ?>
                                                     <td>
-                                                        <img width="100px" src="<?= $taikhoan['img'] ?>" alt="">
+                                                        <img width="50px" height="50px" style="object-fit: contain" src="<?= $taikhoan['img'] ?>" alt="">
                                                     </td>
                                                     <td><?= $taikhoan['tentaikhoan'] ?></td>
                                                     <td><?= $taikhoan['matkhau'] ?></td>
@@ -114,12 +96,13 @@
                                                         ?>
                                                     </td>
                                                     <td>
-                                                        <a class="btn btn-success" href="dstk_sua.php?id=<?=$taikhoan["id"]; ?>">Sửa</a>
+                                                        <a class="btn btn-success" href="taikhoan/taikhoan_fix.php?id=<?= $taikhoan["id"]; ?>">Sửa</a>
                                                     </td>
 
                                                     </td>
                                                     <td>
-                                                    <a class="btn btn-danger" href="dstk_xoa.php?id=<?=$taikhoan["id"]; ?>">Xóa</a></td>
+                                                        <a class="btn btn-danger" href="taikhoan/taikhoan_xoa.php?id=<?= $taikhoan["id"]; ?>">Xóa</a>
+                                                    </td>
                                                 </tr>
 
                                             </tbody>
@@ -147,36 +130,58 @@
 
         </div>
         <!-- End of Content Wrapper -->
-        <div id="frmAdd" class="justify-content-center" >
-                                <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Thêm mới Admin</h3></div>
-                                    <div class="card-body">
-                                        <form method="POST" action="quantrivien_xlthemmoi.php" enctype="multipart/form-data">
-                                            <div class="form-floating mb-3">
-                                                <input class="form-control" id="txthoten" type="text" placeholder="Họ tên" name="txthoten" />
-                                                <label for="txthoten">Họ tên</label>
-                                            </div>
-                                            <div class="form-floating mb-3">
-                                                <input class="form-control" id="txtdiachi" type="text" placeholder="Địa chỉ" name="txtdiachi"/>
-                                                <label for="txtdiachi">Địa chỉ</label>
-                                            </div>
-                                            <div class="form-floating mb-3">
-                                                <input class="form-control" id="txtemail" type="email" placeholder="name@example.com" name="txtemail"/>
-                                                <label for="txtemail">Email</label>
-                                            </div>
-                                            <div class="form-floating mb-3">
-                                                <input class="form-control" id="txtmatkhau" type="text" placeholder="Mật khẩu" name="txtmatkhau"/>
-                                                <label for="txtmatkhau">Mật khẩu</label>
-                                            </div>
-                                            
-                                            <div class="mt-4 mb-0">
-                                                <input type="submit" name="btnSubmit" value="Thêm mới">
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
+        <div id="frmAdd" class="justify-content-center">
+            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                <div class="card-header">
+                    <h3 class="text-center font-weight-light my-4">Thêm mới tài khoản</h3>
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="taikhoan/dstk_them_code.php" enctype="multipart/form-data">
+                        <input type="hidden" name="taikhoan_id" id="" value="<?=$taikhoan['id']?>">
+                        <div class="form-floating mb-3">
+                            <label for="txttentaikhoan">Tên tài khoản</label>
+                            <input class="form-control" id="txttentaikhoan" type="text" placeholder="Tên tài khoản" name="txttentaikhoan" />
+                        </div>
+                        <div class="form-floating mb-3">
+                            <label for="txtmatkhau">Mật khẩu</label>
+                            <input class="form-control" id="txtmatkhau" type="text" placeholder="Mật khẩu" name="txtmatkhau" />
+                        </div>
+                        <div class="form-floating mb-3">
+                            <label for="txtemail">Email</label>
+                            <input class="form-control" id="txtemail" type="text" placeholder="name@example.com" name="txtemail" />
+                        </div>
+                        <div class="form-floating mb-3">
+                            <label for="txtrole">Role</label>
+                            <select class="form-control"  name="txtrole" id="txtrole">
+                                <Option value="#"></Option>
+                                <option value="1">PM</option>
+                                <option value="2">Nhân viên</option>
+                                <option value="3">Khác</option>
+                            </select>
                         </div>
 
+                        <div class="mt-4 mb-0 btn-frm">
+                            <ul>
+                                <li>
+
+                                    <input type="submit" class="btn" name="btnSubmit" value="Thêm">
+                                </li>
+                                <li>
+
+                                    <div class="btn" onclick="closeFrm()">Hủy</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <script>
+            function closeFrm() {
+                document.getElementById("frmAdd").style.display = 'none';
+            }
+        </script>
     </div>
     <!-- End of Page Wrapper -->
 

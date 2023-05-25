@@ -1,11 +1,6 @@
-
 <!-- Bootstrap core JavaScript-->
 <script src="vendor/jquery/jquery.min.js"></script>
-=======
 <?php include 'connect.php' ?>
-<!DOCTYPE html>
-<html lang="en">
-
 <body>
             <!-- Footer -->
             <footer class="sticky-footer bg-white">

@@ -1,0 +1,46 @@
+#frmAdd{
+display: none;
+ position: fixed;
+ top: 50px;
+ right: 25%;
+ width: 50%;
+}
+
+/* .btn-add #frmAdd */
+
+.side-bar{
+    position: sticky;
+    left: 0;
+    top: 0;
+}
+.show {display:block;}
+.close {display:none;}
+
+.form-floating{
+    display: flex;
+}
+
+.form-floating label {
+    width: 140px;
+    translate: 0px 8px;
+}
+
+.form-floating label input{
+    width: 100%;
+}
+
+.btn-frm{
+    text-align: center;
+}
+
+.btn-frm ul{
+    display: inline-flex;
+}
+
+.btn-frm ul li {
+    list-style: none;;
+}
+
+.btn-frm li:hover .btn{
+    background-color: aliceblue;
+}
