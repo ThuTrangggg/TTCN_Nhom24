@@ -21,7 +21,7 @@
                     <div class="container-fluid">
 
                         <!-- Page Heading -->
-                        <h1 class="h3 mb-2 text-gray-800">Danh sách ý tưởng:</h1>
+                        <h1 class="h3 mb-2 text-gray-800">Danh sách báo cáo:</h1>
                         <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>
 
                         <!-- DataTales Example -->
@@ -29,13 +29,13 @@
                             <div class="card-header py-3">
                                 <div class="row">
                                 <h6 class="font-weight-bold text-primary"style="margin-top:0.2cm;padding-left:1cm;">Ý tưởng</h6>
-                                <a href="admin/t_ytuong.php" class="btn btn-primary btn-circle"style="float:left; margin-left:83%;">
+                                <a href="baocao/t_baocao.php" class="btn btn-primary btn-circle"style="float:left; margin-left:83%;">
                                         <i class="fas fa-plus"></i>
                                     </a></div>
                             </div>
                             <div class="card-body">
                                 <?php 
-                                                    $sql="SELECT a.id,c.tenduan, a.tenytuong, b.ten, a.ngaylap from ytuong as a INNER JOIN nhanvien as b on a.nhanvien_id=b.id JOIN duan as c on a.duan_id=c.id order by a.id;";
+                                                    $sql="SELECT a.id, b.tenduan,c.ten,a.tenbaocao,a.noidung,a.ngaylap from baocao as a INNER JOIN duan as b on a.duan_id=b.id JOIN nhanvien as c on a.nhanvien_id=c.id order by a.id;";
                                                     $ketQuaTruyVan=$conn->query($sql);
                                                     ?>
                                 <div class="table-responsive">
@@ -46,8 +46,9 @@
                                                     stt
                                                 </th>
                                                 <th>Tên dự án</th>
-                                                <th>Tên ý tưởng</th>
-                                                <th>Người thực hiện</th>
+                                                <th>Tên nhân viên</th>
+                                                <th>Tên báo cáo</th>
+                                                <th>Nội dung</th>
                                                 <th>Ngày</th>
                                                 <th></th>
                                             </tr>
@@ -55,17 +56,18 @@
                                         <?php
                                                 if($ketQuaTruyVan->num_rows > 0){
                                                     $i=1;
-                                                    while($ytuong = $ketQuaTruyVan->fetch_assoc()){
+                                                    while($baocao = $ketQuaTruyVan->fetch_assoc()){
                                             ?>
                                         <tbody>
                                             <tr>
                                                 <td><?php echo($i); ?></td>
-                                                <td><?php echo $ytuong['tenduan']; ?></td>
-                                                <td><?php echo $ytuong['tenytuong']; ?></td>
-                                                <td><?php echo $ytuong['ten']; ?></td>
-                                                <td><?php echo $ytuong['ngaylap']; ?></td>
-                                                <td><a class="btn btn-success btn-circle" href="admin/s_ytuong.php?id=<?php echo $ytuong['id'];?>">Sửa</a>  
-                                                <a class="btn btn-danger btn-circle" href="admin/x_ytuong.php?id=<?php echo $ytuong['id'];?>"><i class="fas fa-trash"></a></td>
+                                                <td><?php echo $baocao['tenduan']; ?></td>
+                                                <td><?php echo $baocao['ten']; ?></td>
+                                                <td><?php echo $baocao['tenbaocao']; ?></td>
+                                                <td><?php echo $baocao['noidung']; ?></td>
+                                                <td><?php echo $baocao['ngaylap']; ?></td>
+                                                <td><a class="btn btn-success btn-circle" href="baocao/s_baocao.php?id=<?php echo $baocao['id'];?>">Sửa</a>  
+                                                <a class="btn btn-danger btn-circle" href="baocao/x_baocao.php?id=<?php echo $baocao['id'];?>"><i class="fas fa-trash"></a></td>
                                             </tr>
                                         </tbody>
                                         <?php

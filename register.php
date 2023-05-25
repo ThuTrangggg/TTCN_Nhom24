@@ -1,9 +1,9 @@
+<?php include 'connect.php'?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
-    <meta charset="utf-8">
+<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -18,13 +18,22 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="css/sb-admin-3.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/ffff.css">
+<link rel="stylesheet" href="css/register.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký tài khoản</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
 
 </head>
 
 <body class="bg-gradient-primary">
 
-    <div class="container">
+    <div class="container" style="with=800px;">
 
         <div class="card o-hidden border-0 shadow-lg my-5">
             <div class="card-body p-0">
@@ -33,37 +42,38 @@
                     <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
                     <div class="col-lg-7">
                         <div class="p-5">
-                            <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
-                            </div>
-                            <form class="user">
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                                            placeholder="First Name">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" id="exampleLastName"
-                                            placeholder="Last Name">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="Email Address">
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Password">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleRepeatPassword" placeholder="Repeat Password">
-                                    </div>
-                                </div>
-                                <a href="login.html" class="btn btn-primary btn-user btn-block">
-                                    Register Account
-                                </a>
+                        <div>
+            <h2 style="text-align:center">Đăng kí tài khoản</h2>
+        </div>
+        <form action="register_th.php" method="POST" id="signup" class="form">
+            <div class="form-field">
+                <label for="username">Tên người dùng</label>
+                <input type="text" name="tentaikhoan" placeholder="hong1234" id="username" autocomplete="off"/>
+                <small>Error message</small>
+            </div>
+
+            <div class="form-field">
+            <label for="username">Email</label>
+                <input type="email" name="email" placeholder="email@gmail.com" id="email" />
+                <small>Error message</small>
+            </div>
+
+            <div class="form-field">
+            <label for="username">Mật khẩu</label>
+                <input type="password" name="matkhau" placeholder="password" id="password"/>
+                <small>Error message</small>
+            </div>
+
+
+            <div class="form-field">
+            <label for="username">Nhập lại mật khẩu</label>
+                <input type="password" placeholder="confirm password" id="confirm-password"/>
+                <small>Error message</small>
+            </div>
+
+            <div class="form-field">
+                <input class="button-submit" type="submit" value="Đăng ký">
+            </div>
                                 <hr>
                                 <a href="index.html" class="btn btn-google btn-user btn-block">
                                     <i class="fab fa-google fa-fw"></i> Register with Google
@@ -86,6 +96,47 @@
         </div>
 
     </div>
+    <!-- SOCIAL PANEL HTML -->
+<div class="social-panel-container">
+        <div class="social-panel">
+            <p>Created with <i class="fa fa-heart"></i> by
+                <a target="_blank" href="https://florin-pop.com">Florin Pop</a></p>
+            <button class="close-btn"><i class="fas fa-times"></i></button>
+            <h4>Get in touch on</h4>
+            <ul>
+                <li>
+                    <a href="https://www.patreon.com/florinpop17" target="_blank">
+                        <i class="fab fa-discord"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://twitter.com/florinpop1705" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://linkedin.com/in/florinpop17" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://facebook.com/florinpop17" target="_blank">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://instagram.com/florinpop17" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <button class="floating-btn">
+        Get in Touch
+    </button>
+
+    <script src="js/register.js"></script>
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
