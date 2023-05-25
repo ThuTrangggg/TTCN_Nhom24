@@ -7,7 +7,7 @@ include('../connect.php')
     function validateForm() {
         var tenduan = document.forms["formsuaduan"]["tenduan"].value;
         var maloaiduan = document.forms["formsuaduan"]["loaiduan_id"].value;
-        var ytuong = document.forms["formsuaduan"]["ytuong"].value;
+        var ytuong = document.forms["formsuaduan"]["tenytuong"].value;
         var tenbaocao = document.forms["formsuaduan"]["tenbaocao"].value;
         var tinhtrang = document.forms["formsuaduan"]["tinhtrang"].value;
         var chiphi = document.forms["formsuaduan"]["chiphi"].value;
@@ -24,7 +24,7 @@ include('../connect.php')
         }
         if (ytuong.trim() == "") {
             alert("Bạn phải nhập ý tưởng ");
-            document.forms["formsuaduan"]["ytuong"].focus();
+            document.forms["formsuaduan"]["tenytuong"].focus();
             return false;
         }
         if (tenbaocao.trim() == "") {
@@ -73,13 +73,23 @@ include('../connect.php')
                                 <label for="txttenduan">Tên dự án</label>
                                 <input class="form-control" type="text" placeholder="Tên dự án" name="tenduan" value="<?php echo $row1["tenduan"]; ?>" />
                             </div>
-                            <div class="form-floating mb-3">
+                            <!-- <div class="form-floating mb-3">
                                 <label for="txtmaloaiduan">Mã loại dự án </label>
                                 <input class="form-control" type="text" placeholder="mã loại dự án " name="loaiduan_id" value="<?php echo $row1["loaiduan_id"]; ?>" />
-                            </div>
+                            </div> -->
                             <div class="form-floating mb-3">
-                                <label for="txtytuong">ý tưởng </label>
-                                <input class="form-control" id="txtytuong" placeholder="ý tưởng" name="ytuong" value="<?php echo $row1["ytuong"]; ?>" />
+                                <label for=""> mã loại dự án  </label>
+                                <select name="loaiduan_id" class="form-control" id="">
+                                    <option value="#"></option>
+                                    <option value="1">1 </option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <label for="txttenytuong">Tên ý tưởng </label>
+                                <input class="form-control" id="txttenytuong" placeholder="ý tưởng" name="tenytuong" value="<?php echo $row1["tenytuong"]; ?>" />
                             </div>
                             <div class="form-floating mb-3">
                                 <label for="txttenbaocao">tên báo cáo </label>

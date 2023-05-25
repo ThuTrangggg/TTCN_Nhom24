@@ -35,7 +35,7 @@
                             </div>
                             <div class="card-body">
                                 <?php 
-                                                    $sql="SELECT a.id,c.tenduan, a.tenytuong, b.ten, a.ngaylap from ytuong as a INNER JOIN nhanvien as b on a.nhanvien_id=b.id JOIN duan as c on a.duan_id=c.id order by a.id;";
+                                                    $sql="SELECT a.id,c.tenduan, a.tenytuong, b.ten, a.ngaylap from ytuong as a INNER JOIN nhanvien as b on a.nhanvien_id=b.id JOIN duan as c on a.duan_id=c.id order by a.id asc;";
                                                     $ketQuaTruyVan=$conn->query($sql);
                                                     ?>
                                 <div class="table-responsive">
