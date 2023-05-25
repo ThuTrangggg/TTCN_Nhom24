@@ -46,12 +46,11 @@ include 'head.php'
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="buttons.php">Dự án </a>
-                        <a class="collapse-item" href="cards.php"> loại dự án </a>
-                        <a class="collapse-item" href="ytuong.php">Ý tưởng </a>
-                        <a class="collapse-item" href="buttons.php">Kế hoạch quảng cáo </a>
-                        <a class="collapse-item" href="buttons.php"> Báo cáo </a>
-
+                        <a class="collapse-item" href="duan/duan.php ">Dự án </a>
+                        <a class="collapse-item" href="cards.html"> loại dự án </a>
+                        <a class="collapse-item" href="ytuong.ph">Ý tưởng </a>
+                        <a class="collapse-item" href="buttons.html">Kế hoạch quảng cáo </a>
+                        <a class="collapse-item" href="buttons.html"> Báo cáo </a>
 
                     </div>
                 </div>

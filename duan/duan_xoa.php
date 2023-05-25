@@ -3,8 +3,7 @@
     include("../connect.php");
 
     $duan_id=$_GET['id'];
-    $sql1 = "SELECT  id 
-    FROM duan INNER JOIN ytuong ON duan.id = ytuong.duan_id
+    $sql1 = "SELECT  duan.id FROM duan INNER JOIN ytuong ON duan.id = ytuong.duan_id
     INNER JOIN baocao as b ON duan.id = b.duan_i WHERE duan.id= '".$duan_id."' ";
     $kq1 = mysqli_query($ket_noi, $sql1);
     $so_luong = mysqli_num_rows($kq1);
