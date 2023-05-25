@@ -1,4 +1,4 @@
-<base href="../">
+<!-- <base href="../"> -->
 <link rel="stylesheet" href="css/style2.css">
 <?php include '../connect.php';
 $sql = 'select * from taikhoan';
