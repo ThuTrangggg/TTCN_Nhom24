@@ -28,7 +28,7 @@
                             <div class="card-header py-3">
                                 <div class="row">
                                 <h6 class="font-weight-bold text-primary"style="margin-top:0.2cm;padding-left:1cm;">Ý tưởng</h6>
-                                <a href="admin/t_ytuong.php" class="btn btn-primary btn-circle"style="float:left; margin-left:83%;">
+                                <a href="admin/ytuong_t.php" class="btn btn-primary btn-circle"style="float:left; margin-left:83%;">
                                         <i class="fas fa-plus"></i>
                                     </a></div>
                             </div>
