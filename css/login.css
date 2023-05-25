@@ -1,0 +1,79 @@
+body{
+    font-family: 'Open Sans', sans-serif;
+    background-size: cover;
+    background-position-y: -80px;
+    font-size: 16px;
+}
+#wrapper{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#form-login{
+    box-shadow: 0 2px 5px rgb(0 0 0 / 30%);
+    max-width: 400px;
+    flex-grow: 1;
+    padding: 30px 30px 40px;
+}
+.form-heading{
+    font-size: 25px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.form-group{
+    border-bottom: 1px solid black;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    display: flex;
+}
+.form-group i{
+    font-size: 14px;
+    padding-top: 5px;
+    padding-right: 10px;
+}
+.form-input{
+    background: transparent;
+    border: 0;
+    outline: 0;
+    color: black;
+    flex-grow: 1;
+}
+.form-input::placeholder{
+    color: black;
+}
+#eye i{
+    padding-right: 0;
+    cursor: pointer;
+}
+.form-submit{   
+	background-color: #82ae46;
+	border: 2px solid #78a835;
+	border-radius: 4px;
+	color: #fff;
+	display: block;
+	font-family: inherit;
+	font-size: 16px;
+	padding: 10px;
+	margin-top: 20px;
+	width: 100%;
+}
+
+.form-submit:active{
+	background-color: #ffffff;
+	color: #638f24;
+}
+
+.form-add{
+    padding-top:20px;
+    text-align: center;
+}
+
+.form-link{
+    text-decoration: none;
+}
+
+a:hover{
+    color:#82ae46;
+}
+
