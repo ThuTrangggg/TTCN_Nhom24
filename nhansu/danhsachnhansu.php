@@ -10,20 +10,18 @@
 
 <body>
 
-    <!-- Page Wrapper -->
-    <?php include '../sidebar.php' ?>
-    <div id="wrapper" style="width: 100%">
+<div id="wrapper" style="width: 100%">
 
-        <!-- Sidebar -->
-        <!-- End of Sidebar -->
+<!-- Sidebar -->
+<?php include '../sidebar.php' ?>
+<!-- End of Sidebar -->
 
-        <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
-            <?php include '../header.php';
-            ?>
-
-            <!-- Main Content -->
-            <div id="content">
+<!-- Content Wrapper -->
+<div id="content-wrapper" class="d-flex flex-column">
+    
+    <!-- Main Content -->
+    <div id="content">
+            <?php include '../header.php' ?>
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
