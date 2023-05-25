@@ -47,8 +47,8 @@
                         <a class="collapse-item" href="buttons.php">Dự án </a>
                         <a class="collapse-item" href="cards.php"> loại dự án </a>
                         <a class="collapse-item" href="ytuong.php">Ý tưởng </a>
-                        <a class="collapse-item" href="buttons.php">Kế hoạch quảng cáo </a>
-                        <a class="collapse-item" href="buttons.php"> Báo cáo </a>
+                        <a class="collapse-item" href="KHQC.php">Kế hoạch quảng cáo </a>
+                        <a class="collapse-item" href="baocao.php"> Báo cáo </a>
 
 
                     </div>
