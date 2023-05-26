@@ -1,41 +1,51 @@
 <?php
-include('../header.php');
 include('../connect.php')
 ?>
 <base href="../">
 <script type="text/javascript">
     function validateForm() {
-        var tentaikhoan = document.forms["formsua"]["tentaikhoan"].value;
-        var matkhau = document.forms["formsua"]["matkhau"].value;
-        var email = document.forms["formsua"]["email"].value;
-        var role = document.forms["formsua"]["role"].value;
-        if (tentaikhoan.trim() == "") {
-            alert("Bạn phải chọn nhập tên loại sản phẩm.");
-            document.forms["formsua"]["txttenloaisanpham"].focus();
-            return false;
-        }
-        if (matkhau.trim() == "") {
-            alert("Bạn phải nhập mật khẩu");
-            document.forms["formsua"]["matkhau"].focus();
-            return false;
-        }
-        if (email.trim() == "") {
-            alert("Bạn phải nhập email");
-            document.forms["formsua"]["email"].focus();
-            return false;
-        }
-        if (role.trim() == "") {
-            alert("Bạn phải chọn vị trí.");
-            document.forms["formsua"]["role"].focus();
-            return false;
-        }
+        // var tentaikhoan = document.forms["formsua"]["tentaikhoan"].value;
+        // var matkhau = document.forms["formsua"]["matkhau"].value;
+        // var email = document.forms["formsua"]["email"].value;
+        // var role = document.forms["formsua"]["role"].value;
+        // if (tentaikhoan.trim() == "") {
+        //     alert("Bạn phải chọn nhập tên loại sản phẩm.");
+        //     document.forms["formsua"]["txttenloaisanpham"].focus();
+        //     return false;
+        // }
+        // if (matkhau.trim() == "") {
+        //     alert("Bạn phải nhập mật khẩu");
+        //     document.forms["formsua"]["matkhau"].focus();
+        //     return false;
+        // }
+        // if (email.trim() == "") {
+        //     alert("Bạn phải nhập email");
+        //     document.forms["formsua"]["email"].focus();
+        //     return false;
+        // }
+        // if (role.trim() == "") {
+        //     alert("Bạn phải chọn vị trí.");
+        //     document.forms["formsua"]["role"].focus();
+        //     return false;
+        // }
     }
 </script>
 </head>
 
 <body class="sb-nav-fixed">
-    <?php
-    include("../sidebar.php");
+<div id="wrapper" style="width: 100%">
+
+<!-- Sidebar -->
+<?php include '../sidebar.php' ?>
+<!-- End of Sidebar -->
+
+<!-- Content Wrapper -->
+<div id="content-wrapper" class="d-flex flex-column">
+    
+    <!-- Main Content -->
+    <div id="content">
+            <?php include '../header.php';
+    
     $taiKhoan_id = $_GET["id"];
     // $loaisanphamid;
     // if(isset($_GET['loaisanphamid'])) $loaisanphamid=$_GET['loaisanphamid'];

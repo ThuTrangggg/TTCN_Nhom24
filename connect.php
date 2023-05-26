@@ -13,5 +13,4 @@ if($conn -> connect_error){
 }
 
 $ket_noi = mysqli_connect("localhost", "root", "", "nhom_24");
-
 ?>
