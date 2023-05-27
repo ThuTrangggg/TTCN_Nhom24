@@ -7,7 +7,8 @@
     $tinhtrang =$_POST['txttinhtrang'];
     $chiphi =$_POST['txtchiphi'];
     
-    $sql = "INSERT INTO duan (tenduan,loaiduan_id,tinhtrang,chiphi) VALUES ('".$tenduan."','".$maloaiduan."','".$tinhtrang."','".$chiphi."')";
+    $sql = "
+    INSERT INTO duan (tenduan,loaiduan_id,tinhtrang,chiphi) VALUES ('".$tenduan."','".$maloaiduan."','".$tinhtrang."','".$chiphi."')";
     $kq = mysqli_query($ket_noi, $sql);
     echo "
         <script type='text/javascript'>
