@@ -385,6 +385,7 @@
                                             <th>Age</th>
                                             <th>Start date</th>
                                             <th>Salary</th>
+
                                         </tr>
                                     </thead>
                                     <tfoot>
