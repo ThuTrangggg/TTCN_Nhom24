@@ -1,6 +1,7 @@
-<?php include 'connect.php';
-include 'head.php'
-
+<?php 
+include 'connect.php';
+include 'head.php';
+session_start();
 ?>
 <link rel="stylesheet" href="css/style2.css">
 <body id="page-top">

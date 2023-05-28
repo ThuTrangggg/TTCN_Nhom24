@@ -55,13 +55,17 @@ table.dataTable>thead .sorting::before{
 
 
 /* Chat Area */
+
 .chat-area{
   position: fixed;
-  width:  450px;
+  width:  350px;
   z-index: 1;
   bottom: 0px;
-  right: 50px;
+  right: calc(450px);
   border: 1px solid #ccc;
+  }
+  .chat-area-wrap{
+    right: 0px;
   }
   .chat-area header{
     display: flex;

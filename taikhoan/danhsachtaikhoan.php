@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
     <base href="../">
-<?php include '../connect.php';
+<?php 
+include '../connect.php';
 ?>
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
@@ -19,7 +20,8 @@
         
         <!-- Main Content -->
         <div id="content">
-                <?php include '../header.php' ?>
+                <?php include '../header.php' ;
+                ?>
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
@@ -182,6 +184,9 @@
                 document.getElementById("frmAdd").style.display = 'none';
             }
         </script>
+        <?php 
+        // include ('../Chat/chat.php')
+        ?>
     </div>
     <!-- End of Page Wrapper -->
 
