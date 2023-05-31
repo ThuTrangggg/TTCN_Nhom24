@@ -33,7 +33,7 @@
 
 <body class="bg-gradient-primary">
 
-    <div class="container" style="with=800px;">
+    <div class="container" style="width: 800px">
 
         <div class="card o-hidden border-0 shadow-lg my-5">
             <div class="card-body p-0">

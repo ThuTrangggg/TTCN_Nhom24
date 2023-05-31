@@ -3,56 +3,36 @@
     include("../connect.php");
 
     $taiKhoan_id=$_GET['id'];
-    $sql1 = "SELECT id FROM tbl_giohang JOIN tbl_sanpham ON  tbl_giohang.sanpham_id=tbl_sanpham.sanpham_id 
-    WHERE tbl_sanpham.sanpham_id = '".$sanpham_id."' ";
-    $kq1 = mysqli_query($ket_noi, $sql1);
-    $so_luong = mysqli_num_rows($kq1);
-    if($so_luong==0)
-    {   
-        $sql2 = "
-             DELETE FROM `tbl_sanpham` WHERE `tbl_sanpham`.`sanpham_id` = '".$sanpham_id."';
-              ";
-        $kq2 = mysqli_query($ket_noi, $sql2);
+    $sql1 = "SELECT taikhoan.id FROM taikhoan JOIN nhanvien ON  taikhoan.id = nhanvien.taikhoan_id
+    WHERE taikhoan.id = '".$taiKhoan_id."' ";
+    $kq1 = mysqli_query($conn, $sql1);
 
-        if(isset($_GET['loaisanphamid']))
-        {
-            $loaisanphamid=$_GET['loaisanphamid'];
-            echo "
-            <script type='text/javascript'>
-                window.alert('Bạn đã xoá sản phẩm thành công!');
-                window.location.href='sanpham.php?id=$loaisanphamid';
-            </script>";
-        }
-        else
-        {
-        echo "
-            <script type='text/javascript'>
-                window.alert('Bạn đã xoá sản phẩm thành công!');
-                window.location.href='toanbosanpham.php';
-            </script>
-    ";
-        }
+    $sql2 = "SELECT taikhoan.id FROM taikhoan JOIN feedback ON  taikhoan.id = feedback.taikhoan_id
+    WHERE taikhoan.id = '".$taiKhoan_id."' ";
+    $kq2 = mysqli_query($conn, $sql2);
+    
+    if($kq1 -> num_rows >0)
+    { 
+        ?>
+        <script>
+            window.alert('Tài khoản của nhân viên, không thể xóa');
+            window.location.href = 'danhsachtaikhoan.php';
+        </script>
+        <?php
     }
-    else
+    else if($kq2->num_rows >0)
     {
-        if(isset($_GET['loaisanphamid']))
-        {
-            $loaisanphamid=$_GET['loaisanphamid'];
-            echo "
-            <script type='text/javascript'>
-                window.alert('Bạn không thể xoá sản phẩm  này!');
-                window.location.href='sanpham.php?id=$loaisanphamid';
-            </script>";
-        }
-        else
-        {
-        echo "
-            <script type='text/javascript'>
-                window.alert('Bạn không thể xoá sản phẩm này!');
-                window.location.href='toanbosanpham.php';
-            </script>
-    ";
-        }
+        ?>
+        <script>
+            window.alert('Tài khoản đã feedback, không thể xóa');
+            window.location.href = 'danhsachtaikhoan.php';
+        </script>
+        <?php
+       
+    }
+    else{
+        $sqlDel = 'DELETE from taikhoan WHERE id = "'.$taiKhoan_id.'"';
+        mysqli_query($conn,$sqlDel);
     }
 
 ;?>

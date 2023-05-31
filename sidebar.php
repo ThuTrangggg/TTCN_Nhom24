@@ -1,6 +1,7 @@
-<?php include 'connect.php';
-include 'head.php'
-
+<?php 
+include 'connect.php';
+include 'head.php';
+session_start();
 ?>
 <link rel="stylesheet" href="css/style2.css">
 <body id="page-top">
@@ -39,7 +40,7 @@ include 'head.php'
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>DỰ ÁN</span>
                 </a>
@@ -53,6 +54,7 @@ include 'head.php'
                         <a class="collapse-item" href="buttons.html"> Báo cáo </a>
 
                     </div>
+                    
                 </div>
             </li>
 

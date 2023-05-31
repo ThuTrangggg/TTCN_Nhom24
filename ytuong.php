@@ -28,7 +28,7 @@
                             <div class="card-header py-3">
                                 <div class="row">
                                 <h6 class="font-weight-bold text-primary"style="margin-top:0.2cm;padding-left:1cm;">Ý tưởng</h6>
-                                <a href="admin/t_ytuong.php" class="btn btn-primary btn-circle"style="float:left; margin-left:83%;">
+                                <a href="admin/ytuong_t.php" class="btn btn-primary btn-circle"style="float:left; margin-left:83%;">
                                         <i class="fas fa-plus"></i>
                                     </a></div>
                             </div>
@@ -47,8 +47,6 @@
                                                 <th>Tên dự án</th>
                                                 <th>Tên ý tưởng</th>
                                                 <th>Người thực hiện</th>
-                                                <th>Ngày</th>
-                                                <th></th>
                                             </tr>
                                         </thead>
                                         <?php
@@ -62,9 +60,6 @@
                                                 <td><?php echo $ytuong['tenduan']; ?></td>
                                                 <td><?php echo $ytuong['tenytuong']; ?></td>
                                                 <td><?php echo $ytuong['ten']; ?></td>
-                                                <td><?php echo $ytuong['ngaylap']; ?></td>
-                                                <td><a class="btn btn-success btn-circle" href="admin/s_ytuong.php?id=<?php echo $ytuong['id'];?>">Sửa</a>  
-                                                <a class="btn btn-danger btn-circle" href="admin/x_ytuong.php?id=<?php echo $ytuong['id'];?>"><i class="fas fa-trash"></a></td>
                                             </tr>
                                         </tbody>
                                         <?php
