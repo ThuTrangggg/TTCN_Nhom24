@@ -25,11 +25,11 @@ if ($result->num_rows >0) {
     // $_SESSION["wishlist"]["mat_hang_wishlist"] = array();
     $_SESSION['mat_khau'] = $mat_khau_cu;
     // Muốn làm việc với SESSION luôn phải dùng hàm khởi tạo này
-    // $status = "Đang hoạt động";
-    // $sql2 = mysqli_query(
-    //     $conn,
-    //     "UPDATE taikhoan SET status = '{$status}' WHERE id = '{$userId}'"
-    // );
+    $status = "Đang hoạt động";
+    $sql2 = mysqli_query(
+        $conn,
+        "UPDATE taikhoan SET status = '{$status}' WHERE id = '{$userId}'"
+    );
     echo "
                 <script type='text/javascript'>
                     window.location.href='index.php';

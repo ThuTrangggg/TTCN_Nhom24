@@ -55,6 +55,8 @@
                                             <th>Tài khoản hệ thống</th>
                                             <th>Trạng thái</th>
                                             <th>Sửa</th>
+                                            <th>Xóa</th>
+
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -69,6 +71,7 @@
                                             <th>Tài khoản hệ thống</th>
                                             <th>Trạng thái</th>
                                             <th>Sửa</th>
+                                            <th>Xóa</th>
                                         </tr>
                                     </tfoot>
                                     <?php
@@ -100,7 +103,9 @@
                                                     <td>
                                                         <a class="btn btn-success" href="nhansu/nhansu_fix.php?id=<?= $nhansu["id"]; ?>">Sửa</a>
                                                     </td>
-
+                                                    <td>
+                                                        <a class="btn btn-danger" href="nhansu/nhansu_xoa.php?id=<?= $nhansu["id"]; ?>">Xóa</a>
+                                                    </td>
                                                     </td>
                                                 </tr>
 

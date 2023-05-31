@@ -46,13 +46,13 @@ include('../connect.php')
     <div id="content">
             <?php include '../header.php';
     
-    $taiKhoan_id = $_GET["id"];
+    $nhanVien_id = $_GET["id"];
     // $loaisanphamid;
     // if(isset($_GET['loaisanphamid'])) $loaisanphamid=$_GET['loaisanphamid'];
     $sql1 = "
                               SELECT *
-                              FROM taikhoan
-                              Where id='" . $taiKhoan_id . "'
+                              FROM nhanvien
+                              Where id='" . $nhanVien_id . "'
                     ";
     $kq1 = mysqli_query($ket_noi, $sql1);
     $row1 = mysqli_fetch_array($kq1);
@@ -65,22 +65,22 @@ include('../connect.php')
                         <h3 class="text-center font-weight-light my-4">Cập nhật thông tin nhân sự</h3>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="taikhoan/taikhoan_fixcode.php<?php echo "?id=$taiKhoan_id"; ?>" enctype="multipart/form-data" id="formsua" onsubmit="return validateForm()">
+                        <form method="POST" action="taikhoan/taikhoan_fixcode.php<?php echo "?id=$nhanVien_id"; ?>" enctype="multipart/form-data" id="formsua" onsubmit="return validateForm()">
                         <div class="form-floating mb-3">
-                            <label for="txttentaikhoan">Tên nhân viên</label>
-                            <input class="form-control" id="txttentaikhoan" type="text" placeholder="Tên nhân viên" name="txtten" />
+                            <label for="txtten">Tên nhân viên</label>
+                            <input class="form-control" id="txtten" type="text" placeholder="<?=$row1['ten']?>" name="txtten" />
                         </div>
                         <div class="form-floating mb-3">
-                            <label for="txtmatkhau">CCCD</label>
-                            <input class="form-control" id="txtmatkhau" type="text" placeholder="Mật khẩu" name="txtcccd" />
+                            <label for="txtcccd">CCCD</label>
+                            <input class="form-control" id="txtcccd" type="text" placeholder="<?=$row1['cccd']?>" name="txtcccd" />
                         </div>
                         <div class="form-floating mb-3">
-                            <label for="txtmatkhau">Số điện thoại</label>
-                            <input class="form-control" id="txtmatkhau" type="text" placeholder="Số điện thoại" name="txtsdt" />
+                            <label for="txtsdt">Số điện thoại</label>
+                            <input class="form-control" id="txtsdt" type="text" placeholder="<?=$row1['sdt']?>" name="txtsdt" />
                         </div>
                         <div class="form-floating mb-3">
-                            <label for="txtmatkhau">Email</label>
-                            <input class="form-control" id="txtmatkhau" type="text" placeholder="abc@gmail.com" name="txtemail" />
+                            <label for="txtemail">Email</label>
+                            <input class="form-control" id="txtemail" type="text" placeholder="<?=$row1['email']?>" name="txtemail" />
                         </div>
                         <div class="form-floating mb-3">
                             <label for="txtgioitinh">Giới tính</label>
@@ -106,7 +106,7 @@ include('../connect.php')
                             <ul>
                             
                                 <li>
-                                    <input type="hidden" name="taikhoan_id" value="<?=$row1["id"]?>" id="">
+                                    <input type="hidden" name="nhanVien_id" value="<?=$row1["id"]?>" id="">
                                     <input type="submit" class="btn" name="btnSubmit" value="Cập nhật">
                                 </li>
                                 <li>
