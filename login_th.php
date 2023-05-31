@@ -8,17 +8,19 @@ $sql = " SELECT * FROM taikhoan where email = '" . $email . "' and matkhau = '" 
 // echo $sql;
 // Thực thi câu lệnh SQL trên
 $result = $conn->query($sql);
-if ($result->num_rows >0) {
+if ($result->num_rows > 0) {
     while ($user = $result->fetch_assoc()) {
         $userId = $user['id'];
         $userEmail = $user['email'];
         $userRole = $user['role_id'];
         $mat_khau_cu = $user['matkhau'];
+        $img = $user['img'];
         // $userAdmin = $user['admin'];
     }
     session_start();
     $_SESSION["login"] = 1;
     $_SESSION["role_id"] = $userRole;
+    $_SESSION['img'] = $img;
     $_SESSION["email"] = $userEmail;
     $_SESSION['userId'] = $userId;
     // $_SESSION["wishlist"]["tong_so_wishlist"] = 0;
@@ -30,12 +32,19 @@ if ($result->num_rows >0) {
         $conn,
         "UPDATE taikhoan SET status = '{$status}' WHERE id = '{$userId}'"
     );
-    echo "
+    if ($_SESSION['role_id'] == 3) {
+        echo "
+                <script type='text/javascript'>
+                    window.location.href='index_kh.php';
+                </script>
+            ";
+    } else if ($_SESSION['role_id'] == 1 || $_SESSION['role_id'] == 2) {
+        echo "
                 <script type='text/javascript'>
                     window.location.href='index.php';
                 </script>
             ";
-
+    }
     // header("Location: index.php");
 } else {
     // echo 'alert("0 thanh cong")';
@@ -43,9 +52,9 @@ if ($result->num_rows >0) {
     // echo 'alert("Email hoặc mật khẩu không chính xác")';
     // echo '</script>';
 ?>
-<script>
-    window.alert('Sai mật khẩu hoặc tài khoản');
-    window.location.href = 'login.php';
-</script>
+    <script>
+        window.alert('Sai mật khẩu hoặc tài khoản');
+        window.location.href = 'login.php';
+    </script>
 <?php }
 ?>
