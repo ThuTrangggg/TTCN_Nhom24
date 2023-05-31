@@ -12,11 +12,11 @@
         $ketQuaTruyVan = $conn->query($sql);
         if($ketQuaTruyVan->num_rows >0 ){
         while($baocao = $ketQuaTruyVan->fetch_assoc()){
-                $duanid=$_POST['duan_id'];
-                $NVid=$_POST['nhanvien_id'];
-                $tenyt=$_POST['tenbaocao'];
-                $noidung=$_POST['noidung'];
-                $ngay=$_POST['ngaylap'];
+                $duanid=$baocao['duan_id'];
+                $NVid=$baocao['nhanvien_id'];
+                $tenyt=$baocao['tenbaocao'];
+                $noidung=$baocao['noidung'];
+                $ngay=$baocao['ngaylap'];
             }
         }
     ?>
@@ -46,7 +46,7 @@
                         ?>
                         <div class="card shadow mb-4">
                             <div class="card-body">
-                                <form class="form form-horizontal" method="post" action="admin/s_baocao1.php">
+                                <form class="form form-horizontal" method="post" action="baocao/s_baocao1.php">
                                     <div class="form-group">
                                         <div class="row">          
                                             <label class="control-label col-sm-2" style="color:#000">Tên dự án: </label>

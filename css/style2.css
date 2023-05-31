@@ -14,9 +14,7 @@
     left: 0;
     top: 0;
 }
-.show {display:block;}
 
-.close {display:none;}
 
 .form-floating{
     display: flex;
@@ -55,13 +53,85 @@ table.dataTable>thead .sorting::before{
 
 
 /* Chat Area */
-.chat-area{
+.chat-section{
+  background-color: white;
   position: fixed;
-  width:  450px;
+  right: 0;
+  bottom: 0;
+  width: 370px;
+  border: 1px solid #ccc;
+  }
+  .chat-section .chat-section-header{
+    height: 54px;
+    line-height: 54px;
+    cursor: pointer;
+  }
+  .chat-section .search{
+    display: none;
+  padding: 0 20px 16px;
+  
+  border-bottom: 1px solid #ccc
+  }
+
+  .chat-section .search input{
+    line-height: 34px;
+    border: 1px solid #ccc;
+    border-radius: 6px 6px 6px 6px;
+    padding: 0 16px;
+  }
+
+  .chat-section .search button{
+    line-height: 34px;
+    position: absolute;
+    right: 24px;
+    align-items: center;
+    border: none;
+    color: #7d7d7d;
+    background-color: transparent;
+  }
+
+  .chat-section-list{
+    display: none;
+  padding: 16px 20px;
+
+    max-height: 400px;
+    overflow-y: scroll;
+  }
+  .chat-section .chat-section-item{
+  position: relative;
   z-index: 1;
   bottom: 0px;
-  right: 50px;
+  right: calc(450px);
+  /* border: 1px solid #ccc; */
+  right: 0px;
+  }
+
+  .chat-section-item{
+    margin-top: 16px;
+  }
+
+  .chat-section-item img{
+    position: relative;
+  }
+  .chat-section-item .dot-active{
+    font-size: 13px;
+    position: absolute;
+    left: 36px;
+    bottom: 8px;
+  }
+  .chat-section-item .details{
+    margin-left: 24px;
+  }
+.chat-area{
+  position: fixed;
+  width:  350px;
+  z-index: 1;
+  bottom: 0px;
+  right: calc(450px);
   border: 1px solid #ccc;
+  }
+  .chat-area-wrap{
+   
   }
   .chat-area header{
     display: flex;
@@ -95,6 +165,7 @@ table.dataTable>thead .sorting::before{
   
   .chat-area header .details{
     width: 100%;
+
   }
 
   .chat-area header .details span{
@@ -256,3 +327,7 @@ table.dataTable>thead .sorting::before{
       width: 45px;
     }
   }
+
+  .show {display: block !important; ;}
+
+.close {display:none;}
