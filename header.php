@@ -1,10 +1,18 @@
 <?php
 include("head.php");
-// session_start();
+//session_start();
 ?>
 
 <head>
-
+    <?php
+    include("function.php");
+    // $regexResult=checkPrivilege();
+    // if(!$regexResult){
+    //     echo "Bạn không có quyền truy cập chức năng này";exit;
+    // }
+    // if (!empty($_SESSION['userid'])) {
+    // 
+    ?>
     <!-- Topbar -->
     <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
@@ -54,13 +62,18 @@ include("head.php");
 
             <!-- Nav Item - Alerts -->
             <li class="nav-item dropdown no-arrow mx-1">
-
-                <!-- Dropdown - Alerts -->
-                <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" style="height: 431px; overflow-y:scroll" aria-labelledby="alertsDropdown">
-                    <h6 style="text-align: center;" class="dropdown-header"> Thông báo</h6>
-                    <div id="listNotice">
-                    </div>
-                    <!-- <a class="dropdown-item d-flex align-items-center" href="#">
+                <?php
+                if (
+                    isset($_SESSION['login'])
+                    && $_SESSION['login'] == 1
+                ) {
+                ?>
+                    <!-- Dropdown - Alerts -->
+                    <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" style="height: 431px; overflow-y:scroll" aria-labelledby="alertsDropdown">
+                        <h6 style="text-align: center;" class="dropdown-header"> Thông báo</h6>
+                        <div id="listNotice">
+                        </div>
+                        <!-- <a class="dropdown-item d-flex align-items-center" href="#">
                         <div class="mr-3">
                             <div class="icon-circle bg-primary">
                                 <i class="fas fa-file-alt text-white"></i>
@@ -71,59 +84,57 @@ include("head.php");
                             <span class="font-weight-bold">A new monthly report is ready to download!</span>
                         </div>
                     </a> -->
-                    <!-- <a class="dropdown-item text-center small text-gray-500" href="#">Hiển thị hết thông báo</a>  -->
-                </div>
-                <a onclick="getListNotice()" class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-bell fa-fw"></i>
-                    <!-- Counter - Alerts -->
-                    <span class="badge badge-danger badge-counter">1 </span>
-                </a>
+                        <!-- <a class="dropdown-item text-center small text-gray-500" href="#">Hiển thị hết thông báo</a>  -->
+                    </div>
+                    <a onclick="getListNotice()" class="nav-link dropdown-toggle " href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-bell fa-fw"></i>
+                        <!-- Counter - Alerts -->
+                        <span class="badge badge-danger badge-counter">1 </span>
+                    </a>
+            <!-- <li class="dropdown">dsad
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="label label-pill label-danger count" style="border-radius:10px;"></span> <span class="glyphicon glyphicon-bell" style="font-size:18px;"></span></a>
+                <ul class="dropdown-menu"></ul>
+            </li> -->
             </li>
 
-            <?php
-            if (
-                isset($_SESSION['login'])
-                && $_SESSION['login'] == 1
-                && $_SESSION['role_id'] == 1
-            ) {
-            ?>
-                <div class="topbar-divider d-none d-sm-block"></div>
-                <!-- Nav Item - User Information -->
-                <li class="nav-item dropdown no-arrow">
-                    <a class="nav-link dropdown-toggle" href="" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $_SESSION['email'] ?></span>
-                        <img class="img-profile rounded-circle" width="50px" src="<?=$_SESSION['img']?>">
-                    </a>
-                    <!-- Dropdown - User Information -->
 
-                    <div id="" class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="#">
-                            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Profile
-                        </a>
-                        <a class="dropdown-item" href="#">
-                            <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Cài đặt
-                        </a>
-                        <a class="dropdown-item" href="#">
-                            <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                            trạng thái
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="logout.php" data-toggle="modal" data-target="#logoutModal">
-                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Logout
-                        </a>
-                    </div>
-                <?php } elseif (!isset($_SESSION['login'])) {  ?><div class="topbar-divider d-none d-sm-block"></div>
-                    <!-- Nav Item - User Information -->
-                <li class="nav-item dropdown no-arrow">
-                    <a class="nav-link dropdown-toggle" href="login.php" id="userDropdown" role="button">
-                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">Đăng nhập</span>
-                        <!-- <img class="img-profile rounded-circle" src="img/undraw_profile.svg"> -->
+            <div class="topbar-divider d-none d-sm-block"></div>
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow">
+                <a class="nav-link dropdown-toggle" href="" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $_SESSION['tentaikhoan'] ?></span>
+                    <img class="img-profile rounded-circle" width="50px" src="<?= $_SESSION['img'] ?>">
+                </a>
+                <!-- Dropdown - User Information -->
+
+                <div id="" class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                    <a class="dropdown-item" href="#">
+                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Profile
                     </a>
-                </li>
-            <?php } ?>
+                    <a class="dropdown-item" href="#">
+                        <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Cài đặt
+                    </a>
+                    <a class="dropdown-item" href="#">
+                        <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                        trạng thái
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="logout.php" data-toggle="modal" data-target="#logoutModal">
+                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Logout
+                    </a>
+                </div>
+            <?php } elseif (!isset($_SESSION['login'])) {  ?><div class="topbar-divider d-none d-sm-block"></div>
+                <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow">
+                <a class="nav-link dropdown-toggle" href="login.php" id="userDropdown" role="button">
+                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">Đăng nhập</span>
+                    <!-- <img class="img-profile rounded-circle" src="img/undraw_profile.svg"> -->
+                </a>
+            </li>
+        <?php } ?>
         </ul>
     </nav>
     <!-- Logout Modal-->
@@ -144,7 +155,9 @@ include("head.php");
             </div>
         </div>
     </div>
-
+    <?php
+    // }
+    ?>
 </head>
 
 </html>

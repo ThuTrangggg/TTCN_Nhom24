@@ -21,20 +21,20 @@
                     <div class="container-fluid">
 
                         <!-- Page Heading -->
-                        <h1 class="h3 mb-2 text-gray-800">Danh sách ý tưởng:</h1>
+                        <h1 class="h3 mb-2 text-gray-800">Danh sách Kế hoạch quảng cáo:</h1>
 
                         <!-- DataTales Example -->
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
                                 <div class="row">
-                                <h6 class="font-weight-bold text-primary"style="margin-top:0.2cm;padding-left:1cm;">Ý tưởng</h6>
-                                <a href="admin/t_ytuong.php" class="btn btn-primary btn-circle"style="float:left; margin-left:83%;">
+                                <h6 class="font-weight-bold text-primary"style="margin-top:0.2cm;padding-left:1cm;">Kế hoạch quảng cáo</h6>
+                                <a href="KHQC/t_khqc.php" class="btn btn-primary btn-circle"style="float:left; margin-left:74%;">
                                         <i class="fas fa-plus"></i>
                                     </a></div>
                             </div>
                             <div class="card-body">
                                 <?php 
-                                                    $sql="SELECT a.id,c.tenduan, a.tenytuong, b.ten, a.ngaylap from ytuong as a INNER JOIN nhanvien as b on a.nhanvien_id=b.id JOIN duan as c on a.duan_id=c.id order by a.id asc;";
+                                                    $sql="SELECT c.id,a.tenKHQC, b.tenloaiKHQC,d.tenduan, c.noidung FROM (khqc as a INNER JOIN loaikhqc as b on a.loaiKHQC=b.id) INNER JOIN(chitietkhqc as c INNER JOIN duan as d on c.duan_id=d.id) on a.id=c.KHQC_id;";
                                                     $ketQuaTruyVan=$conn->query($sql);
                                                     ?>
                                 <div class="table-responsive">
@@ -44,27 +44,27 @@
                                                 <th>
                                                     stt
                                                 </th>
+                                                <th>Tên kế hoạch quảng cáo</th>
+                                                <th>Tên loại Kế hoạch quảng cáo</th>
                                                 <th>Tên dự án</th>
-                                                <th>Tên ý tưởng</th>
-                                                <th>Người thực hiện</th>
-                                                <th>Ngày</th>
+                                                <th>Nội dung</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
                                         <?php
                                                 if($ketQuaTruyVan->num_rows > 0){
                                                     $i=1;
-                                                    while($ytuong = $ketQuaTruyVan->fetch_assoc()){
+                                                    while($khqc = $ketQuaTruyVan->fetch_assoc()){
                                             ?>
                                         <tbody>
                                             <tr>
                                                 <td><?php echo($i); ?></td>
-                                                <td><?php echo $ytuong['tenduan']; ?></td>
-                                                <td><?php echo $ytuong['tenytuong']; ?></td>
-                                                <td><?php echo $ytuong['ten']; ?></td>
-                                                <td><?php echo $ytuong['ngaylap']; ?></td>
-                                                <td><a class="btn btn-success btn-circle" href="admin/s_ytuong.php?id=<?php echo $ytuong['id'];?>">Sửa</a>  
-                                                <a class="btn btn-danger btn-circle" href="admin/x_ytuong.php?id=<?php echo $ytuong['id'];?>"><i class="fas fa-trash"></a></td>
+                                                <td><?php echo $khqc['tenKHQC']; ?></td>
+                                                <td><?php echo $khqc['tenloaiKHQC']; ?></td>
+                                                <td><?php echo $khqc['tenduan']; ?></td>
+                                                <td><?php echo $khqc['noidung']; ?></td>
+                                                <td><a class="btn btn-success btn-circle" href="khqc/s_khqc.php?id=<?php echo $khqc['id'];?>">Sửa</a>  
+                                                <a class="btn btn-danger btn-circle" href="khqc/x_khqc.php?id=<?php echo $khqc['id'];?>"><i class="fas fa-trash"></a></td>
                                             </tr>
                                         </tbody>
                                         <?php
