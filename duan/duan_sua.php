@@ -1,6 +1,7 @@
 <?php
 include('../header.php');
-include('../connect.php')
+include('../connect.php');
+
 ?>
 <base href="../">
 <script type="text/javascript">
@@ -53,10 +54,11 @@ include('../connect.php')
     // $loaisanphamid;
     // if(isset($_GET['loaisanphamid'])) $loaisanphamid=$_GET['loaisanphamid'];
     $sql1 = "
-                              SELECT *
-                              FROM duan
-                              Where id='" . $duan_id . "'
-                    ";
+    SELECT duan.id, tenduan, loaiduan_id, tenytuong, tenbaocao, tinhtrang, chiphi
+    FROM duan INNER JOIN ytuong ON duan.id = ytuong.duan_id
+    INNER JOIN baocao as b ON duan.id = b.duan_id 
+    Where duan.id='" . $duan_id . "'";
+
     $kq1 = mysqli_query($ket_noi, $sql1);
     $row1 = mysqli_fetch_array($kq1);
     ?>
@@ -68,7 +70,7 @@ include('../connect.php')
                         <h3 class="text-center font-weight-light my-4">Cập nhật dự án </h3>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="duan/duan_codesua.php<?php echo "?id=$duan_id"; ?>" enctype="multipart/form-data" id="formsuaduan" onsubmit="return validateForm()">
+                        <form method="POST" action="duan/duan_codesua.php<?php echo "?duan.id=$duan_id"; ?>" enctype="multipart/form-data" id="formsuaduan" onsubmit="return validateForm()">
                             <div class="form-floating mb-3">
                                 <label for="txttenduan">Tên dự án</label>
                                 <input class="form-control" type="text" placeholder="Tên dự án" name="tenduan" value="<?php echo $row1["tenduan"]; ?>" />
@@ -78,13 +80,14 @@ include('../connect.php')
                                 <input class="form-control" type="text" placeholder="mã loại dự án " name="loaiduan_id" value="<?php echo $row1["loaiduan_id"]; ?>" />
                             </div> -->
                             <div class="form-floating mb-3">
-                                <label for=""> mã loại dự án  </label>
-                                <select name="loaiduan_id" class="form-control" id="">
+                                <label for="txtmaloaiduan"> mã loại dự án  </label>
+                                <input class="form-control" type="text" placeholder="Mã loại dự án " name="loaiduan_id" value="<?php echo $row1["loaiduan_id"]; ?>" />
+                                <!-- <select name="loaiduan_id" class="form-control" id="">
                                     <option value="#"></option>
                                     <option value="1">1 </option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
-                                </select>
+                                </select> -->
                             </div>
 
                             <div class="form-floating mb-3">
