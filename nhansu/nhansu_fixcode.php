@@ -1,8 +1,8 @@
 <?php 
     include("../connect.php");
-    $taiKhoan_id=$_POST['taikhoan_id'];
-    $tenTaiKhoan=$_POST['tentaikhoan'];
-    $matKhau = $_POST['matkhau'];
+    $taiKhoan_id=$_POST['nhanVien_id'];
+    $tenTaiKhoan=$_POST['txtten'];
+    $matKhau = $_POST['txtcccd'];
     $role = $_POST['role'];
         $sql = "
         UPDATE `taikhoan` SET `tentaikhoan` = '".$tenTaiKhoan."', `matkhau` = '".$matKhau."', `role_id`='".$role."'

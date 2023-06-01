@@ -19,7 +19,7 @@
     echo "
         <script type='text/javascript'>
             window.alert('Bạn đã thêm mới tài khoản thành công');
-            // window.location.href='danhsachnhansu.php';
+            window.location.href='danhsachnhansu.php';
         </script>
     ";
 ;

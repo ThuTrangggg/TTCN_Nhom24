@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <?php
 include("head.php");
 //session_start();
@@ -57,18 +54,20 @@ if (!empty($_SESSION['userid'])) {
                     </form>
                 </div>
             </li>
+            <?php
+            // $row = mysqli_query($conn,"select")
+
+            ?>
 
             <!-- Nav Item - Alerts -->
             <li class="nav-item dropdown no-arrow mx-1">
-                <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-bell fa-fw"></i>
-                    <!-- Counter - Alerts -->
-                    <span class="badge badge-danger badge-counter">3+ </span>
-                </a>
+
                 <!-- Dropdown - Alerts -->
-                <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
-                    <h6 class="dropdown-header"> Alerts Center</h6>
-                    <a class="dropdown-item d-flex align-items-center" href="#">
+                <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" style="height: 431px; overflow-y:scroll" aria-labelledby="alertsDropdown">
+                    <h6 style="text-align: center;" class="dropdown-header"> Thông báo</h6>
+                    <div id="listNotice">
+                    </div>
+                    <!-- <a class="dropdown-item d-flex align-items-center" href="#">
                         <div class="mr-3">
                             <div class="icon-circle bg-primary">
                                 <i class="fas fa-file-alt text-white"></i>
@@ -78,37 +77,21 @@ if (!empty($_SESSION['userid'])) {
                             <div class="small text-gray-500">December 12, 2019</div>
                             <span class="font-weight-bold">A new monthly report is ready to download!</span>
                         </div>
-                    </a>
-                    <a class="dropdown-item d-flex align-items-center" href="#">
-                        <div class="mr-3">
-                            <div class="icon-circle bg-success">
-                                <i class="fas fa-donate text-white"></i>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="small text-gray-500">December 7, 2019</div> $290.29 has been deposited into your account!
-                        </div>
-                    </a>
-                    <a class="dropdown-item d-flex align-items-center" href="#">
-                        <div class="mr-3">
-                            <div class="icon-circle bg-warning">
-                                <i class="fas fa-exclamation-triangle text-white"></i>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="small text-gray-500">December 2, 2019</div>
-                            Spending Alert: We've noticed unusually high spending for your account.
-                        </div>
-                    </a>
-                    <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                    </a> -->
+                    <!-- <a class="dropdown-item text-center small text-gray-500" href="#">Hiển thị hết thông báo</a>  -->
                 </div>
+                <a onclick="getListNotice()" class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-bell fa-fw"></i>
+                    <!-- Counter - Alerts -->
+                    <span class="badge badge-danger badge-counter">1 </span>
+                </a>
             </li>
 
             <?php
             if (
                 isset($_SESSION['login'])
                 && $_SESSION['login'] == 1
-                //  && $_SESSION['role_id'] == 1
+                && $_SESSION['role_id'] == 1
             ) {
             ?>
                 <div class="topbar-divider d-none d-sm-block"></div>
@@ -116,11 +99,11 @@ if (!empty($_SESSION['userid'])) {
                 <li class="nav-item dropdown no-arrow">
                     <a class="nav-link dropdown-toggle" href="" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $_SESSION['email'] ?></span>
-                        <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+                        <img class="img-profile rounded-circle" width="50px" src="<?=$_SESSION['img']?>">
                     </a>
                     <!-- Dropdown - User Information -->
 
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                    <div id="" class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                         <a class="dropdown-item" href="#">
                             <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                             Profile
@@ -174,3 +157,123 @@ if (!empty($_SESSION['userid'])) {
 </head>
 
 </html>
+
+<?php
+class UserController
+{
+    // public Config $conn;
+
+    // public function __construct()
+    // {
+    //     if(!isset($_SESSION)){
+    //         session_start();
+    //     }
+    //     $this->conn = new Config();
+    // }
+
+    public function getData()
+    {
+        $sql = "SELECT * FROM taikhoan";
+        $query = mysqli_query($this->conn->connect(), $sql);
+        $output = "";
+
+        if (mysqli_num_rows($query) == 0) {
+            $output .= "Không có bạn bè hoạt động";
+        } elseif (mysqli_num_rows($query) > 0) {
+            $output = $this->getFriendList($query);
+        }
+        echo $output;
+    }
+
+
+    // public function searchUser($searchTerm){
+    //     $sql = "SELECT * FROM users 
+    //             WHERE NOT unique_id = {$_SESSION['unique_id']} 
+    //               AND (fname LIKE '%{$searchTerm}%' OR lname LIKE '%{$searchTerm}%')";
+    //     $output = "";
+    //     $query = mysqli_query($this->conn->connect(), $sql);
+    //     if(mysqli_num_rows($query) > 0){
+    //         $output .= $this->getFriendList($query);
+    //     }else{
+    //         $output .= "Không tìm thấy người dùng liên quan đến từ khóa";
+    //     }
+    //     echo $output;
+    // }
+
+    // public function getUserById($unique_id){
+    //     $sql = mysqli_query($this->conn->connect(), "SELECT * FROM users WHERE unique_id = {$unique_id}");
+    //     if(mysqli_num_rows($sql)>0){
+    //         return mysqli_fetch_assoc($sql);
+    //     }
+    // }
+
+    public function getFriendList($query): string
+    {
+        $rs = '';
+        while ($row = mysqli_fetch_assoc($query)) {
+            // select one last message
+            $sql = "SELECT * FROM messages WHERE 
+                             (incoming_msg_id = {$row['unique_id']} OR outgoing_msg_id = {$row['unique_id']}) 
+                         AND (outgoing_msg_id = {$_SESSION['unique_id']} OR incoming_msg_id = {$_SESSION['unique_id']})
+                         ORDER BY msg_id DESC LIMIT 1";
+            $query2 = mysqli_query($this->conn->connect(), $sql);
+            $data = mysqli_fetch_assoc($query2);
+
+            $last_mess = '';
+            if (mysqli_num_rows($query2) > 0) {
+                $last_mess = $data['msg'];
+            } else {
+                $last_mess = "Không có tin nhắn";
+            }
+
+            if (strlen($last_mess) > 28) {
+                $last_mess = substr($last_mess, 0, 28) . '...';
+            }
+
+            // if you are the last rep person
+            $you = "";
+            if (isset($data['outgoing_msg_id'])) {
+                ($_SESSION['unique_id'] == $data['outgoing_msg_id']) ? $you = "Bạn: " : $you = "";
+            }
+
+            // answerer activity
+            ($row['status'] == "Không hoạt động") ? $offline = "offline" : $offline = "";
+
+            // content
+            $rs .= '<a href="chat.php?user_id=' . $row['unique_id'] . '">
+                  <div class="content">
+                    <img src="api/images/' . $row['img'] . '"/>
+                    <div class="details">
+                      <span>' . $row['lname'] . ' ' . $row['fname'] . '</span>
+                      <div>' . $you . $last_mess . '</div>
+                    </div>
+                    
+                  </div>
+                  <div class="status-dot ' . $offline . '"><i class="fas fa-circle"></i></div>
+                </a>';
+        }
+        return $rs;
+    }
+}
+
+?>
+<script>
+    function getListNotice() {
+        const url = "header_getdata.php";
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("GET", url, true);
+        xhttp.send();
+
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4
+                //  && this.status == 200
+            ) {
+                // Typical action to be performed when the document is ready:
+                document.getElementById("listNotice").innerHTML = xhttp.responseText;
+                // var notice = JSON.parse(xhttp.responseText);
+                // console.log(notice);
+
+            }
+        };
+    }
+</script>
