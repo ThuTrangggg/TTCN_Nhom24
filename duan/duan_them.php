@@ -2,8 +2,8 @@
     include("../connect.php");
     $tenduan = $_POST['txttenduan'];
     $maloaiduan = $_POST['txtmaloaiduan'];
-    // $ytuong = $_POST['txtytuong'];
-    // $tenbaocao = $_POST['txttenbaocao'];
+    $ytuong = $_POST['txtytuong'];
+    $tenbaocao = $_POST['txttenbaocao'];
     $tinhtrang =$_POST['txttinhtrang'];
     $chiphi =$_POST['txtchiphi'];
     

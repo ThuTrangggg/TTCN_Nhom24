@@ -171,9 +171,9 @@
                             <label for="txttinhtrang">Tình trạng </label>
                             <select class="form-control"  name="txttinhtrang" id="txttinhtrang">
                                 <Option value="#"></Option>
-                                <option value="1">Thành Công </option>
-                                <option value="2">Đang thực hiện </option>
-                                <option value="3">Update</option>
+                                <option value="Thành Công">Thành Công </option>
+                                <option value="Đang thực hiện">Đang thực hiện </option>
+                                <option value="Update">Update</option>
                             </select>
                         </div>
                         <div class="form-floating mb-3">
