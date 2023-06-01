@@ -67,7 +67,7 @@ Apero Publishing: Giúp developers phát hành thành công sản phẩm của h
 
 Apero Vision Lab: Xây dựng các sản phẩm công nghệ lõi AI phục vụ creators, phát triển ngành sáng tạo nội dung.
                 </p>
-                <div class="member-list row ">
+                <!-- <div class="member-list row ">
                     <div class="member-item col col-third text-center">
                         <p class="member-name">Rise of Defenders</p>
                         <img src="https://channel.mediacdn.vn/428462621602512896/2022/3/28/photo-1-1648466476099815416529.jpg" alt="Name" class="member-img">
@@ -80,7 +80,7 @@ Apero Vision Lab: Xây dựng các sản phẩm công nghệ lõi AI phục vụ
                         <p class="member-name"> Publishing Publisher</p>
                         <img src="https://play-lh.googleusercontent.com/dtptVxrCkyzcb-1IocYfNKUY6Lwxiix8wi3I9etOSQ8zfHbYUo3-WbeHF1kcdej28Ec=w240-h480" alt="Name" class="member-img">
                     </div>
-                </div>
+                </div> -->
             </div>
             
             <!-- TOUR SECTION -->
