@@ -13,6 +13,7 @@ if ($result->num_rows > 0) {
     while ($user = $result->fetch_assoc()) {
         $userId = $user['id'];
         $userEmail = $user['email'];
+        $userTentaikhoan = $user['tentaikhoan'];
         $userRole = $user['role_id'];
         $mat_khau_cu = $user['matkhau'];
         $img = $user['img'];
@@ -24,6 +25,7 @@ if ($result->num_rows > 0) {
     $_SESSION['img'] = $img;
     $_SESSION["email"] = $userEmail;
     $_SESSION['userId'] = $userId;
+    $_SESSION['tentaikhoan'] = $userTentaikhoan;
     // $_SESSION["wishlist"]["tong_so_wishlist"] = 0;
     // $_SESSION["wishlist"]["mat_hang_wishlist"] = array();
     $_SESSION['mat_khau'] = $mat_khau_cu;

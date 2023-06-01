@@ -4,14 +4,15 @@ include("head.php");
 ?>
 
 <head>
-<?php
-include("function.php");
-$regexResult=checkPrivilege();
-if(!$regexResult){
-    echo "Bạn không có quyền truy cập chức năng này";exit;
-}
-if (!empty($_SESSION['userid'])) {
-?>
+    <?php
+    include("function.php");
+    // $regexResult=checkPrivilege();
+    // if(!$regexResult){
+    //     echo "Bạn không có quyền truy cập chức năng này";exit;
+    // }
+    // if (!empty($_SESSION['userid'])) {
+    // 
+    ?>
     <!-- Topbar -->
     <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
@@ -85,11 +86,15 @@ if (!empty($_SESSION['userid'])) {
                     </a> -->
                         <!-- <a class="dropdown-item text-center small text-gray-500" href="#">Hiển thị hết thông báo</a>  -->
                     </div>
-                    <a onclick="getListNotice()" class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a onclick="getListNotice()" class="nav-link dropdown-toggle " href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-bell fa-fw"></i>
                         <!-- Counter - Alerts -->
                         <span class="badge badge-danger badge-counter">1 </span>
                     </a>
+            <!-- <li class="dropdown">dsad
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="label label-pill label-danger count" style="border-radius:10px;"></span> <span class="glyphicon glyphicon-bell" style="font-size:18px;"></span></a>
+                <ul class="dropdown-menu"></ul>
+            </li> -->
             </li>
 
 
@@ -97,7 +102,7 @@ if (!empty($_SESSION['userid'])) {
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $_SESSION['email'] ?></span>
+                    <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $_SESSION['tentaikhoan'] ?></span>
                     <img class="img-profile rounded-circle" width="50px" src="<?= $_SESSION['img'] ?>">
                 </a>
                 <!-- Dropdown - User Information -->
@@ -150,9 +155,9 @@ if (!empty($_SESSION['userid'])) {
             </div>
         </div>
     </div>
-<?php
-}
-?>
+    <?php
+    // }
+    ?>
 </head>
 
 </html>
