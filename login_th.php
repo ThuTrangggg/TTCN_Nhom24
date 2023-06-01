@@ -4,6 +4,7 @@ include 'connect.php';
 $email = $_POST['email'];
 $password = $_POST['matkhau'];
 // Kết nối đến CSDL
+
 $sql = " SELECT * FROM taikhoan where email = '" . $email . "' and matkhau = '" . $password . "'";
 // echo $sql;
 // Thực thi câu lệnh SQL trên

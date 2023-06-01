@@ -1,10 +1,17 @@
 <?php
 include("head.php");
-// session_start();
+//session_start();
 ?>
 
 <head>
-
+<?php
+include("function.php");
+$regexResult=checkPrivilege();
+if(!$regexResult){
+    echo "Bạn không có quyền truy cập chức năng này";exit;
+}
+if (!empty($_SESSION['userid'])) {
+?>
     <!-- Topbar -->
     <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
@@ -143,7 +150,9 @@ include("head.php");
             </div>
         </div>
     </div>
-
+<?php
+}
+?>
 </head>
 
 </html>
