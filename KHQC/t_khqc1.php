@@ -2,22 +2,17 @@
 <?php
 include("../connect.php");
 
-$duanid=$_POST['duan_id'];
-$NVid=$_POST['nhanvien_id'];
-$tenbc=$_POST['tenbaocao'];
+$khqc=$_POST['KHQC_id'];
+$duan=$_POST['duan_id'];
 $noidung=$_POST['noidung'];
 
-date_default_timezone_set("Asia/Ho_Chi_Minh");
-$ngay= date("D M d, Y G:i");
-
-
-    $sql="INSERT INTO `baocao`(`duan_id`, `nhanvien_id`, `tenbaocao`, `noidung`, `ngaylap`) 
-    VALUES ('".$duanid."','".$NVid."','".$tenbc."','".$noidung."','".$ngay."')";
+    $sql="INSERT INTO `chitietkhqc`(`KHQC_id`, `duan_id`, `noidung`) 
+    VALUES ('".$khqc."','".$duan."','".$noidung."')";
     if($conn->query($sql)){
         echo "Thêm mới thành công";
         echo "
             <script>
-            window.location = 'baocao_t.php';
+            window.location = 'khqc_t.php';
             </script>
         ";
     }
@@ -25,7 +20,7 @@ $ngay= date("D M d, Y G:i");
         echo "Không thêm được";
         echo "
             <script>
-            window.location = 'baocao_t.php';
+            window.location = 'khqc_t.php';
             </script>
         ";
      }
