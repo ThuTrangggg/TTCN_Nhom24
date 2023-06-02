@@ -1,57 +1,37 @@
-
 <?php 
     include("../connect.php");
 
-    $duan_id=$_GET['duan.id'];
-    $sql1 = "SELECT  duan.id FROM duan  WHERE duan.id= '".$duan_id."' ";
-    $kq1 = mysqli_query($ket_noi, $sql1);
-    $so_luong = mysqli_num_rows($kq1);
-    if($so_luong==0)
-    {   
-        $sql2 = "
-             DELETE FROM `duan` WHERE `duan`.`id` = '".$duan_id."';
-              ";
-        $kq2 = mysqli_query($ket_noi, $sql2);
+    $taiKhoan_id=$_GET['id'];
+    $sql1 = "SELECT taikhoan.id FROM taikhoan JOIN nhanvien ON  taikhoan.id = nhanvien.taikhoan_id
+    WHERE taikhoan.id = '".$taiKhoan_id."' ";
+    $kq1 = mysqli_query($conn, $sql1);
 
-        if(isset($_GET['duan.id']))
-        {
-            $duan_id=$_GET['duan.id'];
-            echo "
-            <script type='text/javascript'>
-                window.alert('Bạn đã xoá sản phẩm thành công!');
-                window.location.href='duan/duan.php?id=$loaiduan_id';
-            </script>";
-        }
-        else
-        {
-        echo "
-            <script type='text/javascript'>
-                window.alert('Bạn đã xoá sản phẩm thành công!');
-                window.location.href='duan/duan.php';
-            </script>
-    ";
-        }
+    $sql2 = "SELECT taikhoan.id FROM taikhoan JOIN feedback ON  taikhoan.id = feedback.taikhoan_id
+    WHERE taikhoan.id = '".$taiKhoan_id."' ";
+    $kq2 = mysqli_query($conn, $sql2);
+    
+    if($kq1 -> num_rows >0)
+    { 
+        ?>
+        <script>
+            window.alert('Tài khoản của nhân viên, không thể xóa');
+            window.location.href = 'danhsachtaikhoan.php';
+        </script>
+        <?php
     }
-    else
+    else if($kq2->num_rows >0)
     {
-        // if(isset($_GET['loaiduan_id']))
-        // {
-        //     $loaisanphamid=$_GET['loaiduan_id'];
-        //     echo "
-        //     <script type='text/javascript'>
-        //         window.alert('Bạn không thể xoá sản phẩm  này!');
-        //         window.location.href='sanpham.php?id=$loaiduan_id';
-        //     </script>";
-        // }
-        // else
-        {
-        echo "
-            <script type='text/javascript'>
-                window.alert('Bạn không thể xoá sản phẩm này!');
-                window.location.href='duan/duan.php';
-            </script>
-    ";
-        }
+        ?>
+        <script>
+            window.alert('Tài khoản đã feedback, không thể xóa');
+            window.location.href = 'danhsachtaikhoan.php';
+        </script>
+        <?php
+       
+    }
+    else{
+        $sqlDel = 'DELETE from taikhoan WHERE id = "'.$taiKhoan_id.'"';
+        mysqli_query($conn,$sqlDel);
     }
 
 ;?>

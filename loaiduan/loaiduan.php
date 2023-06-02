@@ -63,7 +63,7 @@
                                         </tr>
                                     </tfoot> -->
                                     <?php
-                                    $sql = "SELECT loaiduan.id,ten_loai_du_an from loaiduan";
+                                    $sql = "SELECT id,ten_loai_du_an from loaiduan";
                                     $result = $conn->query($sql);
                                     if ($result->num_rows > 0) {
                                         $i = 1;
