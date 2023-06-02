@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-    <base href="../">
-<?php 
+<base href="../">
+<?php
 include '../connect.php';
 ?>
-    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+<link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 <body>
-    
+
     <!-- Page Wrapper -->
     <div id="wrapper" style="width: 100%">
 
-    <!-- Sidebar -->
-    <?php include '../sidebar.php' ?>
-    <!-- End of Sidebar -->
-    
-    <!-- Content Wrapper -->
-    <div id="content-wrapper" class="d-flex flex-column">
-        
-        <!-- Main Content -->
-        <div id="content">
-                <?php include '../header.php' ;
+        <!-- Sidebar -->
+        <?php include '../sidebar.php' ?>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+                <?php include '../header.php';
                 ?>
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
@@ -31,12 +31,14 @@ include '../connect.php';
                         For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p> -->
 
                     <!-- DataTales Example -->
+
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Danh sách tài khoản
                                 <div class="btn btn-add" onclick="openFrmAdd()">Thêm</div>
                             </h6>
                         </div>
+                        
                         <script>
                             function openFrmAdd() {
                                 document.getElementById("frmAdd").style.display = 'block'
@@ -119,7 +121,6 @@ include '../connect.php';
 
                 </div>
                 <!-- /.container-fluid -->
-
             </div>
             <!-- End of Main Content -->
 
@@ -138,8 +139,8 @@ include '../connect.php';
                     <h3 class="text-center font-weight-light my-4">Thêm mới tài khoản</h3>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="taikhoan/dstk_them_code.php" enctype="multipart/form-data">
-                        <input type="hidden" name="taikhoan_id" id="" value="<?=$taikhoan['id']?>">
+                    <form method="POST" id="noti_frm" action="taikhoan/dstk_them_code.php" enctype="multipart/form-data">
+                        <!-- <input type="hidden" name="taikhoan_id" id="" value="<?= $taikhoan['id'] ?>"> -->
                         <div class="form-floating mb-3">
                             <label for="txttentaikhoan">Tên tài khoản</label>
                             <input class="form-control" id="txttentaikhoan" type="text" placeholder="Tên tài khoản" name="txttentaikhoan" />
@@ -154,7 +155,7 @@ include '../connect.php';
                         </div>
                         <div class="form-floating mb-3">
                             <label for="txtrole">Role</label>
-                            <select class="form-control"  name="txtrole" id="txtrole">
+                            <select class="form-control" name="txtrole" id="txtrole">
                                 <Option value="#"></Option>
                                 <option value="1">PM</option>
                                 <option value="2">Nhân viên</option>
@@ -184,8 +185,8 @@ include '../connect.php';
                 document.getElementById("frmAdd").style.display = 'none';
             }
         </script>
-        <?php 
-        include ('../Chat/chat.php')
+        <?php
+        include('../Chat/chat.php')
         ?>
     </div>
     <!-- End of Page Wrapper -->
@@ -193,3 +194,67 @@ include '../connect.php';
 </body>
 
 </html>
+<!-- 
+<script>
+    src = "https://code.jquery.com/jquery-3.2.1.min.js"
+    $(document).ready(function() {
+
+        function load_unseen_notification(view = '') {
+            $.ajax({
+                    url: "fetch.php",
+                    method: "POST",
+                    data: {
+                        view: view
+                    },
+                    dataType: "json",
+                    success: function(data) {
+                        // window.alert("ok123");
+                        $('.dropdown-menu').html(data.notification);
+                        if (data.unseen_notification > 0) {
+                            $('.count').html(data.unseen_notification);
+                        }
+                    }
+                })
+                .done(function(data) {
+                    successFunction(data);
+                })
+                .fail(function(jqXHR, textStatus, errorThrown) {
+                    serrorFunction();
+                });
+
+        }
+        load_unseen_notification();
+
+        // $('#noti_frm').on('submit', function(event) {
+        //     event.preventDefault();
+        //     // if ($('#subject').val() != '' && $('#comment').val() != '') {
+        //     var form_data = $(this).serialize();
+        //     console.log(form_data);
+        //     $.ajax({
+        //         url: "./taikhoan/dstk_them_code.php",
+        //         method: "POST",
+        //         data: form_data,
+        //         success: function(data) {
+        //             $('#noti_frm')[0].reset();
+        //             load_unseen_notification();
+        //             window.alert("Thêm mới thành công");
+        //             window.location='taikhoan/danhsachtaikhoan.php';
+        //         }
+        //     });
+        // });
+        //     } else {
+        //         alert("Both Fields are Required");
+        //     }
+        // });
+
+        $(document).on('click', '.dropdown-toggle', function() {
+            $('.count').html('');
+            load_unseen_notification('yes');
+        });
+
+        setInterval(function() {
+            load_unseen_notification();;
+        }, 2000);
+
+    });
+</script> -->

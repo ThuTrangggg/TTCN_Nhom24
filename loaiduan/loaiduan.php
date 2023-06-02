@@ -1,7 +1,6 @@
-<?php include '../header.php' ?>
 <!DOCTYPE html>
 <html lang="en">
-<base href="../">
+    <base href="../">
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <?php include '../connect.php';
@@ -9,16 +8,17 @@
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 <body>
-
+    
     <!-- Page Wrapper -->
     <div id="wrapper" style="width: 100%">
 
-        <!-- Sidebar -->
-        <?php include '../sidebar.php' ?>
-        <!-- End of Sidebar -->
-
-        <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
+    <!-- Sidebar -->
+    <?php include '../sidebar.php' ?>
+    <!-- End of Sidebar -->
+    
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+            <?php include '../header.php' ?>
 
             <!-- Main Content -->
             <div id="content">
