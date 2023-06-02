@@ -81,7 +81,7 @@ for ($count = 0; $count < $length; $count++) {
         <div>
             <div class="font-weight-bold">' . $tenduan . '</div>
             <div class="small text-gray-500">' . $date . '</div>
-            <div class="small text-gray-500">Nhân viên ' . $tennhanvien . ' đã cập nhật ' . $loai . ' </div>
+            <div class="small text-g  ray-500">Nhân viên ' . $tennhanvien . ' đã cập nhật ' . $loai . ' </div>
     
         </div>
     </a>

@@ -114,7 +114,7 @@ setInterval(() => {
 			}
 		}
 	}
-	xhr.send();
+	// xhr.send();
 }, 500)
 </script>
             <!-- <div id="chat" class="chat-close">
