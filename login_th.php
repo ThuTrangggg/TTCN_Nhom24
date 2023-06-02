@@ -41,8 +41,8 @@ if ($result->num_rows > 0) {
                     window.location.href='index_kh.php';
                 </script>
             ";
-    } else if ($_SESSION['role_id'] == 1 || $_SESSION['role_id'] == 2) {
-        echo "
+    } else if ($_SESSION['role_id'] == 1 || $_SESSION['role_id'] == 2) {echo
+        "
                 <script type='text/javascript'>
                     window.location.href='index.php';
                 </script>

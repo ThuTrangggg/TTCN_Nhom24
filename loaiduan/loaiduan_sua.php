@@ -1,6 +1,5 @@
 <?php
-include('../header.php');
-include('../connect.php')
+include('../connect.php');
 ?>
 <base href="../">
 <script type="text/javascript">
@@ -21,12 +20,13 @@ include('../connect.php')
     <?php
     include("../sidebar.php");
     $loaiduan_id = $_GET["id"];
+    include('../header.php');
     // $loaisanphamid;
     // if(isset($_GET['loaisanphamid'])) $loaisanphamid=$_GET['loaisanphamid'];
     $sql1 = "
-                              SELECT *
-                              FROM loaiduan
-                              Where loaiduan.id='" . $loaiduan_id . "'";
+    SELECT *
+    FROM loaiduan
+    Where loaiduan.id='" . $loaiduan_id . "'";
     $kq1 = mysqli_query($ket_noi, $sql1);
     $row1 = mysqli_fetch_array($kq1);
     ?>

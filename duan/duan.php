@@ -3,7 +3,7 @@
 <base href="../">
 <?php include '../connect.php';
 ?>
-    <!-- <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet"> -->
+<!-- <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet"> -->
 
 <body>
 
@@ -19,8 +19,14 @@
 
             <!-- Main Content -->
             <div id="content">
-            <?php include '../header.php' ?>
-
+                <?php include '../header.php' ?>
+                <li class="dropdown-menu">dsad
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span class="label label-pill label-danger count" style="border-radius:10px;"></span> 
+                        <span class="glyphicon glyphicon-bell" style="font-size:18px;"></span>
+                    </a>
+                    <ul class="dropdown-menu"></ul>
+                </li>
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
@@ -32,7 +38,7 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">DANH SÁCH DỰ ÁN 
+                            <h6 class="m-0 font-weight-bold text-primary">DANH SÁCH DỰ ÁN
                                 <div class="btn btn-add" onclick="openFrmAdd()">Thêm</div>
                             </h6>
                         </div>
@@ -48,12 +54,12 @@
                                         <tr>
                                             <th>STT</th>
                                             <th>Hình ảnh</th>
-                                            <th>Tên  dự án</th>
+                                            <th>Tên dự án</th>
                                             <th>Mã loai dự án </th>
                                             <th>Ý tưởng </th>
-                                            <th>Tên báo cáo  </th>
-                                            <th>Tình trạng   </th>
-                                            <th>Chi phí  </th>
+                                            <th>Tên báo cáo </th>
+                                            <th>Tình trạng </th>
+                                            <th>Chi phí </th>
                                             <th>Sửa</th>
                                             <th>Xóa</th>
 
@@ -80,7 +86,7 @@
                                     $sql = "SELECT duan.id,hinhanh,tenduan,loaiduan_id,tenytuong,tenbaocao,tinhtrang,chiphi
                                     FROM duan left JOIN ytuong ON duan.id = ytuong.duan_id
                                     left JOIN baocao as b ON duan.id = b.duan_id";
-                                    
+
                                     $result = $conn->query($sql);
                                     if ($result->num_rows > 0) {
                                         $i = 1;
@@ -134,14 +140,13 @@
 
         </div>
         <!-- End of Content Wrapper -->
-        <div id="frmAdd"class="justify-content-center">
-            <div  class="card shadow-lg border-0 rounded-lg mt-5">
+        <div id="frmAdd" class="justify-content-center">
+            <div class="card shadow-lg border-0 rounded-lg mt-5">
                 <div class="card-header">
                     <h3 class="text-center font-weight-light my-4">Thêm mới dự án </h3>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="duan/duan_them.php" enctype="multipart/form-data">
-                        <input type="hidden" name="duan_id" id="" value="<?=$duan['id']?>">
+                    <form method="POST" id="noti_frm" action="duan/duan_them.php" enctype="multipart/form-data">
                         <div class="form-floating mb-3">
                             <label for="txttenduan">Tên dự án </label>
                             <input class="form-control" id="txttenduan" type="text" placeholder="Tên dự án" name="txttenduan" />
@@ -152,7 +157,7 @@
                         </div> -->
                         <div class="form-floating mb-3">
                             <label for="txtmaloaiduan">mã loại dự án </label>
-                            <select class="form-control"  name="txtmaloaiduan" id="txtmaloaiduan">
+                            <select class="form-control" name="txtmaloaiduan" id="txtmaloaiduan">
                                 <Option value="#"></Option>
                                 <option value="1">1</option>
                                 <option value="2">2 </option>
@@ -169,15 +174,15 @@
                         </div> -->
                         <div class="form-floating mb-3">
                             <label for="txttinhtrang">Tình trạng </label>
-                            <select class="form-control"  name="txttinhtrang" id="txttinhtrang">
+                            <select class="form-control" name="txttinhtrang" id="txtmaloaiduan">
                                 <Option value="#"></Option>
-                                <option value="Thành Công">Thành Công </option>
-                                <option value="Đang thực hiện">Đang thực hiện </option>
-                                <option value="Update">Update</option>
+                                <option value="1">Thành công</option>
+                                <option value="2">Đang thực hiện</option>
+                                <!-- <option value="3">3</option> -->
                             </select>
                         </div>
                         <div class="form-floating mb-3">
-                            <label for="txtchiphi">Chi phí  </label>
+                            <label for="txtchiphi">Chi phí </label>
                             <input class="form-control" id="txtchiphi" type="text" placeholder="Chi phí  " name="txtchiphi" />
                         </div>
 
@@ -209,60 +214,63 @@
 </body>
 
 </html>
-<!-- 
+
 <script>
-$(document).ready(function(){
- 
- function load_unseen_notification(view = '')
- {
-  $.ajax({
-   url:"fetch.php",
-   method:"POST",
-   data:{view:view},
-   dataType:"json",
-   success:function(data)
-   {
-    $('.dropdown-menu').html(data.notification);
-    if(data.unseen_notification > 0)
-    {
-     $('.count').html(data.unseen_notification);
-    }
-   }
-  });
- }
- 
- load_unseen_notification();
- 
- $('#comment_form').on('submit', function(event){
-  event.preventDefault();
-  if($('#subject').val() != '' && $('#comment').val() != '')
-  {
-   var form_data = $(this).serialize();
-   $.ajax({
-    url:"insert.php",
-    method:"POST",
-    data:form_data,
-    success:function(data)
-    {
-     $('#comment_form')[0].reset();
-     load_unseen_notification();
-    }
-   });
-  }
-  else
-  {
-   alert("Both Fields are Required");
-  }
- });
- 
- $(document).on('click', '.dropdown-toggle', function(){
-  $('.count').html('');
-  load_unseen_notification('yes');
- });
- 
- setInterval(function(){ 
-  load_unseen_notification();; 
- }, 5000);
- 
-});
-</script> -->
+    src = "https://code.jquery.com/jquery-3.2.1.min.js"
+    $(document).ready(function() {
+
+        function load_unseen_notification(view = '') {
+            $.ajax({
+                url: "./fetch.php",
+                method: "POST",
+                data: {
+                    view: view
+                },
+                dataType: "json",
+                success: function(data) {
+                    // window.alert("ok");
+
+                    $('.dropdown-menu').html(data.notification);
+                    if (data.unseen_notification > 0) {
+                        $('.count').html(data.unseen_notification);
+                    }
+                }
+            });
+        }
+
+        load_unseen_notification();
+
+        $('#noti_frm').on('submit', function(event) {
+            event.preventDefault();
+            // if ($('#subject').val() != '' && $('#comment').val() != '') {
+            var form_data = $(this).serialize();
+            console.log(form_data);
+            $.ajax({
+                
+                url: "./duan/duan_them.php",
+                method: "POST",
+                data: form_data,
+                success: function(data) {
+                    // window.alert("ok2");
+
+                    $('#noti_frm')[0].reset();
+                    load_unseen_notification();
+                }
+            });
+        });
+        //     } else {
+        //         alert("Both Fields are Required");
+        //     }
+        // });
+
+        $(document).on('click', '.dropdown-toggle', function() {
+            $('.count').html('');
+            load_unseen_notification('yes');
+        });
+
+        setInterval(function() {
+            load_unseen_notification();;
+        }, 5000);
+
+    });
+</script>
