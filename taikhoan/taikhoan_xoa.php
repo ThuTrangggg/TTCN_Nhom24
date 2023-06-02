@@ -33,6 +33,12 @@
     else{
         $sqlDel = 'DELETE from taikhoan WHERE id = "'.$taiKhoan_id.'"';
         mysqli_query($conn,$sqlDel);
+        echo "
+        <script type='text/javascript'>
+            window.alert('Bạn đã xóa tài khoản thành công');
+            window.location.href='danhsachtaikhoan.php';
+        </script>";
+    
     }
 
 ;?>

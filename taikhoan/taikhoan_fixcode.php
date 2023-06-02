@@ -9,7 +9,7 @@
         WHERE `id` = '".$taiKhoan_id."'
         ";
     $kq = mysqli_query($ket_noi, $sql);
-    if(isset($_GET['id']))
+    // if(isset($_GET['id']))
         echo "
             <script type='text/javascript'>
                 window.alert('Bạn đã cập nhật tài khoản thành công');

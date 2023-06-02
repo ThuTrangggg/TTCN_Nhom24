@@ -331,3 +331,17 @@ table.dataTable>thead .sorting::before{
   .show {display: block !important; ;}
 
 .close {display:none;}
+
+
+.dropdown i{
+  line-height: 72px;
+}
+
+.dropdown-toggle:hover{
+  text-decoration: none;
+  opacity: 0.6;
+}
+
+.dropdown-toggle::after{
+  display: none;
+}
