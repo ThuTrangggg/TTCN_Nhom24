@@ -257,7 +257,8 @@ $conn->close();
     </div>
 
     <!-- Begin CONTACT SECTION -->
-    <div id="lh" class="content-section">
+    <div id="lh" class="content-section" style=" margin-left: 450px;
+"> 
         <h2 class="section-heading">CONTACT APERO</h2> <!--Sử dụng lại ở các phần dưới -->
         <!-- <p class="section-sub-heading">Fan? Drop a note!</p> -->
         <div class="map-section">
@@ -271,7 +272,7 @@ $conn->close();
             </div>
 
             <div class="col col-half contact-form">
-                <img src="https://play-lh.googleusercontent.com/rN25n4E_A9y_hHjH9NiBLbwwi2ZnK9A5H6goyOeK3Swz9YrXnggV7TyqIH9ol4mo2ls=w3840-h2160-rw" alt="" style="width: 600px;margin-left: 224px;">
+                <img src="https://play-lh.googleusercontent.com/rN25n4E_A9y_hHjH9NiBLbwwi2ZnK9A5H6goyOeK3Swz9YrXnggV7TyqIH9ol4mo2ls=w3840-h2160-rw" alt="" style="width: 600px;">
 
                 <!-- <form action="">
                             <div class="row" style="margin-left: -230px">
