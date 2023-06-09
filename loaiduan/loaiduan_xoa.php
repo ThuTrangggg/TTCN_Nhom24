@@ -1,14 +1,11 @@
 <?php 
     include("../connect.php");
 
-    $loaiduan_id=$_GET['id'];
-    $sql = "SELECT duan.id FROM duan JOIN loaiduan ON  duan.loaiduan_id = loaiduan.id
+    $loaiduan_id=$_GET['loaiduan.id'];
+    $sql = "SELECT loaiduan.id FROM loaiduan JOIN duan ON  loaiduan.id = duan.loaiduan_id
     WHERE loaiduan.id = '".$loaiduan_id."' ";
     $kq = mysqli_query($conn, $sql);
 
-    // $sql2 = "SELECT taikhoan.id FROM taikhoan JOIN feedback ON  taikhoan.id = feedback.taikhoan_id
-    // WHERE taikhoan.id = '".$taiKhoan_id."' ";
-    // $kq2 = mysqli_query($conn, $sql2);
     if($kq -> num_rows >0)
     { 
         ?>
@@ -22,6 +19,12 @@
     else{
         $sqlDel = 'DELETE from loaiduan WHERE id = "'.$loaiduan_id.'"';
         mysqli_query($conn,$sqlDel);
+        ?>
+        <script>
+            window.alert('xóa loại dự án thành công');
+            window.location.href = 'loaiduan.php';
+        </script>
+        <?php
     }
 
 ;?>
