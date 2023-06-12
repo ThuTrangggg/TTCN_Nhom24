@@ -66,7 +66,8 @@
                     dataType: "json",
                     success: function(data) {
                         // window.alert("ok123");
-                        $('.dropdown-menu').html(data.notification);
+                        // history.back();
+                        $('.dropdown-notice').html(data.notification);
                         if (data.unseen_notification > 0) {
                             $('.count').html(data.unseen_notification);
                         }
