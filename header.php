@@ -69,13 +69,30 @@ include("head.php");
             ) {
             ?>
                 <!-- Dropdown - Alerts -->
-                <div class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <span  class="badge badge-danger badge-counter count" style="translate: 27px 2px;
+                <div class="dropdown" data-target="#noti">
+
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-target="#noti">
+                        <span class="badge badge-danger badge-counter count" style="translate: 27px 2px;
     font-size: 9px;border-radius:10px;"></span>
                         <i class="fa-solid fa-bell"></i>
                     </a>
-                    <ul class="dropdown-menu"></ul>
+                    <!-- <a class="dropdown-item d-flex align-items-center" href="baocao.php">
+                        <div class="mr-3">
+                            <div class="icon-circle bg-primary">
+                                <img src="' . $img . '" style="object-fit: cover; width: 40px; height: 40px; border-radius: 50%" alt="">
+
+                            </div>
+                        </div>
+                        <div>
+                            <div class="font-weight-bold">' . $tenduan . '</div>
+                            <div class="small text-gray-500">' . $date . '</div>
+                            <div class="small text-g  ray-500">Nhân viên ' . $tennhanvien . ' đã cập nhật ' . $loai . ' </div>
+
+                        </div>
+                    </a> -->
+                    <ul id="noti" class="dropdown-notice dropdown-menu dropdown-menu-right shadow animated--grow-in" style="height: 431px; overflow-y:scroll" aria-labelledby="alertsDropdown">
+                    
+                    </ul>
                 </div>
                 <!-- <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" style="height: 431px; overflow-y:scroll" aria-labelledby="alertsDropdown">
                 <h6 style="text-align: center;" class="dropdown-header"> Thông báo</h6> -->
@@ -106,13 +123,13 @@ include("head.php");
                 <div class="topbar-divider d-none d-sm-block"></div>
                 <!-- Nav Item - User Information -->
                 <li class="nav-item dropdown no-arrow">
-                    <a class="nav-link dropdown-toggle" href="" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" data-target="#profile" aria-expanded="false">
                         <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $_SESSION['tentaikhoan'] ?></span>
                         <img class="img-profile rounded-circle" width="50px" src="<?= $_SESSION['img'] ?>">
                     </a>
                     <!-- Dropdown - User Information -->
 
-                    <div id="" class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                    <div id="profile" class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                         <a class="dropdown-item" href="#">
                             <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                             Profile
@@ -126,7 +143,7 @@ include("head.php");
                             trạng thái
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="logout.php" data-toggle="modal" data-target="#logoutModal">
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                             Logout
                         </a>

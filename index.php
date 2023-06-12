@@ -199,13 +199,13 @@
 //  include 'Chat/chat.php'
 ?>
             <!-- Footer -->
-            <footer class="sticky-footer bg-white">
+            <!-- <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                         <span>Copyright &copy; Your Website 2021</span>
                     </div>
                 </div>
-            </footer>
+            </footer> -->
             <!-- End of Footer -->
 
         </div>
@@ -242,9 +242,9 @@
 </html>
 
 <?php 
-// include 'footer.php'
+include 'footer.php'
 ?>
-
+<!-- 
 <script>
     src = "https://code.jquery.com/jquery-3.2.1.min.js"
     $(document).ready(function() {
@@ -307,4 +307,4 @@
         }, 2000);
 
     });
-</script>
+</script> -->

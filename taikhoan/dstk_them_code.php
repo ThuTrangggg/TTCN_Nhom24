@@ -20,6 +20,6 @@
     ";
     
     $sql2 = "
-    INSERT INTO noti (tenduan,img,loai,tennhanvien,text,noti_status) VALUES ('".$tenTaikhoan."','img','dự án','Hoàng Thu Trang','123',0)";
+    INSERT INTO noti (tenduan,img,loai,tennhanvien,text,noti_status) VALUES ('".$tenTaikhoan."','img','tài khoản','Hoàng Thu Trang','123',0)";
     $kq = mysqli_query($ket_noi, $sql2);
 ;?>

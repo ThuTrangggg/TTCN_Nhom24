@@ -11,20 +11,27 @@ if (isset($_POST['view'])) {
   }
   $query = "SELECT * FROM noti ORDER BY ngaylap DESC LIMIT 5";
   $result = mysqli_query($conn, $query);
-  $output = '';
+  $output = '
+  <h6 style="text-align: center;" class="dropdown-header"> Thông báo</h6>
+  ';
   if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_array($result)) {
       $output .= '
-   <li>
-   <a href="#">
-   <div>
-            <div class="font-weight-bold">' . $row['tenduan'] . '</div>
-            <div class="small text-gray-500">' . $row["ngaylap"] . '</div>
-            <div class="small text-g  ray-500">Nhân viên ' . $row["tennhanvien"] . ' đã thêm mới ' . $row["loai"] . ' </div>
-    
-        </div>
-   </a>
-   </li>
+      <li>
+      <a href="#" class="dropdown-item d-flex align-items-center">
+          <div class="mr-3">
+              <div class="icon-circle bg-primary">
+                  <img src="' . $row['img'] . '" style="object-fit: cover; width: 40px; height: 40px; border-radius: 50%" alt="">
+
+              </div>
+          </div>
+          <div>
+              <div class="font-weight-bold">' . $row['tenduan'] . '</div>
+              <div class="small text-gray-500">' . $row["ngaylap"] . '</div>
+              <div class="small text-g  ray-500">Nhân viên ' . $row["tennhanvien"] . ' đã thêm mới ' . $row["loai"] . ' </div>
+          </div>
+      </a>
+  </li>
    ';
     }
   } else {
