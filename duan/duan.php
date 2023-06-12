@@ -2,6 +2,7 @@
 <html lang="en">
 <base href="../">
 <?php include '../connect.php';
+
 ?>
 <!-- <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet"> -->
 
@@ -11,7 +12,9 @@
     <div id="wrapper" style="width: 100%">
 
         <!-- Sidebar -->
-        <?php include '../sidebar.php' ?>
+        <?php include '../sidebar.php';
+        ?>
+
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -22,7 +25,7 @@
                 <?php include '../header.php' ?>
                 <li class="dropdown-menu">dsad
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <span class="label label-pill label-danger count" style="border-radius:10px;"></span> 
+                        <span class="label label-pill label-danger count" style="border-radius:10px;"></span>
                         <span class="glyphicon glyphicon-bell" style="font-size:18px;"></span>
                     </a>
                     <ul class="dropdown-menu"></ul>
@@ -65,20 +68,20 @@
 
                                         </tr>
                                     </thead>
-                                    <!-- <tfoot>
+                                    <tfoot>
                                         <tr>
-                                        <th>STT</th>
+                                            <th>STT</th>
                                             <th>Hình ảnh</th>
-                                            <th>Tên  dự án</th>
+                                            <th>Tên dự án</th>
                                             <th>mã loai dự án </th>
                                             <th>Ý tưởng </th>
                                             <th>Kế hoạch quảng cáo </th>
-                                            <th>báo cáo  </th>
+                                            <th>báo cáo </th>
                                             <th>Feedback</th>
                                             <th>Sửa</th>
                                             <th>Xóa</th>
                                         </tr>
-                                    </tfoot> -->
+                                    </tfoot>
                                     <?php
                                     // $sql = "SELECT hinhanh,tenduan,loaiduan_id,tenytuong,tenbaocao,tenKHQC, noidung
                                     // from duan join ytuong
@@ -86,7 +89,6 @@
                                     $sql = "SELECT duan.id,hinhanh,tenduan,loaiduan_id,tenytuong,tenbaocao,tinhtrang,chiphi
                                     FROM duan left JOIN ytuong ON duan.id = ytuong.duan_id
                                     left JOIN baocao as b ON duan.id = b.duan_id";
-
                                     $result = $conn->query($sql);
                                     if ($result->num_rows > 0) {
                                         $i = 1;
@@ -95,10 +97,18 @@
                                             <tbody>
                                                 <tr>
                                                     <td><?= $i ?>
+
                                                     <td>
-                                                        <img width="50px" height="50px" style="object-fit: contain" src="<?= $duan['hinhanh'] ?>" alt="">
+                                                        <a href="./duan/chitietduan.php?id=<?= $duan['id'] ?>">
+                                                            <img width="50px" height="50px" style="object-fit: contain" src="<?= $duan['hinhanh'] ?>" alt="">
+                                                        </a>
                                                     </td>
-                                                    <td><?= $duan['tenduan'] ?></td>
+                                                    <td>
+                                                        <a href="./duan/chitietduan.php?id=<?= $duan['id'] ?>" style="text-decoration: none; color: #858796">
+
+                                                            <?= $duan['tenduan'] ?>
+                                                        </a>
+                                                    </td>
                                                     <td><?= $duan['loaiduan_id'] ?></td>
                                                     <td><?= $duan['tenytuong'] ?></td>
                                                     <td><?= $duan['tenbaocao'] ?></td>
@@ -132,9 +142,7 @@
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            <?php
-            include '../footer.php'
-            ?>
+
 
             <!-- End of Footer -->
 
@@ -156,12 +164,20 @@
                             <input class="form-control" id="txtmaloaiduan" type="text" placeholder="Mã loại dự án " name="txtmaloaiduan" />
                         </div> -->
                         <div class="form-floating mb-3">
-                            <label for="txtmaloaiduan">mã loại dự án </label>
+                            <label for="txtmaloaiduan">Loại dự án </label>
                             <select class="form-control" name="txtmaloaiduan" id="txtmaloaiduan">
                                 <Option value="#"></Option>
-                                <option value="1">1</option>
-                                <option value="2">2 </option>
-                                <option value="3">3</option>
+
+                                <?php $sql = "SELECT *
+                                    FROM loaiduan";
+                                $result = $conn->query($sql);
+                                if ($result->num_rows > 0) {
+                                    $i = 1;
+                                    while ($loaiduan = $result->fetch_assoc()) {
+                                ?>
+                                        <option value="<?= $loaiduan['id'] ?>"><?= $loaiduan['ten_loai_du_an'] ?></option>
+                                <?php }
+                                } ?>
                             </select>
                         </div>
                         <!-- <div class="form-floating mb-3">
@@ -176,8 +192,10 @@
                             <label for="txttinhtrang">Tình trạng </label>
                             <select class="form-control" name="txttinhtrang" id="txtmaloaiduan">
                                 <Option value="#"></Option>
-                                <option value="1">Thành công</option>
-                                <option value="2">Đang thực hiện</option>
+                                <option value="1">Đang thực hiện</option>
+                                <option value="2">Hoàn thành</option>
+                                <option value="3">Tạm dừng</option>
+
                                 <!-- <option value="3">3</option> -->
                             </select>
                         </div>
@@ -185,7 +203,20 @@
                             <label for="txtchiphi">Chi phí </label>
                             <input class="form-control" id="txtchiphi" type="text" placeholder="Chi phí  " name="txtchiphi" />
                         </div>
-
+                        <div class="form-floating mb-3">
+                            <label for="txtchiphi">Mô tả</label>
+                            <input class="col-sm-4 form-control" id="txtchiphi" type="text" placeholder="Mô tả dự án" name="txtmota" />
+                            <input class="col-sm-4 form-control" id="txtchiphi" type="file" placeholder="Mô tả dự án" name="txtmota" />
+                        </div>
+                        <div class="form-floating mb-3">
+                            <label for="txtchiphi">Hình ảnh</label>
+                            <input class="col-sm-4 form-control" id="txtchiphi" type="text" placeholder="Mô tả dự án" name="txthinhanh" />
+                            <input class="col-sm-4 form-control" id="txtchiphi" type="file" placeholder="Mô tả dự án" name="txthinhanh" />
+                        </div>
+                        <!-- <div class="form-floating mb-3">
+                            <label for="txtchiphi">Hình ảnh </label>
+                            <input class="form-control" id="txtimg" type="file" placeholder="Hình ảnh" name="txtimg" />
+                        </div> -->
                         <div class="mt-4 mb-0 btn-frm">
                             <ul>
                                 <li>
@@ -213,8 +244,12 @@
 
 </body>
 
-</html>
+<?php
+include '../footer.php'
+?>
 
+</html>
+<!-- 
 <script>
     src = "https://code.jquery.com/jquery-3.2.1.min.js"
     $(document).ready(function() {
@@ -273,4 +308,4 @@
         }, 5000);
 
     });
-</script>
+</script> -->
