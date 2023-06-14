@@ -188,10 +188,21 @@ session_start();
                                         <tbody>
                                             <tr>
                                                 <td><?= $duan['id'] ?></td>
-                                                <td>
+                                                <!-- <td>
                                                     <img width="100px" src="<?= $duan['hinhanh'] ?>" alt="">
-                                                </td>
-                                                <td><?= $duan['tenduan'] ?></td>
+                                                </td> -->
+                                                <td>
+                                                        <a href=" index_kh_duan.php?id=<?= $duan['id'] ?>">
+                                                            <img width="50px" height="50px" style="object-fit: contain" src="<?= $duan['hinhanh'] ?>" alt="">
+                                                        </a>
+                                                    </td>
+                                                    <td>
+                                                        <a href=" index_kh_duan.php?id=<?= $duan['id'] ?>" style="text-decoration: none; color: #858796">
+
+                                                            <?= $duan['tenduan'] ?>
+                                                        </a>
+                                                    </td>
+
                                                 <td><?= $duan['tinhtrang'] ?></td>
 
 
