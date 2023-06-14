@@ -7,6 +7,7 @@
 }
 
 
+
 /* .btn-add #frmAdd */
 
 .side-bar{
@@ -344,4 +345,25 @@ table.dataTable>thead .sorting::before{
 
 .dropdown-toggle::after{
   display: none;
+}
+
+/* Tiến độ dự án */
+
+#frmTienDo{
+  z-index: 1;
+  display: none;
+  background-color: #ccc;
+  position: fixed;
+  top: 70px;
+  right: 3%;
+  width: 80%;
+  height: 500px;
+  overflow: scroll;
+}
+
+
+th.sticky-header{
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
