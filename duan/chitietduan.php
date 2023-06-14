@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<base href="../">
 <?php include '../connect.php';
 $duan_id = $_GET['id'];
 ?>
@@ -58,6 +57,9 @@ $duan_id = $_GET['id'];
                             function openFrmAdd() {
                                 document.getElementById("frmAdd").style.display = 'block'
                             }
+                            function openFrmTienDo() {
+                                document.getElementById("frmTienDo").style.display = 'block'
+                            }
                         </script>
                         <div class="card-body" style="display: flex; justify-content: space-around;">
                             <div style="flex: 1;">
@@ -81,6 +83,7 @@ $duan_id = $_GET['id'];
                         </div>
                     </div>
                     <!-- BẢNG TIẾN ĐỘ -->
+                    
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">BẢNG PHÂN CHIA CÔNG VIỆC
@@ -89,65 +92,101 @@ $duan_id = $_GET['id'];
 
                             </h6>
                         </div>
-                        <script>
-                            function openFrmAdd() {
-                                document.getElementById("frmAdd").style.display = 'block'
-                            }
-                        </script>
+
+
                         <div class="card-body">
                             <div class="table-responsive ">
                                 <?php
                                 $sqlcheck = "select * from chitietduan where duan_id = '" . $duan_id . "'";
                                 $result = mysqli_query($conn, $sqlcheck);
-                                    include "table_phanchiacv.php";
+                                include "table_phanchiacv.php";
                                 ?>
                             </div>
                         </div>
                     </div>
                     <!-- /.BẢNG TIẾN ĐỘ -->
+                    
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">BẢNG TIẾN ĐỘ
-                                <div class="btn btn-add" onclick="openFrmAdd()">Sửa</div>
+                                <div class="btn btn-add" onclick="checkAuthorization()">Sửa</div>
                             </h6>
                         </div>
                         <script>
-                            function openFrmAdd() {
-                                document.getElementById("frmAdd").style.display = 'block'
+                            function checkAuthorization() {
+                                <?php check();
+                                ?>
+
                             }
                         </script>
+                        <?php
+                        function check()
+                        {
+                            if ($_SESSION['role_id'] != 1) {
+                                echo "
+                                    alert('Không có quyền truy cập')
+                                ";
+                            } else echo "
+                            openFrmTienDo()
+                           ";
+                        }
+                        ?>
                         <div class="card-body">
-                            <div class="table-responsive ">
+                            <div class="table-responsive" style="height: 500px; overflow: scroll; position: relative">
                                 <?php
                                 $sqlcheck = "select * from chitietduan where duan_id = '" . $duan_id . "'";
                                 $result = mysqli_query($conn, $sqlcheck);
-                                    include "table_tiendo.php";
+                                include "table_tiendo.php";
                                 ?>
                             </div>
                         </div>
                     </div>
                     <!-- /.BẢNG HOÀN CHỈNH -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">FINAL
-                                <div class="btn btn-add" onclick="openFrmAdd()">Thêm</div>
-                            </h6>
-                        </div>
-                        <script>
-                            function openFrmAdd() {
-                                document.getElementById("frmAdd").style.display = 'block'
-                            }
-                        </script>
-                        <div class="card-body">
-                            <div class="table-responsive ">
-                                <?php
-                                $sqlcheck = "select * from chitietduan where duan_id = '" . $duan_id . "'";
-                                $result = mysqli_query($conn, $sqlcheck);
+                    <?php if ($_SESSION['role_id'] == 1) { ?>
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">FINAL
+                                    <div class="btn btn-add" onclick="openFrmAdd()">Thêm</div>
+                                </h6>
+                            </div>
+                            <script>
+                                function openFrmAdd() {
+                                    document.getElementById("frmAdd").style.display = 'block'
+                                }
+                            </script>
+                            <div class="card-body">
+                                <div class="table-responsive ">
+                                    <?php
+                                    $sqlcheck = "select * from chitietduan where duan_id = '" . $duan_id . "'";
+                                    $result = mysqli_query($conn, $sqlcheck);
                                     include "table_final.php";
-                                ?>
+                                    ?>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    <?php } else { ?>
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">CẬP NHẬT TIẾN ĐỘ
+                                    <div class="btn btn-add" onclick="openFrmAdd()">Thêm</div>
+                                </h6>
+                            </div>
+                            <script>
+                                function openFrmAdd() {
+                                    document.getElementById("frmAdd").style.display = 'block'
+                                }
+                            </script>
+                            <div class="card-body">
+                                <div class="table-responsive ">
+                                    <?php
+                                    $sqlcheck = "select * from chitietduan where duan_id = '" . $duan_id . "'";
+                                    $result = mysqli_query($conn, $sqlcheck);
+                                    include "table_capnhattiendo.php";
+                                    ?>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } ?>
                 </div>
                 <!-- End of Main Content -->
 
