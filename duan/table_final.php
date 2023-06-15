@@ -14,10 +14,10 @@ $duan_id = $_GET['id'];
                 <th>Nội dung công việc</th>
                 <th>% Hoàn thành</th>
                 <th>Tiến độ</th>
-                <th>Nội dung</th>
+                <th>file dự án</th>
                 <th>Phê duyệt</th>
                 <th>Ngày bắt đầu</th>
-                <th>Ngày kết thúc</th>
+                <!-- <th>Ngày kết thúc</th> -->
             </tr>
         </thead>
 
@@ -65,7 +65,12 @@ $duan_id = $_GET['id'];
                                 <!-- <textarea name="" id="" w cols="30" rows="10"></textarea> -->
                             </td>
                             <td>
-                                <input class="form-control" style="wordwrap" id="txttenduan" type="text" placeholder="" value="<?= $row2['file']; ?>" name="file" />
+                                <!-- <input class="form-control" style="wordwrap" id="txttenduan" type="text" placeholder="" value="<?= $row2['file']; ?>" name="file" />
+                                <div class="control-group"> -->
+                        <div class="controls">
+                            <input type="file" id="password" name="img">
+                        </div>
+                    </div>
                             </td>
                             <td>
                                 <select name="pheduyet" id="">
@@ -105,9 +110,9 @@ $duan_id = $_GET['id'];
                             <td>
                                 <input class="form-control" id="txttenduan" type="date" placeholder="" value="" name="ngaybatdau" />
                             </td>
-                            <td>
+                            <!-- <td>
                                 <input class="form-control" id="txttenduan" type="date" placeholder="" value="" name="ngayketthuc" />
-                            </td>
+                            </td> -->
                 <?php
                         }
                     }
