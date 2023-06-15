@@ -31,10 +31,10 @@ if ($result->num_rows > 0) {
     $_SESSION['mat_khau'] = $mat_khau_cu;
     // Muốn làm việc với SESSION luôn phải dùng hàm khởi tạo này
     $status = "Đang hoạt động";
-    $sql2 = mysqli_query(
-        $conn,
-        "UPDATE taikhoan SET status = '{$status}' WHERE id = '{$userId}'"
-    );
+    //$sql2 = mysqli_query(
+        //$conn,
+        //"UPDATE taikhoan SET status = '{$status}' WHERE id = '{$userId}'"
+    //);
     if ($_SESSION['role_id'] == 3) {
         echo "
                 <script type='text/javascript'>

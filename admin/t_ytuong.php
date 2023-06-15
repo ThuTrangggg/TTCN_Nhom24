@@ -26,7 +26,7 @@
                             </div>
 
                         <div class="card-body">     
-                            <form class="form form-horizontal" method="post" action="admin/t_ytuong1.php">
+                            <form class="form form-horizontal" method="post" enctype="multipart/form-data" action="admin/t_ytuong1.php">
                                 <div class="form-group">
                                     <div class="row">          
                                         <label class="control-label col-sm-2" style="color:#000">Danh mục: </label>
@@ -82,9 +82,9 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="row">
-                                        <label class="col-sm-2" style="color:#000">Nội dung: </label>
+                                        <label class="col-sm-2" style="color:#000" for="noidung">Tên file:</label>
                                         <div class="col-sm-7 ">
-                                            <input type="text" class="form-control" name="noidung" placeholder="Nội dung">
+                                            <input type="file"  class="form-control" name="noidung" id="noidung">
                                         </div>
                                     </div>
                                 </div>
