@@ -120,7 +120,7 @@ $duan_id = $_GET['id'];
                         }
                         ?>
                         <div class="card-body">
-                            <div class="table-responsive" style="height: 500px; overflow: scroll; position: relative">
+                            <div class="" style="height: 500px; overflow: scroll; position: relative">
                                 <?php
                                 $sqlcheck = "select * from chitietduan where duan_id = '" . $duan_id . "'";
                                 $result = mysqli_query($conn, $sqlcheck);
@@ -156,12 +156,12 @@ $duan_id = $_GET['id'];
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
                                 <h6 class="m-0 font-weight-bold text-primary">CẬP NHẬT TIẾN ĐỘ
-                                    <div class="btn btn-add" onclick="openFrmAdd()">Thêm</div>
+                                    <div class="btn btn-add" onclick="openFrmcapnhattiendo()">Thêm</div>
                                 </h6>
                             </div>
                             <script>
-                                function openFrmAdd() {
-                                    document.getElementById("frmAdd").style.display = 'block'
+                                function openFrmcapnhattiendo() {
+                                    document.getElementById("frmCapnhattiendo").style.display = 'block'
                                 }
                             </script>
                             <div class="card-body">
