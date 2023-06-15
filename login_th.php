@@ -6,6 +6,17 @@ $password = $_POST['matkhau'];
 // Kết nối đến CSDL
 
 $sql = " SELECT * FROM taikhoan where email = '" . $email . "' and matkhau = '" . $password . "'";
+
+$sqlnhanvien  = "SELECT nhanvien.id FROM taikhoan 
+join nhanvien 
+on taikhoan.id = nhanvien.taikhoan_id where taikhoan.email = '".$email."' and matkhau = '".$password."'";
+$result = mysqli_query($conn,$sqlnhanvien);
+while($row = mysqli_fetch_assoc($result)){
+
+    $nhanvienId = $row['id'];
+    // return $nhanvienId;
+}
+echo $nhanvienId;
 // echo $sql;
 // Thực thi câu lệnh SQL trên
 $result = $conn->query($sql);
@@ -20,6 +31,7 @@ if ($result->num_rows > 0) {
         // $userAdmin = $user['admin'];
     }
     session_start();
+    $_SESSION['nhanvienId'] = $nhanvienId;
     $_SESSION["login"] = 1;
     $_SESSION["role_id"] = $userRole;
     $_SESSION['img'] = $img;
