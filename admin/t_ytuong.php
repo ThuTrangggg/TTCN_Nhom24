@@ -84,7 +84,7 @@
                                     <div class="row">
                                         <label class="col-sm-2" style="color:#000">Nội dung: </label>
                                         <div class="col-sm-7 ">
-                                            <input type="text" class="form-control" name="noidung" placeholder="Nội dung">
+                                            <input type="file" class="form-control" name="noidung" placeholder="Nội dung">
                                         </div>
                                     </div>
                                 </div>

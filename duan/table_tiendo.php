@@ -22,7 +22,7 @@ $duan_id = $_GET['id'];
     </thead>
     <tbody>
         <?php
-        $sql1 = 'select chucvu.id, chucvu.chucvu,ngaynop, nhanvien.ten, task,phantram,tiendo,file,pheduyet,ngaybatdau,ngayketthuc from chitietduan join nhanvien on chitietduan.nhanvien_id = nhanvien.id 
+        $sql1 = 'select chucvu.id, chucvu.chucvu,ngaynop, nhanvien.ten, task,phantram,tiendo,file,loaifile,pheduyet,ngaybatdau,ngayketthuc from chitietduan join nhanvien on chitietduan.nhanvien_id = nhanvien.id 
         join chucvu on nhanvien.chucvu_id = chucvu.id where duan_id = "' . $duan_id . '" ORDER by chucvu desc, ngaynop asc';
         $result1 = mysqli_query($conn, $sql1);
         $arr = array();
@@ -31,7 +31,7 @@ $duan_id = $_GET['id'];
                 $arr[]  = array(
                     'chucvu' => $row1['chucvu'], 'ngaynop' => $row1['ngaynop'], 'ten' => $row1['ten'], 'tiendo' => $row1['tiendo'],
                     'task' => $row1['task'], 'phantram' => $row1['phantram'], 'file' => $row1['file'], 'pheduyet' => $row1['pheduyet'], 'ngaybatdau' => $row1['ngaybatdau'],
-                    'ngayketthuc' => $row1['ngayketthuc']
+                    'ngayketthuc' => $row1['ngayketthuc'], 'loaifile'=>$row1['loaifile']
 
                 );
             }
@@ -46,6 +46,7 @@ $duan_id = $_GET['id'];
                 $task = $arr[$count]['task'];
                 $phantram  = $arr[$count]['phantram'];
                 $file = $arr[$count]['file'];
+                $loaifile = $arr[$count]['loaifile'];
                 $pheduyet = $arr[$count]['pheduyet'];
                 $ngaynop  = date('d-m-Y h:i:s', strtotime($arr[$count]['ngaynop']));
                 $ngaybatdau = date('d-m-Y', strtotime($arr[$count]['ngaybatdau']));
@@ -70,7 +71,18 @@ $duan_id = $_GET['id'];
                         <!-- <textarea name="" id="" w cols="30" rows="10"></textarea> -->
                     </td>
                     <td> <?php echo $file ?> </td>
-                    <td> <?php echo $pheduyet ?> </td>
+                    <td> <?php echo $loaifile ?> </td>
+
+                    <td> <?php
+                            if ($pheduyet == 'Không phê duyệt') {
+
+                                echo '<a href="#" width:150px class="btn btn-outline-danger disabled" tabindex="-1" role="button" aria-disabled="true">' . $pheduyet . '</a>';
+                            } else if ($pheduyet == 'Chờ phê duyệt') {
+
+                                echo '<a href="#" style ="width: 150px" class="btn btn-outline-warning disabled" tabindex="-1" role="button" aria-disabled="true">' . $pheduyet . '</a>';
+                            } else echo '<a href="#" style ="width: 150px" class="btn btn-outline-success disabled" tabindex="-1" role="button" aria-disabled="true">' . $pheduyet . ' </a>';
+
+                            ?> </td>
 
                     <td style="font-size: 14px;"><?= $ngaynop ?></td>
                     <td style="font-size: 14px;"> <?php echo $ngaybatdau ?> </td>
@@ -84,6 +96,7 @@ $duan_id = $_GET['id'];
             <tr style="font-size: 14px;">
                 <th></th>
 
+                <td></td>
                 <td></td>
                 <td></td>
                 <td> </td>
