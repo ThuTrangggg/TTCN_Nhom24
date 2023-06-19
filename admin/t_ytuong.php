@@ -26,7 +26,7 @@
                             </div>
 
                         <div class="card-body">     
-                            <form class="form form-horizontal" method="post" action="admin/t_ytuong1.php">
+                            <form class="form form-horizontal" method="post" enctype="multipart/form-data" action="admin/t_ytuong1.php">
                                 <div class="form-group">
                                     <div class="row">          
                                         <label class="control-label col-sm-2" style="color:#000">Danh mục: </label>
@@ -82,9 +82,11 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="row">
-                                        <label class="col-sm-2" style="color:#000">Nội dung: </label>
+                                        <label class="col-sm-2" style="color:#000" for="noidung">Tên file:</label>
                                         <div class="col-sm-7 ">
-                                            <input type="file" class="form-control" name="noidung" placeholder="Nội dung">
+                                            <input type="hidden" name="size" value="1000000">
+                                            <input type="file"  class="form-control" name="noidung">
+
                                         </div>
                                     </div>
                                 </div>
@@ -93,10 +95,11 @@
                                     <div class="row">
                                         <div class="col-sm-2"></div>
                                         <div class="col-sm-9">
-                                            <input class="btn btn-success" type="submit" name="submit" value="Lưu" />
+                                            <input class="btn btn-success" type="submit" value="Lưu" name="upload" />
                                         </div>
                                     </div>
                                 </div>
+                                <?php require "t_ytuong1.php" ?>
                             </form>
                         </div>
                     </div>
