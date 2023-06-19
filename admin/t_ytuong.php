@@ -84,7 +84,8 @@
                                     <div class="row">
                                         <label class="col-sm-2" style="color:#000" for="noidung">Tên file:</label>
                                         <div class="col-sm-7 ">
-                                            <input type="file"  class="form-control" name="noidung" id="noidung">
+                                            <input type="hidden" name="size" value="1000000">
+                                            <input type="file"  class="form-control" name="noidung">
                                         </div>
                                     </div>
                                 </div>
@@ -93,10 +94,11 @@
                                     <div class="row">
                                         <div class="col-sm-2"></div>
                                         <div class="col-sm-9">
-                                            <input class="btn btn-success" type="submit" value="Lưu" />
+                                            <input class="btn btn-success" type="submit" value="Lưu" name="upload" />
                                         </div>
                                     </div>
                                 </div>
+                                <?php require "t_ytuong1.php" ?>
                             </form>
                         </div>
                     </div>

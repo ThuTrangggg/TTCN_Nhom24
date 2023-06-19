@@ -278,3 +278,51 @@ $duan_id = $_GET['id'];
         }
     }
 </script>
+
+
+<?php if ($_SESSION['role_id'] == 1) { ?>
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">FINAL
+                                    <div class="btn btn-add" onclick="openFrmAdd()">Thêm</div>
+                                </h6>
+                            </div>
+                            <script>
+                                function openFrmAdd() {
+                                    document.getElementById("frmAdd").style.display = 'block'
+                                }
+                            </script>
+                            <div class="card-body">
+                                <div class="table-responsive ">
+                                    <?php
+                                    $sqlcheck = "select * from chitietduan where duan_id = '" . $duan_id . "'";
+                                    $result = mysqli_query($conn, $sqlcheck);
+                                    include "table_final.php";
+                                    ?>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } else { ?>
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">CẬP NHẬT TIẾN ĐỘ
+                                    <div class="btn btn-add" onclick="openFrmcapnhattiendo()">Thêm</div>
+                                </h6>
+                            </div>
+                            <script>
+                                function openFrmcapnhattiendo() {
+                                    document.getElementById("frmCapnhattiendo").style.display = 'block'
+                                }
+                            </script>
+                            <div class="card-body">
+                                <div class="table-responsive ">
+                                    <?php
+                                    $sqlcheck = "select * from chitietduan where duan_id = '" . $duan_id . "'";
+                                    $result = mysqli_query($conn, $sqlcheck);
+                                    include "table_capnhattiendo.php";
+                                    ?>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } ?>
+                </div>

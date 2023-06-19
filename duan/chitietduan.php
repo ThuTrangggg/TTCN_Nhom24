@@ -75,12 +75,16 @@ $duan_id = $_GET['id'];
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">BẢNG PHÂN CHIA CÔNG VIỆC
-                                <div class="btn btn-add" onclick="openFrmAdd()">Thêm</div>
-                                <div class="btn btn-add" onclick="openFrmAdd()">Sửa</div>
+                                <div class="btn btn-add" onclick="openFrmpccv()">Thêm</div>
+                                <div class="btn btn-add" onclick="openFrmpccv()">Sửa</div>
 
                             </h6>
                         </div>
-
+                        <script>
+                                function openFrmpccv() {
+                                    document.getElementById("frmpccv").style.display = 'block'
+                                }
+                            </script>
 
                         <div class="card-body">
                             <div class="table-responsive ">
