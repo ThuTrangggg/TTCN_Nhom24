@@ -1,9 +1,9 @@
 
 <?php
 include('connect.php');
+session_start();
 
-
-if (isset($_POST['view'])) {
+if (isset($_POST['view']) && $_SESSION['role_id']==1) {
 
   if ($_POST["view"] != '') {
     $update_query = "UPDATE noti SET noti_status = 1 WHERE noti_status=0";
@@ -18,7 +18,7 @@ if (isset($_POST['view'])) {
     while ($row = mysqli_fetch_array($result)) {
       $output .= '
       <li>
-      <a href="#" class="dropdown-item d-flex align-items-center">
+      <a href="./duan/chitietduan.php?id='.$row['duan_id'].'" class="dropdown-item d-flex align-items-center">
           <div class="mr-3">
               <div class="icon-circle bg-primary">
                   <img src="' . $row['img'] . '" style="object-fit: cover; width: 40px; height: 40px; border-radius: 50%" alt="">
@@ -28,7 +28,9 @@ if (isset($_POST['view'])) {
           <div>
               <div class="font-weight-bold">' . $row['tenduan'] . '</div>
               <div class="small text-gray-500">' . $row["ngaylap"] . '</div>
-              <div class="small text-g  ray-500">Nhân viên ' . $row["tennhanvien"] . ' đã thêm mới ' . $row["loai"] . ' </div>
+              <div class="small text-g  ray-500">Nhân viên ' . $row["tennhanvien"] . ' đã thêm mới ' . $row["loai"] . ' cho 
+              ' . $row['text'] . ' 
+              </div>
           </div>
       </a>
   </li>
@@ -39,9 +41,6 @@ if (isset($_POST['view'])) {
      <li><a href="#" class="text-bold text-italic">No Noti Found</a></li>';
   }
 
-
-  // $output='123';
-  // $count = 1;
   $status_query = "SELECT * FROM noti WHERE noti_status=0";
   $result_query = mysqli_query($conn, $status_query);
   $count = mysqli_num_rows($result_query);

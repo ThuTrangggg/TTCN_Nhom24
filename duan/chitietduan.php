@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php include '../connect.php';
+include '../head.php';
 $duan_id = $_GET['id'];
 ?>
 <!-- <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet"> -->
@@ -52,6 +53,7 @@ $duan_id = $_GET['id'];
                             function openFrmAdd() {
                                 document.getElementById("frmAdd").style.display = 'block'
                             }
+
                             function openFrmTienDo() {
                                 document.getElementById("frmTienDo").style.display = 'block'
                             }
@@ -71,7 +73,7 @@ $duan_id = $_GET['id'];
                         </div>
                     </div>
                     <!-- BẢNG TIẾN ĐỘ -->
-                    
+
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">BẢNG PHÂN CHIA CÔNG VIỆC
@@ -97,7 +99,7 @@ $duan_id = $_GET['id'];
                         </div>
                     </div>
                     <!-- /.BẢNG TIẾN ĐỘ -->
-                    
+
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">BẢNG TIẾN ĐỘ
@@ -151,12 +153,13 @@ $duan_id = $_GET['id'];
                                     <?php
                                     $sqlcheck = "select * from chitietduan where duan_id = '" . $duan_id . "'";
                                     $result = mysqli_query($conn, $sqlcheck);
-                                    include "table_final.php";
+                                    // include "table_final.php";
                                     ?>
                                 </div>
                             </div>
                         </div>
                     <?php } else { ?>
+                         <!-- /.BẢNG CAP NHAT TIEN DO -->
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
                                 <h6 class="m-0 font-weight-bold text-primary">CẬP NHẬT TIẾN ĐỘ
@@ -169,16 +172,20 @@ $duan_id = $_GET['id'];
                                 }
                             </script>
                             <div class="card-body">
-                                <div class="table-responsive ">
+                                <div class="table-responsive " style="height: 500px; overflow: scroll;">
                                     <?php
                                     $sqlcheck = "select * from chitietduan where duan_id = '" . $duan_id . "'";
                                     $result = mysqli_query($conn, $sqlcheck);
                                     include "table_capnhattiendo.php";
                                     ?>
+                                    <script>
+                                    </script>
                                 </div>
                             </div>
                         </div>
                     <?php } ?>
+
+                    
                 </div>
                 <!-- End of Main Content -->
 
