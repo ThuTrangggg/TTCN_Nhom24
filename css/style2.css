@@ -359,13 +359,11 @@ table.dataTable>thead .sorting::before{
 #frmTienDo{
   z-index: 1;
   display: none;
-  background-color: #ccc;
   position: fixed;
   top: 70px;
   right: 3%;
   width: 80%;
-  height: 500px;
-  overflow: scroll;
+  
 }
 
 
@@ -376,5 +374,11 @@ th.sticky-header{
   background-color: #efefef;
   /* border: 1px solid #ccc; */
 
+}
+
+.frmtiendo{
+  height: 500px;
+  overflow: scroll;
+  position: relative;
 }
 

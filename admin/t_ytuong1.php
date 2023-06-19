@@ -22,6 +22,7 @@ if (isset($_POST["submit"]))
    #sql query to insert into database
    $sql="INSERT INTO ytuong`(duan_id`, nhanvien_id, tenytuong, noidung) 
    VALUES ($duanid, $NVid, $tenyt, $pname)";
+   mysqli_query($conn,$sql);
     if(mysqli_query($conn,$sql)){
         echo "them moi";
    }

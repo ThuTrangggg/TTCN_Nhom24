@@ -31,7 +31,7 @@ $duan_id = $_GET['id'];
                 $arr[]  = array(
                     'chucvu' => $row1['chucvu'], 'ngaynop' => $row1['ngaynop'], 'ten' => $row1['ten'], 'tiendo' => $row1['tiendo'],
                     'task' => $row1['task'], 'phantram' => $row1['phantram'], 'file' => $row1['file'], 'pheduyet' => $row1['pheduyet'], 'ngaybatdau' => $row1['ngaybatdau'],
-                    'ngayketthuc' => $row1['ngayketthuc'], 'loaifile'=>$row1['loaifile']
+                    'ngayketthuc' => $row1['ngayketthuc'], 'loaifile' => $row1['loaifile']
 
                 );
             }
@@ -118,74 +118,91 @@ $duan_id = $_GET['id'];
 
     </tbody>
 </table>
-<form id="frmTienDo" onsubmit="return validateForm()" action="./duan/chitietduan_code.php" method="post" name="table-process" width="100%">
-    <table class="table table-bordered" width="100%" cellspacing="0">
-        <thead>
-            <tr>
-                <th>Vị trí</th>
-                <th>Người thực hiện</th>
-                <th>Nội dung công việc</th>
-                <th>% Hoàn thành</th>
-                <th>Tiến độ</th>
-                <th>Nội dung</th>
-                <th>Phê duyệt</th>
-                <th>Ngày nộp</th>
-                <th>Ngày bắt đầu</th>
-                <th>Ngày kết thúc</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php for ($count = 0; $count < $length; $count++) {
-                $chucvu = $arr[$count]['chucvu'];
-                $ten = $arr[$count]['ten'];
-                $tiendo = $arr[$count]['tiendo'];
-                $ngaynop = $arr[$count]['ngaynop'];
-                $task = $arr[$count]['task'];
-                $phantram  = $arr[$count]['phantram'];
-                $file = $arr[$count]['file'];
-                $pheduyet = $arr[$count]['pheduyet'];
-                $ngaynop  = date('d-m-Y h:i:s', strtotime($arr[$count]['ngaynop']));
-                $ngaybatdau = date('d-m-Y', strtotime($arr[$count]['ngaybatdau']));
-                $ngayketthuc = date('d-m-Y', strtotime($arr[$count]['ngayketthuc']));
+<form id="frmTienDo" onsubmit="return validateForm()"  action="./duan/chitietduan_code.php" method="post" name="table-process" width="100%">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <center class="m-0 font-weight-bold text-primary">BẢNG TIẾN ĐỘ CHUNG
+            </center>
+        </div>
+        <div class="card-body">
+            <div class="frmtiendo">
 
-            ?>
-                <tr style="font-size: 14px;">
-                    <th><?php echo $chucvu ?></th>
-
-                    <td> <?php echo $ten ?> </td>
-                    <td> <?php echo $task ?> </td>
-                    <td> <?php echo $phantram . '%' ?> </td>
-
-                    <td> <?php
-                            if ($tiendo == 'Chậm tiến độ') {
-
-                                echo '<p style="color: red">' . $tiendo . ' </p>';
-                            } else echo '<p style="color: green">' . $tiendo . ' </p>';
-
-                            ?>
-                        <p style="color: red"></p>
-                        <!-- <textarea name="" id="" w cols="30" rows="10"></textarea> -->
-                    </td>
-                    <td> <?php echo $file ?> </td>
-                    <td> <?php echo $pheduyet ?> </td>
-
-                    <td style="font-size: 14px;"><?= $ngaynop ?></td>
-                    <td style="font-size: 14px;"> <?php echo $ngaybatdau ?> </td>
-                    <td> <?php echo $ngayketthuc ?> </td>
-
-                </tr>
-
-            <?php
-            }
-            ?>
-
-        </tbody>
-    </table>
-    <input type="submit" value="Lưu">
-    <div class="btn" onclick="closeFrm()">Hủy</div>
+                <table class="table table-bordered" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th class="sticky-header">Vị trí</th>
+                            <th class="sticky-header">Người thực hiện</th>
+                            <th class="sticky-header">Nội dung công việc</th>
+                            <th class="sticky-header">% Hoàn thành</th>
+                            <th class="sticky-header">Tiến độ</th>
+                            <th class="sticky-header">Nội dung</th>
+                            <th class="sticky-header">Phê duyệt</th>
+                            <th class="sticky-header">Ngày nộp</th>
+                            <th class="sticky-header">Ngày bắt đầu</th>
+                            <th class="sticky-header">Ngày kết thúc</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php for ($count = 0; $count < $length; $count++) {
+                            $chucvu = $arr[$count]['chucvu'];
+                            $ten = $arr[$count]['ten'];
+                            $tiendo = $arr[$count]['tiendo'];
+                            $ngaynop = $arr[$count]['ngaynop'];
+                            $task = $arr[$count]['task'];
+                            $phantram  = $arr[$count]['phantram'];
+                            $file = $arr[$count]['file'];
+                            $pheduyet = $arr[$count]['pheduyet'];
+                            $ngaynop  = date('d-m-Y h:i:s', strtotime($arr[$count]['ngaynop']));
+                            $ngaybatdau = date('d-m-Y', strtotime($arr[$count]['ngaybatdau']));
+                            $ngayketthuc = date('d-m-Y', strtotime($arr[$count]['ngayketthuc']));
+    
+                        ?>
+                            <tr style="font-size: 14px;">
+                                <th><?php echo $chucvu ?></th>
+    
+                                <td> <?php echo $ten ?> </td>
+                                <td> <?php echo $task ?> </td>
+                                <td> <?php echo $phantram . '%' ?> </td>
+    
+                                <td> <?php
+                                        if ($tiendo == 'Chậm tiến độ') {
+    
+                                            echo '<p style="color: red">' . $tiendo . ' </p>';
+                                        } else echo '<p style="color: green">' . $tiendo . ' </p>';
+    
+                                        ?>
+                                    <p style="color: red"></p>
+                                    <!-- <textarea name="" id="" w cols="30" rows="10"></textarea> -->
+                                </td>
+                                <td> <?php echo $file ?> </td>
+                                <td> <?php echo $pheduyet ?> </td>
+    
+                                <td style="font-size: 14px;"><?= $ngaynop ?></td>
+                                <td style="font-size: 14px;"> <?php echo $ngaybatdau ?> </td>
+                                <td> <?php echo $ngayketthuc ?> </td>
+    
+                            </tr>
+    
+                        <?php
+                        }
+                        ?>
+    
+                    </tbody>
+                </table>
+            </div>
+            <div style="text-align: center">
+        
+                <input type="submit" class="btn btn-outline-success btn-lg" name="submitCapnhattiendo" value="Lưu">
+                <div style="margin-left: 20px;" class="btn btn-outline-danger btn-lg" onclick="closeFrmtd()">Hủy</div>
+            </div>
+        </div>
+    </div>
 </form>
 
 <script type="text/javascript">
+    function closeFrmtd() {
+        document.getElementById('frmTienDo').style.display = 'none';
+    };
     function validateForm() {
         var tenduan = document.forms["formsuaduan"]["tenduan"].value;
         var maloaiduan = document.forms["formsuaduan"]["loaiduan_id"].value;
