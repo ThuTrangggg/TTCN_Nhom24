@@ -147,63 +147,65 @@ $duan_id = $_GET['id'];
                 where duan_id ='" . $duan_id . "' and nhanvien_id ='" . $_SESSION['nhanvienId'] . "' GROUP by duan.id";
                 $resultthongtin = mysqli_query($conn, $sqlthongtin);
                 $rowthongtin = mysqli_fetch_assoc($resultthongtin);
-                if($resultthongtin->num_rows>0){
+                if ($resultthongtin->num_rows > 0) {
                 ?>
-                <tbody>
-                    <tr>
-                        <th> Dự án
-                        </th>
-                        <th>Hình ảnh</th>
-                        <th>Nhân viên</th>
-                        <th>Tài khoản</th>
-                    </tr>
-                    <tr>
-                        <td>Tên dự án: <?= $rowthongtin['tenduan'] ?>
-                            </br>Ngày lập: <?= $rowthongtin['ngaylap'] ?>
-                            </br>Tình trạng: <?= $rowthongtin['tinhtrang'] ?>
-                            </br>Chi phí: <?= $rowthongtin['chiphi'] ?>
-                            </br>Mô tả: <?= $rowthongtin['mota'] ?>
-
-                        </td>
-                        <td><img width="150px" src="<?= $rowthongtin['hinhanh'] ?>" alt=""></td>
-                        <td>Tên nhân viên: <?=$rowthongtin['ten']?>
-                    <br>Chức vụ: <?=$rowthongtin['chucvu']?>
-                    <br>Email: <?=$rowthongtin['email']?>
-                
-                </td>
-                        <td>
-                            <?php if(isset($rowthongtin['tentaikhoan'])){
-                                echo 'Tài khoản: '.$rowthongtin['tentaikhoan'].''; 
-                            } else{ echo 'Nhân viên chưa có tài khoản';}; ?>
-                    </td>
-                    </tr>
-                </tbody>
-                <?php }else {?>
                     <tbody>
-                    <tr>
-                        <th> Dự án
-                        </th>
-                        <th>Hình ảnh</th>
-                        <th>Nhân viên</th>
-                        <th>Tài khoản</th>
-                    </tr>
-                    <tr>
-                        <td>Tên dự án:
-                            </br>Ngày lập: 
-                            </br>Tình trạng:
-                            </br>Chi phí:
-                            </br>Mô tả:
-                        </td>
-                        <td><img width="150px" src="" alt=""></td>
-                        <td>Tên nhân viên: 
-                    <br>Chức vụ:
-                    <br>Email:
-                </td>
-                        <td>
-                    </td>
-                    </tr>
-                </tbody>
-                <?php }?>
+                        <tr>
+                            <th> Dự án
+                            </th>
+                            <th>Hình ảnh</th>
+                            <th>Nhân viên</th>
+                            <th>Tài khoản</th>
+                        </tr>
+                        <tr>
+                            <td>Tên dự án: <?= $rowthongtin['tenduan'] ?>
+                                </br>Ngày lập: <?= $rowthongtin['ngaylap'] ?>
+                                </br>Tình trạng: <?= $rowthongtin['tinhtrang'] ?>
+                                </br>Chi phí: <?= $rowthongtin['chiphi'] ?>
+                                </br>Mô tả: <?= $rowthongtin['mota'] ?>
+
+                            </td>
+                            <td><img width="150px" src="<?= $rowthongtin['hinhanh'] ?>" alt=""></td>
+                            <td>Tên nhân viên: <?= $rowthongtin['ten'] ?>
+                                <br>Chức vụ: <?= $rowthongtin['chucvu'] ?>
+                                <br>Email: <?= $rowthongtin['email'] ?>
+
+                            </td>
+                            <td>
+                                <?php if (isset($rowthongtin['tentaikhoan'])) {
+                                    echo 'Tài khoản: ' . $rowthongtin['tentaikhoan'] . '';
+                                } else {
+                                    echo 'Nhân viên chưa có tài khoản';
+                                }; ?>
+                            </td>
+                        </tr>
+                    </tbody>
+                <?php } else { ?>
+                    <tbody>
+                        <tr>
+                            <th> Dự án
+                            </th>
+                            <th>Hình ảnh</th>
+                            <th>Nhân viên</th>
+                            <th>Tài khoản</th>
+                        </tr>
+                        <tr>
+                            <td>Tên dự án:
+                                </br>Ngày lập:
+                                </br>Tình trạng:
+                                </br>Chi phí:
+                                </br>Mô tả:
+                            </td>
+                            <td><img width="150px" src="" alt=""></td>
+                            <td>Tên nhân viên:
+                                <br>Chức vụ:
+                                <br>Email:
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                    </tbody>
+                <?php } ?>
             </table>
             <!-- Tiến độ dự án ở form -->
             <table class="table table-bordered" width="100%" cellspacing="0">
@@ -347,51 +349,3 @@ $duan_id = $_GET['id'];
         } else document.getElementById('inputTiendo').value = 'ok'
     }
 </script>
-
-
-<?php if ($_SESSION['role_id'] == 1) { ?>
-                        <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">FINAL
-                                    <div class="btn btn-add" onclick="openFrmAdd()">Thêm</div>
-                                </h6>
-                            </div>
-                            <script>
-                                function openFrmAdd() {
-                                    document.getElementById("frmAdd").style.display = 'block'
-                                }
-                            </script>
-                            <div class="card-body">
-                                <div class="table-responsive ">
-                                    <?php
-                                    $sqlcheck = "select * from chitietduan where duan_id = '" . $duan_id . "'";
-                                    $result = mysqli_query($conn, $sqlcheck);
-                                    include "table_final.php";
-                                    ?>
-                                </div>
-                            </div>
-                        </div>
-                    <?php } else { ?>
-                        <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">CẬP NHẬT TIẾN ĐỘ
-                                    <div class="btn btn-add" onclick="openFrmcapnhattiendo()">Thêm</div>
-                                </h6>
-                            </div>
-                            <script>
-                                function openFrmcapnhattiendo() {
-                                    document.getElementById("frmCapnhattiendo").style.display = 'block'
-                                }
-                            </script>
-                            <div class="card-body">
-                                <div class="table-responsive ">
-                                    <?php
-                                    $sqlcheck = "select * from chitietduan where duan_id = '" . $duan_id . "'";
-                                    $result = mysqli_query($conn, $sqlcheck);
-                                    include "table_capnhattiendo.php";
-                                    ?>
-                                </div>
-                            </div>
-                        </div>
-                    <?php } ?>
-                </div>
