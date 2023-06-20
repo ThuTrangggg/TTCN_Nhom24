@@ -45,7 +45,7 @@ $duan_id = $_GET['id'];
                 $ngaybatdau = date('d-m-Y', strtotime($arr[$count]['ngaybatdau']));
                 $ngayketthuc = date('d-m-Y', strtotime($arr[$count]['ngayketthuc']));
 
-        ?>
+                ?>
                 <tr style="font-size: 14px;">
                     <th><?php echo $chucvu ?></th>
                     <td> <?php echo $ten ?> </td>
@@ -72,7 +72,7 @@ $duan_id = $_GET['id'];
         ?>
     </tbody>
 </table>
-<form style="display: none" id="frmpccv" onsubmit="return validateForm()" action="./duan/table_phanchiacv_code.php" method="post" name="table-process" width="100%">
+<form id="frmpccv" onsubmit="return validateForm()" action="./duan/table_phanchiacv_code.php" method="post" name="table-process" width="100%">
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <center class="m-0 font-weight-bold text-primary">CẬP NHẬT TIẾN ĐỘ
@@ -165,7 +165,7 @@ $duan_id = $_GET['id'];
                                     <td>
                                         <input class="form-control" id="txttenduan" type="date" placeholder="" value="" name="ngayketthuc" />
                                     </td>
-                        <?php
+                                <?php
                                 }
                             }
                         } ?>
