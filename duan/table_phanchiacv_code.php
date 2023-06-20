@@ -5,14 +5,13 @@ include("../connect.php");
 
 $nhanvien_id = $_POST['nhanvien_id'];
 $task = $_POST['task'];
-$ngaynop = $_POST['ngaynop'];
 $ngaybatdau = $_POST['ngaybatdau'];
 $ngayketthuc = $_POST['ngayketthuc'];
 
 
 
 $sql = "
-   INSERT INTO chitietduan (nhanvien_id,task,ngaynop,ngaybatdau,ngayketthuc) VALUES ('" . $nhanvien_id . "','" . $task . "','" . $ngaynop . "','" . $ngaybatdau . "','" . $ngayketthuc . "')";
+   INSERT INTO chitietduan (nhanvien_id,task,ngaybatdau,ngayketthuc) VALUES ('" . $nhanvien_id . "','" . $task . "','" . $ngaybatdau . "','" . $ngayketthuc . "')";
 $kq = mysqli_query($ket_noi, $sql);
  echo "
          <script type='text/javascript'>

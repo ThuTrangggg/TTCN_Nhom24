@@ -11,8 +11,6 @@ $duan_id = $_GET['id'];
             <th class="sticky-header">Vị trí</th>
             <th class="sticky-header">Người thực hiện</th>
             <th class="sticky-header">Nội dung công việc</th>
-            <th class="sticky-header">Phê duyệt</th>
-            <th class="sticky-header">Ngày nộp</th>
             <th class="sticky-header">Ngày bắt đầu</th>
             <th class="sticky-header">Ngày kết thúc</th>
         </tr>
@@ -40,8 +38,6 @@ $duan_id = $_GET['id'];
                 $chucvu = $arr[$count]['chucvu'];
                 $ten = $arr[$count]['ten'];
                 $task = $arr[$count]['task'];
-                $pheduyet = $arr[$count]['pheduyet'];
-                $ngaynop  = date('d-m-Y h:i:s', strtotime($arr[$count]['ngaynop']));
                 $ngaybatdau = date('d-m-Y', strtotime($arr[$count]['ngaybatdau']));
                 $ngayketthuc = date('d-m-Y', strtotime($arr[$count]['ngayketthuc']));
 
@@ -50,8 +46,6 @@ $duan_id = $_GET['id'];
                     <th><?php echo $chucvu ?></th>
                     <td> <?php echo $ten ?> </td>
                     <td> <?php echo $task ?> </td>
-                    <td> <?php echo $pheduyet ?> </td>
-                    <td style="font-size: 14px;"><?= $ngaynop ?></td>
                     <td style="font-size: 14px;"> <?php echo $ngaybatdau ?> </td>
                     <td> <?php echo $ngayketthuc ?> </td>
                 </tr>
@@ -63,10 +57,8 @@ $duan_id = $_GET['id'];
                 <th></th>
                 <td></td>
                 <td></td>
-                <td></td>
                 <td style="font-size: 14px;"></td>
                 <td style="font-size: 14px;"> </td>
-                <td></td>
             </tr>
         <?php }
         ?>
@@ -85,8 +77,6 @@ $duan_id = $_GET['id'];
                         <th>Vị trí</th>
                         <th>Người thực hiện</th>
                         <th>Nội dung công việc</th>
-                        <th>Phê duyệt</th>
-                        <th>Ngày nộp</th>
                         <th>Ngày bắt đầu</th>
                         <th>Ngày kết thúc</th>
                     </tr>
@@ -129,15 +119,6 @@ $duan_id = $_GET['id'];
                                         <input class="form-control" style="wordwrap" id="txttenduan" type="text" placeholder="" value="<?= $row2['task']; ?>" name="task" />
                                     </td>
                                     <td>
-                                        <select name="pheduyet" id="">
-                                            <option value="Phê duyệt">Phê duyệt</option>
-                                            <option value="Phê duyệt">Không phê duyệt</option>
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <input class="form-control" id="txttenduan" type="text" placeholder="" value="<?= $row2['ngaynop']; ?>" name="ngaynop" />
-                                    </td>
-                                    <td>
                                         <input class="form-control" id="txttenduan" type="text" placeholder="" value="<?= $row2['ngaybatdau']; ?>" name="ngaybatdau" />
                                     </td>
                                     <td>
@@ -149,15 +130,6 @@ $duan_id = $_GET['id'];
 
                                     <td>
                                         <input class="form-control" style="wordwrap" id="txttenduan" type="text" placeholder="" value="" name="task" />
-                                    </td>
-                                    <td>
-                                        <select name="" id="">
-                                            <option value="Phê duyệt">Phê duyệt</option>
-                                            <option value="Phê duyệt">Không phê duyệt</option>
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <input class="form-control" id="txttenduan" type="date" placeholder="" value="" name="ngaynop" />
                                     </td>
                                     <td>
                                         <input class="form-control" id="txttenduan" type="date" placeholder="" value="" name="ngaybatdau" />
