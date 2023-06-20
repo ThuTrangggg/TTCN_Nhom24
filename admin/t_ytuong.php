@@ -86,6 +86,7 @@
                                         <div class="col-sm-7 ">
                                             <input type="hidden" name="size" value="1000000">
                                             <input type="file"  class="form-control" name="noidung">
+
                                         </div>
                                     </div>
                                 </div>

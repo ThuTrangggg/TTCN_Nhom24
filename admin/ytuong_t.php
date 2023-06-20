@@ -34,7 +34,7 @@
                             </div>
                             <div class="card-body">
                                 <?php 
-                                                    $sql="SELECT a.id,c.tenduan, a.tenytuong, b.ten, a.ngaylap from ytuong as a INNER JOIN nhanvien as b on a.nhanvien_id=b.id JOIN duan as c on a.duan_id=c.id order by a.id asc;";
+                                                    $sql="SELECT a.id,c.tenduan, a.tenytuong, b.ten, noidung, a.ngaylap from ytuong as a INNER JOIN nhanvien as b on a.nhanvien_id=b.id JOIN duan as c on a.duan_id=c.id order by a.id asc;";
                                                     $ketQuaTruyVan=$conn->query($sql);
                                                     ?>
                                 <div class="table-responsive">
@@ -63,6 +63,7 @@
                                                 <td><?php echo $ytuong['tenytuong']; ?></td>
                                                 <td><?php echo $ytuong['ten']; ?></td>
                                                 <td><?php echo $ytuong['ngaylap']; ?></td>
+                                                <td><?=$ytuong['noidung']?></td>
                                                 <td><a class="btn btn-success btn-circle" href="admin/s_ytuong.php?id=<?php echo $ytuong['id'];?>">Sửa</a>  
                                                 <a class="btn btn-danger btn-circle" href="admin/x_ytuong.php?id=<?php echo $ytuong['id'];?>"><i class="fas fa-trash"></a></td>
                                             </tr>
