@@ -4,7 +4,7 @@
 <?php include '../connect.php';
 $duan_id = $_GET['id'];
 ?>
-<table id="final" class="table table-bordered" width="100%" cellspacing="0">
+<table id="tiendo" class="table table-bordered" width="100%" cellspacing="0">
     <thead>
         <tr>
             <th class="sticky-header">Vị trí</th>
@@ -25,7 +25,7 @@ $duan_id = $_GET['id'];
         $sql1 = 'select chucvu.id, chucvu.chucvu,ngaynop, nhanvien.ten, task,phantram,tiendo,file,loaifile,pheduyet,ngaybatdau,ngayketthuc 
         from chitietduan  left join nhanvien on chitietduan.nhanvien_id = nhanvien.id 
         left join chucvu on nhanvien.chucvu_id = chucvu.id 
-        where duan_id = "' . $duan_id . '" and chucvu.id >1  and pheduyet="phê duyệt"';
+        where duan_id = "' . $duan_id . '" and chucvu.id >1 AND pheduyet="phê duyệt"';
         $result1 = mysqli_query($conn, $sql1);
         $arr = array();
         if ($result1->num_rows > 0) {
