@@ -146,7 +146,7 @@ $duan_id = $_GET['id'];
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
                                 <h6 class="m-0 font-weight-bold text-primary">FINAL
-                                    <div class="btn btn-add" onclick="openFrmAdd()">Thêm</div>
+                                    <!-- <div class="btn btn-add" onclick="openFrmAdd()">Thêm</div> -->
                                 </h6>
                             </div>
                             <script>

@@ -242,12 +242,12 @@ ok
 
 /* Tour section */
 .tour-section{
-    background-color: #f3ab47;
+    background-color: #fefefe;
 
 }
 
 .tickets-list{
-    background-color: #fff;
+    background-color: #040404;
     margin-top: 40px;
     list-style: none;
 }
@@ -255,13 +255,13 @@ ok
 .tickets-list li{
     font-size: 15px;
     padding: 10px 16px;
-    border-bottom: 1px solid #ddd;
-    color: #757575;
+    border-bottom: 1px solid #cac2c2;
+    color: #0a0a0a;
 }
 
 .tickets-list .Sold-out{
     background-color: #f44336;
-    color: #fff;
+    color: #000000;
     padding: 3px 4px;
     margin-left: 16px;
 }
@@ -272,7 +272,7 @@ ok
     width: 24px;
     height: 24px;
     background-color: #f3b633;
-    color: #fff;
+    color: #060606;
     line-height: 24px;
     border-radius: 50%;
     text-align: center;

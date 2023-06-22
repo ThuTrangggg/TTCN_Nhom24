@@ -36,7 +36,7 @@ $duan_id = $_GET['id'];
                         $resultnv = $conn->query($sqlnhanvien);
                         $nhanvien = mysqli_fetch_assoc($resultnv);
 
-                        $sqlchitiet = "select * from chitietduan where duan_id ='" . $duan_id . "' and chucvu_id='" . $i . "'";
+                        $sqlchitiet = "select * from chitietduan where duan_id ='" . $duan_id . "' ";
                         $kq1 = mysqli_query($conn, $sqlchitiet);
                         $row2 = mysqli_fetch_assoc($kq1);
                         ?>

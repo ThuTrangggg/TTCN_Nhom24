@@ -4,6 +4,7 @@
 <?php include 'connect.php';
 include 'head.php';
 $duan_id = $_GET['id'];
+session_start();
 ?>
 
 <style>
@@ -106,7 +107,9 @@ $duan_id = $_GET['id'];
                         </script>
                         <div class="card-body" style="display: flex; justify-content: space-around;">
                             <div style="flex: 1;">
-                                <img width="100%" style="object-fit: contain;border-radius:20px;" src="<?= $rowduan['hinhanh'] ?>" alt="">
+                                <img width="100%" style="object-fit: contain;border-radius:20px; width: 70%;
+    margin-left: 70px;
+}" src="<?= $rowduan['hinhanh'] ?>" alt="">
                             </div>
                             <div style="flex: 1; padding: 30px">
                                 <h1><?= $rowduan['tenduan'] ?></h1>
@@ -145,20 +148,19 @@ $row1 = mysqli_fetch_array($kq);
         <form class="form row" method="post" action="../TTCN_Nhom24/danhgia/danh_gia_code.php" id="rate">
             <div class="col-md-4">
                 <div class="col-md-5">
-
-                    <img height="150px" src="<?= $row1['hinhanh']; ?>" alt="">
+<!-- 
+                    <img height="150px" src="<?= $row1['hinhanh']; ?>" alt=""> -->
                 </div>
                 <div class="col-md-7">
-                    <?php
-                    echo $row1['tenduan']; ?>
+                     <?php
+                    //echo $row1['tenduan']; ?> 
                 </div>
 
             </div>
             <br>
             <div class="col-md-6">
-
-                <input type="hidden" value="<?= $row1["duan.id"] ?>" name="duan_id" />
-                <input type="hidden" value="<?= $taikhoan_id ?>" name="taikhoan_id">
+                <input type="hidden" value="<?= $row1["id"] ?>" name="duan_id" >
+                <input type="hidden" value="<?= $_SESSION['userId'] ?>" name="taikhoan_id">
                 <!-- <input type=""> -->
                 <div class="row" style="align-items: center;">
 
@@ -174,7 +176,8 @@ $row1 = mysqli_fetch_array($kq);
                 <fieldset>
                     <div class="control-group">
                         <div class="controls">
-                            <input placeholder="Đánh giá của bạn" required style="outline: none; border-radius: 0; color: black; border: 1px solid #000; translate: 0 -21px;" class="form-control" type="text" id="tentaikhoan" name="noidung">
+                            <input placeholder="Đánh giá của bạn" required style="outline: none; border-radius: 10px; color: black; border: 1px solid #000; translate: 0 -21px; margin-top: 50px; width: 1000px;height: 50px;" 
+                            class="form-control" type="text" id="tentaikhoan" name="noidung">
                         </div>
                     </div>
                     <div class="control-group">
@@ -184,7 +187,7 @@ $row1 = mysqli_fetch_array($kq);
                     </div>
                     <div class="row" style="margin-top: 15px;">
 
-                        <label class="col-md-6" style="display: inline-block; font-weight: 100" for="">Xếp hạng của bạn</label>
+                        <label class="col-md-6" style="display: inline-block; font-weight: 100px;margin-top: 30px;margin-left: 10px;" for="">Xếp hạng của bạn</label>
 
                         <div class="col-md-6 stars" style="translate: -233px -9px;">
                             <input class="star star-5" value="5" id="star-5" type="radio" name="star" />
@@ -207,7 +210,14 @@ $row1 = mysqli_fetch_array($kq);
                 <div class="control-group">
                     <label class="control-label"></label>
                     <div class="controls">
-                        <button type="submit" style="translate: 0px -41px; border: none; background-color: black; color: #fff; width: 100px; height: 34px; " class="">Gửi đánh giá</button>
+                        <button type="submit" style="border-radius: 10px;
+    translate: 0px -41px;
+    border: none;
+    background-color: black;
+    color: #fff;
+    width: 100px;
+    height: 34px;
+    margin-left: 1300px;" class="">Gửi đánh giá</button>
                     </div>
                 </div>
             </div>
