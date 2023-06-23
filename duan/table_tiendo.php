@@ -36,7 +36,7 @@ $duan_id = $_GET['id'];
                     'id' => $row1['id'], 'ghichu' =>$row1['ghichu'],
                     'chucvu' => $row1['chucvu'], 'ngaynop' => $row1['ngaynop'], 'ten' => $row1['ten'], 'tiendo' => $row1['tiendo'],
                     'task' => $row1['task'], 'phantram' => $row1['phantram'], 'file' => $row1['file'], 'pheduyet' => $row1['pheduyet'], 'ngaybatdau' => $row1['ngaybatdau'],
-                    'ngayketthuc' => $row1['ngayketthuc'], 'loaifile' => $row1['loaifile']
+                    'ngayketthuc' => $row1['ngayketthuc'], 'loaifile'=>$row1['loaifile']
 
                 );
             }

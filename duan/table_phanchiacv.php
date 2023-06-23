@@ -102,10 +102,21 @@ $duan_id = $_GET['id'];
                             <tr>
                                 <th><?= $row['chucvu'] ?></th>
 
-                                <?php
-                                $sqlnhanvien = "SELECT * FROM nhanvien join chucvu on nhanvien.chucvu_id = chucvu.id where chucvu_id = '" . $i . "'";
-                                $resultnv = $conn->query($sqlnhanvien);
-                                $nhanvien = mysqli_fetch_assoc($resultnv);
+                        $sqlchitiet = "select * from chitietduan where duan_id ='" . $duan_id . "' ";
+                        $kq1 = mysqli_query($conn, $sqlchitiet);
+                        $row2 = mysqli_fetch_assoc($kq1);
+                        ?>
+                        <td>
+                            <select name="nhanvien_id" id="">
+                                <option value="<?= $nhanvien['id'] ?>" name="idNhanvien">
+                                    <?php
+                                    echo $nhanvien['tenviettat'] . '-' . $nhanvien['ten'];
+                                    ?>
+                                </option>
+                            </select>
+                        </td>
+                        <?php
+                        if ($kq1->num_rows > 0) {
 
                                 $sqlchitiet = "select * from chitietduan where duan_id ='" . $duan_id . "'";
                                 $kq1 = mysqli_query($conn, $sqlchitiet);

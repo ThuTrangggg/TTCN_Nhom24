@@ -45,6 +45,11 @@ $duan_id = $_GET['id'];
                         $result = mysqli_query($conn, $sqlcheck);
                         $rowduan = mysqli_fetch_assoc($result);
                         ?>
+                         <?php
+                        $sql3 = "select AVG(rate) from feedback where duan_id ='" . $duan_id . "' group by duan_id ";
+                        $result = mysqli_query($conn, $sql3);
+                        $row3 = mysqli_fetch_array($result);
+                        ?>
                         <script>
                             function openFrmAdd() {
                                 document.getElementById("frmAdd").style.display = 'block'
@@ -59,7 +64,14 @@ $duan_id = $_GET['id'];
                                 <p>Ngày tạo dự án: <?= $rowduan['ngaylap'] ?></p>
                                 <p>Tình trạng dự án: <?= $rowduan['tinhtrang'] ?></p>
                                 <p>Mô tả: <?= $rowduan['mota'] ?></p>
-                                <p>Chi phí cho dự án: <?= $rowduan['chiphi'] ?></p>
+                                <i><b>Đánh giá:</b></i>
+                            <?php if (isset($row3['AVG(rate)'])) 
+
+                                $rate_round= round($row3['AVG(rate)']);
+                                for($i = 0; $i <$rate_round; $i++){
+                                    ?>
+                            <i style="color: orange" class="fa-solid fa-star"></i>
+                            <?php }?>
 
                             </div>
                         </div>
@@ -112,7 +124,7 @@ $duan_id = $_GET['id'];
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
                                 <h6 class="m-0 font-weight-bold text-primary">FINAL
-                                    <div class="btn btn-add" onclick="openFrmAdd()">Thêm</div>
+                                    <!-- <div class="btn btn-add" onclick="openFrmAdd()">Thêm</div> -->
                                 </h6>
                             </div>
                             <script>
