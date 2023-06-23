@@ -59,8 +59,8 @@
                                             <th>Hình ảnh</th>
                                             <th>Tên dự án</th>
                                             <th>Mã loai dự án </th>
-                                            <th>Ý tưởng </th>
-                                            <th>Tên báo cáo </th>
+                                            <!-- <th>Ý tưởng </th>
+                                            <th>Tên báo cáo </th> -->
                                             <th>Tình trạng </th>
                                             <th>Chi phí </th>
                                             <th>Sửa</th>
@@ -110,8 +110,7 @@
                                                         </a>
                                                     </td>
                                                     <td><?= $duan['loaiduan_id'] ?></td>
-                                                    <td><?= $duan['tenytuong'] ?></td>
-                                                    <td><?= $duan['tenbaocao'] ?></td>
+                                                    
                                                     <td><?= $duan['tinhtrang'] ?></td>
                                                     <td><?= $duan['chiphi'] ?></td>
 
