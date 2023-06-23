@@ -35,10 +35,6 @@ $duan_id = $_GET['id'];
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">CHI TIẾT DỰ ÁN </h1>
-                    <!-- <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-                        For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p> -->
-
-                    <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">TỔNG QUAN VỀ DỰ ÁN
@@ -53,16 +49,12 @@ $duan_id = $_GET['id'];
                             function openFrmAdd() {
                                 document.getElementById("frmAdd").style.display = 'block'
                             }
-
-                            function openFrmTienDo() {
-                                document.getElementById("frmTienDo").style.display = 'block'
-                            }
                         </script>
                         <div class="card-body" style="display: flex; justify-content: space-around;">
-                            <div style="flex: 1;">
-                                <img width="100%" style="object-fit: contain;" src="<?= $rowduan['hinhanh'] ?>" alt="">
+                            <div style="flex: 1; display: flex; justify-content: center">
+                                <img style="object-fit: contain; width: 300px; border-radius: 50px;" src="<?= $rowduan['hinhanh'] ?>" alt="">
                             </div>
-                            <div style="flex: 1; padding: 30px">
+                            <div style="flex: 2; padding: 30px">
                                 <h1><?= $rowduan['tenduan'] ?></h1>
                                 <p>Ngày tạo dự án: <?= $rowduan['ngaylap'] ?></p>
                                 <p>Tình trạng dự án: <?= $rowduan['tinhtrang'] ?></p>
@@ -82,17 +74,17 @@ $duan_id = $_GET['id'];
                             </h6>
                         </div>
                         <script>
-                                function openFrmpccv() {
-                                    document.getElementById("frmpccv").style.display = 'block'
-                                }
-                            </script>
+                            function openFrmpccv() {
+                                document.getElementById("frmpccv").style.display = 'block'
+                            }
+                        </script>
 
                         <div class="card-body">
                             <div class="table-responsive ">
                                 <?php
                                 $sqlcheck = "select * from chitietduan where duan_id = '" . $duan_id . "'";
                                 $result = mysqli_query($conn, $sqlcheck);
-                                // include "table_phanchiacv.php";
+                                include "table_phanchiacv.php";
                                 ?>
                             </div>
                         </div>
@@ -139,7 +131,7 @@ $duan_id = $_GET['id'];
                             </div>
                         </div>
                     <?php } else { ?>
-                         <!-- /.BẢNG CAP NHAT TIEN DO -->
+                        <!-- /.BẢNG CAP NHAT TIEN DO -->
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
                                 <h6 class="m-0 font-weight-bold text-primary">CẬP NHẬT TIẾN ĐỘ
@@ -166,7 +158,7 @@ $duan_id = $_GET['id'];
                         </div>
                     <?php } ?>
 
-                    
+
                 </div>
                 <!-- End of Main Content -->
 

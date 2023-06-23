@@ -18,6 +18,7 @@ $duan_id = $_GET['id'];
             <th class="sticky-header">Nội dung</th>
             <th class="sticky-header">Loại file</th>
             <th class="sticky-header">Phê duyệt</th>
+            <th class="sticky-header">Ghi chú</th>
             <th class="sticky-header">Ngày nộp</th>
             <th class="sticky-header">Ngày bắt đầu</th>
             <th class="sticky-header">Ngày kết thúc</th>
@@ -25,7 +26,7 @@ $duan_id = $_GET['id'];
     </thead>
     <tbody>
         <?php
-        $sql1 = 'select chucvu.id, chucvu.chucvu,ngaynop, nhanvien.ten, task,phantram,tiendo,file,loaifile,pheduyet,ngaybatdau,ngayketthuc from chitietduan join nhanvien on chitietduan.nhanvien_id = nhanvien.id 
+        $sql1 = 'select chucvu.id,ghichu, chucvu.chucvu,ngaynop, nhanvien.ten, task,phantram,tiendo,file,loaifile,pheduyet,ngaybatdau,ngayketthuc from chitietduan join nhanvien on chitietduan.nhanvien_id = nhanvien.id 
         join chucvu on nhanvien.chucvu_id = chucvu.id where duan_id = "' . $duan_id . '" and nhanvien_id ="' . $_SESSION['nhanvienId'] . '" ORDER by chucvu desc, ngaynop asc';
         // echo $_SESSION['nhanvienId'];
         $result1 = mysqli_query($conn, $sql1);
@@ -33,6 +34,7 @@ $duan_id = $_GET['id'];
         if ($result1->num_rows > 0) {
             while ($row1 = mysqli_fetch_assoc($result1)) {
                 $arr[]  = array(
+                    'ghichu' => $row1['ghichu'],
                     'chucvu' => $row1['chucvu'], 'ngaynop' => $row1['ngaynop'], 'ten' => $row1['ten'], 'tiendo' => $row1['tiendo'],
                     'task' => $row1['task'], 'phantram' => $row1['phantram'], 'file' => $row1['file'], 'pheduyet' => $row1['pheduyet'], 'ngaybatdau' => $row1['ngaybatdau'],
                     'ngayketthuc' => $row1['ngayketthuc'], 'loaifile' => $row1['loaifile']
@@ -52,6 +54,7 @@ $duan_id = $_GET['id'];
                 $file = $arr[$count]['file'];
                 $pheduyet = $arr[$count]['pheduyet'];
                 $loaifile = $arr[$count]['loaifile'];
+                $ghichu = $arr[$count]['ghichu'];
                 $ngaynop  = date('d-m-Y h:i:s', strtotime($arr[$count]['ngaynop']));
                 $ngaybatdau = date('d-m-Y', strtotime($arr[$count]['ngaybatdau']));
                 $ngayketthuc = date('d-m-Y', strtotime($arr[$count]['ngayketthuc']));
@@ -87,7 +90,7 @@ $duan_id = $_GET['id'];
 
                             ?>
                     </td>
-
+                    <td><?= $ghichu ?></td>
                     <td style="font-size: 14px;"><?= $ngaynop ?></td>
                     <td style="font-size: 14px;"> <?php echo $ngaybatdau ?> </td>
                     <td> <?php echo $ngayketthuc ?> </td>
@@ -110,7 +113,7 @@ $duan_id = $_GET['id'];
                 </td>
                 <td> </td>
                 <td></td>
-
+                <td></td>
                 <td style="font-size: 14px;"></td>
                 <td style="font-size: 14px;"> </td>
                 <td></td>
@@ -230,14 +233,14 @@ $duan_id = $_GET['id'];
                     $rowCapnhat = mysqli_fetch_assoc($resultCapnhat);
                     ?>
                     <td>
-                        <input readonly type="text" value="<?= $rowCapnhat['task'] ?>" name="task">
+                        <input style="border: none;" readonly type="text" value="<?= $rowCapnhat['task'] ?>" name="task">
                     </td>
                     <td>
                         <input type="range" id="tienDoRange" min="1" max="100" oninput="this.nextElementSibling.value = this.value" placeholder="" value="<?= $rowCapnhat['phantram'] ?>" name="phantram" />
                         <output><?= $rowCapnhat['phantram'] ?></output>
                     </td>
                     <td>
-                        <input readonly type="" id="inputTiendo" name="inputTiendo" id="">
+                        <input style="border: none;" readonly type="" id="inputTiendo" name="inputTiendo" id="">
                     </td>
                     <td>
                         <input class="form-control" id="txttenduan" type="text" placeholder="" value="" name="file" />
