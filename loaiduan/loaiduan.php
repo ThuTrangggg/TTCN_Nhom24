@@ -63,7 +63,7 @@
                                         </tr>
                                     </tfoot> -->
                                     <?php
-                                    $sql = "SELECT loaiduan.id,ten_loai_du_an from loaiduan";
+                                    $sql = "SELECT id,ten_loai_du_an from loaiduan";
                                     $result = $conn->query($sql);
                                     if ($result->num_rows > 0) {
                                         $i = 1;
@@ -79,7 +79,8 @@
 
                                                     </td>
                                                     <td>
-                                                        <a class="btn btn-danger" href="loaiduan/loaiduan_xoa.php" onclick="alert('Không xóa được')">Xóa</a>
+                                                        <!-- <a class="btn btn-danger" href="loaiduan/loaiduan_xoa.php" onclick="alert('Không xóa được')">Xóa</a> -->
+                                                        <a class="btn btn-danger" href="loaiduan/loaiduan_xoa.php" >Xóa</a>
                                                     </td>
                                                 </tr>
 
