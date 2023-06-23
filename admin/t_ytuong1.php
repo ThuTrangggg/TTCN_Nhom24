@@ -1,28 +1,37 @@
-
 <?php
 include("../connect.php");
-
-$duanid=$_POST['duan_id'];
-$NVid=$_POST['nhanvien_id'];
-$tenyt=$_POST['tenytuong'];
-$noidung=$_POST['noidung'];
-
-    $sql="INSERT INTO `ytuong`(`duan_id`, `nhanvien_id`, `tenytuong`, `noidung`) 
-    VALUES ('".$duanid."','".$NVid."','".$tenyt."','".$noidung."')";
-    if($conn->query($sql)){
-        echo "Thêm mới thành công";
-        echo "
-            <script>
-            window.location = 'ytuong_t.php';
-            </script>
-        ";
+if (isset($_POST["upload"])) {
+    $errors = array();
+    $file_name = $_FILES['noidung']['name'];
+    $file_size = $_FILES['noidung']['size'];
+    $file_tmp = $_FILES['noidung']['tmp_name'];
+    $file_type = $_FILES['noidung']['type'];
+    $file_parts = explode('.', $_FILES['noidung']['name']);
+    $file_ext = strtolower(end($file_parts));
+    $expensions = array("docx", "pdf");
+    if (in_array($file_ext, $expensions) === false) {
+        $errors[] = "Chỉ hỗ trợ upload file docx hay pdf.";
     }
-     else {
-        echo "Không thêm được";
-        echo "
-            <script>
-            window.location = 'ytuong_t.php';
-            </script>
-        ";
-     }
+    if ($file_size > 2097152) {
+        $errors[] = 'Kích thước file không được lớn hơn 2MB';
+    }
+    #retrieve file title
+
+    $duanid = $_POST['duan_id'];
+    $NVid = $_POST['nhanvien_id'];
+    $tenyt = $_POST['tenytuong'];
+    $noidung = $_FILES['noidung']['name'];
+
+    $target = "../file/" . basename($noidung);
+    $sql = "INSERT INTO ytuong(duan_id, nhanvien_id, tenytuong, noidung) 
+   VALUES ('$duanid', '$NVid', '$tenyt', '$noidung')";
+    mysqli_query($conn, $sql);
+
+    if (move_uploaded_file($_FILES['noidung']['tmp_name'], $target)) {
+        echo '<script language="javascript">alert("Đã upload thành công!");</script>';
+    } else {
+        echo '<script language="javascript">alert("Đã upload thất bại!");</script>';
+    }
+}
+$result = mysqli_query($conn, "SELECT * FROM ytuong");
 ?>

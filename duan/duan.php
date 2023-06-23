@@ -246,7 +246,6 @@
 <?php
 include '../footer.php'
 ?>
-
 </html>
 <!-- 
 <script>

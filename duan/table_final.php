@@ -57,7 +57,6 @@ $duan_id = $_GET['id'];
         ?>
                 <tr style="font-size: 14px;">
                     <th><?php echo $chucvu ?></th>
-
                     <td> <?php echo $ten ?> </td>
                     <td> <?php echo $task ?> </td>
                     <td> <?php echo $phantram . '%' ?> </td>
