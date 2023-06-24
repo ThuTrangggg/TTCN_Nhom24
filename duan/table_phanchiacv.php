@@ -17,9 +17,11 @@ $duan_id = $_GET['id'];
     </thead>
     <tbody>
         <?php
-        $sql1 = 'select chucvu.id, chucvu.chucvu, nhanvien.ten, task,ngaybatdau,ngayketthuc from chitietduan join nhanvien on chitietduan.nhanvien_id = nhanvien.id 
-        join chucvu on nhanvien.chucvu_id = chucvu.id where duan_id = "' . $duan_id . '" and nhanvien_id ="' . $_SESSION['nhanvienId'] . '" ORDER by chucvu desc, ngaynop asc';
-        // echo $_SESSION['nhanvienId'];
+        $sql1 = 'select DISTINCT(chucvu.id), chucvu.chucvu, nhanvien.ten, task,ngaybatdau,ngayketthuc from chitietduan 
+        join nhanvien on chitietduan.nhanvien_id = nhanvien.id 
+        join chucvu on nhanvien.chucvu_id = chucvu.id 
+        where duan_id = "' . $duan_id . '"';
+
         $result1 = mysqli_query($conn, $sql1);
         $arr = array();
         if ($result1->num_rows > 0) {
@@ -33,7 +35,7 @@ $duan_id = $_GET['id'];
             }
         }
         $length = count($arr);
-        if ($length > 1) {
+        if ($length > 0) {
             for ($count = 0; $count < $length; $count++) {
                 $chucvu = $arr[$count]['chucvu'];
                 $ten = $arr[$count]['ten'];
@@ -72,83 +74,38 @@ $duan_id = $_GET['id'];
         </div>
         <div class="card-body">
 
-        <table class="table table-bordered" width="100%" cellspacing="0">
+            <table class="table table-bordered" width="100%" cellspacing="0">
                 <thead>
                     <tr>
                         <th colspan="2">Thông tin dự án</th>
-                        <th colspan="2"> Thông tin nhân viên</th>
+
                     </tr>
                 </thead>
                 <?php
                 $sqlthongtin = "
-                select tenduan, duan.ngaylap, tinhtrang, hinhanh, chiphi, duan.mota, 
-                nhanvien.ten, chucvu.chucvu, nhanvien.email, taikhoan.tentaikhoan from chitietduan join duan
-                on chitietduan.duan_id = duan.id
-                join nhanvien on chitietduan.nhanvien_id = nhanvien.id
-                join chucvu on chucvu.id = nhanvien.chucvu_id
-                left join taikhoan on taikhoan.id = nhanvien.taikhoan_id
-                where duan_id ='" . $duan_id . "' and nhanvien_id ='" . $_SESSION['nhanvienId'] . "' GROUP by duan.id";
+                select tenduan, duan.ngaylap, tinhtrang, hinhanh, chiphi, duan.mota
+                from duan
+                where id = '" . $duan_id . "' GROUP by duan.id";
                 $resultthongtin = mysqli_query($conn, $sqlthongtin);
                 $rowthongtin = mysqli_fetch_assoc($resultthongtin);
-                if ($resultthongtin->num_rows > 0) {
                 ?>
-                    <tbody>
-                        <tr>
-                            <th> Dự án
-                            </th>
-                            <th>Hình ảnh</th>
-                            <th>Nhân viên</th>
-                            <th>Tài khoản</th>
-                        </tr>
-                        <tr>
-                            <td>Tên dự án: <?= $rowthongtin['tenduan'] ?>
-                                </br>Ngày lập: <?= $rowthongtin['ngaylap'] ?>
-                                </br>Tình trạng: <?= $rowthongtin['tinhtrang'] ?>
-                                </br>Chi phí: <?= $rowthongtin['chiphi'] ?>
-                                </br>Mô tả: <?= $rowthongtin['mota'] ?>
+                <tbody>
+                    <tr>
+                        <th> Dự án
+                        </th>
+                        <th>Hình ảnh</th>
+                    </tr>
+                    <tr>
+                        <td>Tên dự án: <?= $rowthongtin['tenduan'] ?>
+                            </br>Ngày lập: <?= $rowthongtin['ngaylap'] ?>
+                            </br>Tình trạng: <?= $rowthongtin['tinhtrang'] ?>
+                            </br>Chi phí: <?= $rowthongtin['chiphi'] ?>
+                            </br>Mô tả: <?= $rowthongtin['mota'] ?>
 
-                            </td>
-                            <td><img width="150px" src="<?= $rowthongtin['hinhanh'] ?>" alt=""></td>
-                            <td>Tên nhân viên: <?= $rowthongtin['ten'] ?>
-                                <br>Chức vụ: <?= $rowthongtin['chucvu'] ?>
-                                <br>Email: <?= $rowthongtin['email'] ?>
-
-                            </td>
-                            <td>
-                                <?php if (isset($rowthongtin['tentaikhoan'])) {
-                                    echo 'Tài khoản: ' . $rowthongtin['tentaikhoan'] . '';
-                                } else {
-                                    echo 'Nhân viên chưa có tài khoản';
-                                }; ?>
-                            </td>
-                        </tr>
-                    </tbody>
-                <?php } else { ?>
-                    <tbody>
-                        <tr>
-                            <th> Dự án
-                            </th>
-                            <th>Hình ảnh</th>
-                            <th>Nhân viên</th>
-                            <th>Tài khoản</th>
-                        </tr>
-                        <tr>
-                            <td>Tên dự án:
-                                </br>Ngày lập:
-                                </br>Tình trạng:
-                                </br>Chi phí:
-                                </br>Mô tả:
-                            </td>
-                            <td><img width="150px" src="" alt=""></td>
-                            <td>Tên nhân viên:
-                                <br>Chức vụ:
-                                <br>Email:
-                            </td>
-                            <td>
-                            </td>
-                        </tr>
-                    </tbody>
-                <?php } ?>
+                        </td>
+                        <td><img width="150px" src="<?= $rowthongtin['hinhanh'] ?>" alt=""></td>
+                    </tr>
+                </tbody>
             </table>
             <table class="table table-bordered" width="100%" cellspacing="0">
                 <thead>
@@ -171,61 +128,59 @@ $duan_id = $_GET['id'];
                             <tr>
                                 <th><?= $row['chucvu'] ?></th>
 
-                        $sqlchitiet = "select * from chitietduan where duan_id ='" . $duan_id . "' ";
-                        $kq1 = mysqli_query($conn, $sqlchitiet);
-                        $row2 = mysqli_fetch_assoc($kq1);
-                        ?>
-                        <td>
-                            <select name="nhanvien_id" id="">
-                                <option value="<?= $nhanvien['id'] ?>" name="idNhanvien">
-                                    <?php
-                                    echo $nhanvien['tenviettat'] . '-' . $nhanvien['ten'];
-                                    ?>
-                                </option>
-                            </select>
-                        </td>
-                        <?php
-                        if ($kq1->num_rows > 0) {
+                                <?php
+                                $sqlnhanvien = "SELECT ten, tenviettat, nhanvien.id FROM nhanvien join chucvu on nhanvien.chucvu_id = chucvu.id 
+                                where chucvu_id = '" . $i . "'";
+                                $resultnv = $conn->query($sqlnhanvien);
+                                $nhanvien = mysqli_fetch_assoc($resultnv);
 
-                                $sqlchitiet = "select * from chitietduan where duan_id ='" . $duan_id . "'";
+                                $sqlchitiet = "select * from chitietduan join nhanvien on nhanvien.id = chitietduan.nhanvien_id 
+                                join chucvu on chucvu.id = nhanvien.chucvu_id 
+                                where duan_id ='".$duan_id."' and chucvu.id ='" . $i . "'";
                                 $kq1 = mysqli_query($conn, $sqlchitiet);
                                 $row2 = mysqli_fetch_assoc($kq1);
                                 ?>
-                                <td>
-                                    <select name="nhanvien_id" id="">
-                                        <option value="<?= $nhanvien['id'] ?>" name="idNhanvien">
-                                            <?php
-                                            echo $nhanvien['tenviettat'] . '-' . $nhanvien['ten'];
-                                            ?>
-                                        </option>
-                                    </select>
-                                </td>
+
                                 <?php
                                 if ($kq1->num_rows > 0) {
-
-                                ?>
-                                    <input type="hidden" name="chitietduan_id" value="<?= $row2['id'] ?>">
-                                    <td>
-                                        <input class="form-control" style="wordwrap" id="txttenduan" type="text" placeholder="" value="<?= $row2['task']; ?>" name="task" />
+                                ?><td>
+                                        <select name="nhanvien_id<?= $i ?>" id="">
+                                            <option value="<?= $nhanvien['id'] ?>" name="nhanvien_id">
+                                                <?php
+                                                echo $nhanvien['tenviettat'] . '-' . $nhanvien['ten'];
+                                                ?>
+                                            </option>
+                                        </select>
                                     </td>
                                     <td>
-                                        <input class="form-control" id="txttenduan" type="text" placeholder="" value="<?= $row2['ngaybatdau']; ?>" name="ngaybatdau" />
+                                        <input class="form-control" style="wordwrap" id="txttenduan" type="text" placeholder="" value="<?= $row2['task']; ?>" name="task<?= $i ?>" />
                                     </td>
                                     <td>
-                                        <input class="form-control" id="txttenduan" type="text" placeholder="" value="<?= $row2['ngayketthuc']; ?>" name="ngayketthuc" />
+                                        <input class="form-control" id="txttenduan" type="date" placeholder="" value="<?= $row2['ngaybatdau']; ?>" name="ngaybatdau<?= $i ?>" />
+                                    </td>
+                                    <td>
+                                        <input class="form-control" id="txttenduan" type="date" placeholder="" value="<?= $row2['ngayketthuc']; ?>" name="ngayketthuc<?= $i ?>" />
                                     </td>
 
                                 <?php  } else { ?>
                                     <input type="hidden" name="chitietduan_id" value="0">
-
                                     <td>
-                                        <input class="form-control" style="wordwrap" id="txttenduan" type="text" placeholder="" value="" name="task" />
+                                        <select name="nhanvien_id<?= $i ?>" id="">
+                                            <option value="<?= $nhanvien['id'] ?>" name="nhanvien_id">
+                                                <?php
+                                                echo $nhanvien['tenviettat'] . '-' . $nhanvien['ten'];
+                                                ?>
+                                            </option>
+                                        </select>
                                     </td>
                                     <td>
-                                        <input class="form-control" id="txttenduan" type="date" placeholder="" value="" name="ngaybatdau" />
+                                        <input class="form-control" style="wordwrap" id="txttenduan" type="text" placeholder="" value="" name="task<?= $i ?>" />
                                     </td>
                                     <td>
-                                        <input class="form-control" id="txttenduan" type="date" placeholder="" value="" name="ngayketthuc" />
+                                        <input class="form-control" id="txttenduan" type="date" placeholder="" value="" name="ngaybatdau<?= $i ?>" />
+                                    </td>
+                                    <td>
+                                        <input class="form-control" id="txttenduan" type="date" placeholder="" value="" name="ngayketthuc<?= $i ?>" />
                                     </td>
                         <?php
                                 }
@@ -235,14 +190,13 @@ $duan_id = $_GET['id'];
                 </tbody>
 
             </table>
-            <input type="hidden" name="duan_id" value="<?= $row2['duan_id'] ?>">
-            <input type="hidden" name="nhanvien_id" value="<?= $row2['nhanvien_id'] ?>">
-            <input type="hidden" name="tenduan" value="<?= $row2['tenduan'] ?>">
-            <input type="hidden" name="img" value="<?= $row2['hinhanh'] ?>">
-            <div style="text-align: center">
+            <input type="hidden" name="duan_id" value="<?= $duan_id ?>">
+
             <input type="submit" value="Lưu" name="submitpccv">
-            <div class="btn" onclick="closeFrmpccv()">Hủy</div></div>
+            <div class="btn" onclick="closeFrmpccv()">Hủy</div>
+
         </div>
+    </div>
     </div>
 </form>
 
@@ -250,44 +204,4 @@ $duan_id = $_GET['id'];
     function closeFrmpccv() {
         document.getElementById('frmpccv').style.display = 'none';
     };
-
-    function validateForm() {
-        var tenduan = document.forms["formsuaduan"]["tenduan"].value;
-        var maloaiduan = document.forms["formsuaduan"]["loaiduan_id"].value;
-        var ytuong = document.forms["formsuaduan"]["tenytuong"].value;
-        var tenbaocao = document.forms["formsuaduan"]["tenbaocao"].value;
-        var tinhtrang = document.forms["formsuaduan"]["tinhtrang"].value;
-        var chiphi = document.forms["formsuaduan"]["chiphi"].value;
-
-        if (tenduan.trim() == "") {
-            alert("Bạn phải chọn nhập tên dự án .");
-            document.forms["formsuaduan"]["txttenduan"].focus();
-            return false;
-        }
-        if (maloaiduan.trim() == "") {
-            alert("Bạn phải nhập mã loai dự án");
-            document.forms["formsuaduan"]["loaiduan_id"].focus();
-            return false;
-        }
-        if (ytuong.trim() == "") {
-            alert("Bạn phải nhập ý tưởng ");
-            document.forms["formsuaduan"]["tenytuong"].focus();
-            return false;
-        }
-        if (tenbaocao.trim() == "") {
-            alert("Bạn phải nhập tên báo cáo ");
-            document.forms["formsuaduan"]["tenbaocao"].focus();
-            return false;
-        }
-        if (tingtrang.trim() == "") {
-            alert("Bạn phải nhập tinh trạng ");
-            document.forms["formsuaduan"]["tinhtrang"].focus();
-            return false;
-        }
-        if (chiphi.trim() == "") {
-            alert("Bạn phải nhập chi phí  ");
-            document.forms["formsuaduan"]["chiphi"].focus();
-            return false;
-        }
-    }
 </script>
