@@ -33,3 +33,4 @@ if (isset($_POST['submitpccv'])) {
    // $sql2 = " INSERT INTO noti (tenduan,img,loai,tennhanvien,text,noti_status, duan_id) VALUES ('" . $tenduan . "','" . $img . "','" . $loaifile . "','" . $_SESSION['tentaikhoan'] . "','dự án',0,'" . $duan_id . "')";
    // $kq = mysqli_query($ket_noi, $sql2);
 }
+
