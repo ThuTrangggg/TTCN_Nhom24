@@ -17,7 +17,7 @@ $duan_id = $_GET['id'];
     </thead>
     <tbody>
         <?php
-        $sql1 = 'select chucvu.id, chucvu.chucvu, nhanvien.ten, task,pheduyet,ngaybatdau,ngayketthuc from chitietduan join nhanvien on chitietduan.nhanvien_id = nhanvien.id 
+        $sql1 = 'select chucvu.id, chucvu.chucvu, nhanvien.ten, task,ngaybatdau,ngayketthuc from chitietduan join nhanvien on chitietduan.nhanvien_id = nhanvien.id 
         join chucvu on nhanvien.chucvu_id = chucvu.id where duan_id = "' . $duan_id . '" and nhanvien_id ="' . $_SESSION['nhanvienId'] . '" ORDER by chucvu desc, ngaynop asc';
         // echo $_SESSION['nhanvienId'];
         $result1 = mysqli_query($conn, $sql1);
@@ -26,7 +26,7 @@ $duan_id = $_GET['id'];
             while ($row1 = mysqli_fetch_assoc($result1)) {
                 $arr[]  = array(
                     'chucvu' => $row1['chucvu'], 'ten' => $row1['ten'],
-                    'task' => $row1['task'], 'ngaynop' => $row1['ngaynop'], 'pheduyet' => $row1['pheduyet'], 'ngaybatdau' => $row1['ngaybatdau'],
+                    'task' => $row1['task'], 'ngaybatdau' => $row1['ngaybatdau'],
                     'ngayketthuc' => $row1['ngayketthuc']
 
                 );
@@ -41,7 +41,7 @@ $duan_id = $_GET['id'];
                 $ngaybatdau = date('d-m-Y', strtotime($arr[$count]['ngaybatdau']));
                 $ngayketthuc = date('d-m-Y', strtotime($arr[$count]['ngayketthuc']));
 
-                ?>
+        ?>
                 <tr style="font-size: 14px;">
                     <th><?php echo $chucvu ?></th>
                     <td> <?php echo $ten ?> </td>
@@ -71,6 +71,85 @@ $duan_id = $_GET['id'];
             </center>
         </div>
         <div class="card-body">
+
+        <table class="table table-bordered" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th colspan="2">Thông tin dự án</th>
+                        <th colspan="2"> Thông tin nhân viên</th>
+                    </tr>
+                </thead>
+                <?php
+                $sqlthongtin = "
+                select tenduan, duan.ngaylap, tinhtrang, hinhanh, chiphi, duan.mota, 
+                nhanvien.ten, chucvu.chucvu, nhanvien.email, taikhoan.tentaikhoan from chitietduan join duan
+                on chitietduan.duan_id = duan.id
+                join nhanvien on chitietduan.nhanvien_id = nhanvien.id
+                join chucvu on chucvu.id = nhanvien.chucvu_id
+                left join taikhoan on taikhoan.id = nhanvien.taikhoan_id
+                where duan_id ='" . $duan_id . "' and nhanvien_id ='" . $_SESSION['nhanvienId'] . "' GROUP by duan.id";
+                $resultthongtin = mysqli_query($conn, $sqlthongtin);
+                $rowthongtin = mysqli_fetch_assoc($resultthongtin);
+                if ($resultthongtin->num_rows > 0) {
+                ?>
+                    <tbody>
+                        <tr>
+                            <th> Dự án
+                            </th>
+                            <th>Hình ảnh</th>
+                            <th>Nhân viên</th>
+                            <th>Tài khoản</th>
+                        </tr>
+                        <tr>
+                            <td>Tên dự án: <?= $rowthongtin['tenduan'] ?>
+                                </br>Ngày lập: <?= $rowthongtin['ngaylap'] ?>
+                                </br>Tình trạng: <?= $rowthongtin['tinhtrang'] ?>
+                                </br>Chi phí: <?= $rowthongtin['chiphi'] ?>
+                                </br>Mô tả: <?= $rowthongtin['mota'] ?>
+
+                            </td>
+                            <td><img width="150px" src="<?= $rowthongtin['hinhanh'] ?>" alt=""></td>
+                            <td>Tên nhân viên: <?= $rowthongtin['ten'] ?>
+                                <br>Chức vụ: <?= $rowthongtin['chucvu'] ?>
+                                <br>Email: <?= $rowthongtin['email'] ?>
+
+                            </td>
+                            <td>
+                                <?php if (isset($rowthongtin['tentaikhoan'])) {
+                                    echo 'Tài khoản: ' . $rowthongtin['tentaikhoan'] . '';
+                                } else {
+                                    echo 'Nhân viên chưa có tài khoản';
+                                }; ?>
+                            </td>
+                        </tr>
+                    </tbody>
+                <?php } else { ?>
+                    <tbody>
+                        <tr>
+                            <th> Dự án
+                            </th>
+                            <th>Hình ảnh</th>
+                            <th>Nhân viên</th>
+                            <th>Tài khoản</th>
+                        </tr>
+                        <tr>
+                            <td>Tên dự án:
+                                </br>Ngày lập:
+                                </br>Tình trạng:
+                                </br>Chi phí:
+                                </br>Mô tả:
+                            </td>
+                            <td><img width="150px" src="" alt=""></td>
+                            <td>Tên nhân viên:
+                                <br>Chức vụ:
+                                <br>Email:
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                    </tbody>
+                <?php } ?>
+            </table>
             <table class="table table-bordered" width="100%" cellspacing="0">
                 <thead>
                     <tr>
@@ -137,7 +216,7 @@ $duan_id = $_GET['id'];
                                     <td>
                                         <input class="form-control" id="txttenduan" type="date" placeholder="" value="" name="ngayketthuc" />
                                     </td>
-                                <?php
+                        <?php
                                 }
                             }
                         } ?>
@@ -145,8 +224,13 @@ $duan_id = $_GET['id'];
                 </tbody>
 
             </table>
-            <input type="submit" value="Lưu">
-            <div class="btn" onclick="closeFrmpccv()">Hủy</div>
+            <input type="hidden" name="duan_id" value="<?= $row2['duan_id'] ?>">
+            <input type="hidden" name="nhanvien_id" value="<?= $row2['nhanvien_id'] ?>">
+            <input type="hidden" name="tenduan" value="<?= $row2['tenduan'] ?>">
+            <input type="hidden" name="img" value="<?= $row2['hinhanh'] ?>">
+            <div style="text-align: center">
+            <input type="submit" value="Lưu" name="submitpccv">
+            <div class="btn" onclick="closeFrmpccv()">Hủy</div></div>
         </div>
     </div>
 </form>
@@ -154,8 +238,6 @@ $duan_id = $_GET['id'];
 <script type="text/javascript">
     function closeFrmpccv() {
         document.getElementById('frmpccv').style.display = 'none';
-        // document.getElementById("frmAdd").style.display = 'none';
-
     };
 
     function validateForm() {

@@ -72,7 +72,7 @@ $duan_id = $_GET['id'];
                             </div>
                         </div>
                     </div>
-                    <!-- BẢNG TIẾN ĐỘ -->
+                    <!-- BẢNG PCCV -->
 
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
@@ -92,7 +92,7 @@ $duan_id = $_GET['id'];
                                 <?php
                                 $sqlcheck = "select * from chitietduan where duan_id = '" . $duan_id . "'";
                                 $result = mysqli_query($conn, $sqlcheck);
-                                // include "table_phanchiacv.php";
+                                 include "table_phanchiacv.php";
                                 ?>
                             </div>
                         </div>
