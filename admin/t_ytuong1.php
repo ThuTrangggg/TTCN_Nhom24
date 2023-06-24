@@ -8,7 +8,7 @@ if (isset($_POST["upload"])) {
     $file_type = $_FILES['noidung']['type'];
     $file_parts = explode('.', $_FILES['noidung']['name']);
     $file_ext = strtolower(end($file_parts));
-    $expensions = array("docx", "pdf");
+    $expensions = array("docx", "pdf","jpg","png");
     if (in_array($file_ext, $expensions) === false) {
         $errors[] = "Chỉ hỗ trợ upload file docx hay pdf.";
     }
@@ -33,5 +33,6 @@ if (isset($_POST["upload"])) {
         echo '<script language="javascript">alert("Đã upload thất bại!");</script>';
     }
 }
-$result = mysqli_query($conn, "SELECT * FROM ytuong");
+$sql1="SELECT * FROM ytuong";
+$result = mysqli_query($conn, $sql1);
 ?>
