@@ -1,28 +1,26 @@
 <?php
-if (isset($_POST["submit"]))
- {
-     #retrieve file title
-        $title = $_POST["title"];
-     
+if (isset($_POST["submit"])) {
+    #retrieve file title
+    $title = $_POST["title"];
+
     #file name with a random number so that similar dont get replaced
-     $pname = rand(1000,10000)."-".$_FILES["file"]["name"];
- 
+    $pname = rand(1000, 10000) . "-" . $_FILES["file"]["name"];
+
     #temporary file name to store file
     $tname = $_FILES["file"]["tmp_name"];
-   
-     #upload directory path
-$uploads_dir = 'images';
+
+    #upload directory path
+    $uploads_dir = 'images';
     #TO move the uploaded file to specific location
-    move_uploaded_file($tname, $uploads_dir.'/'.$pname);
- 
+    move_uploaded_file($tname, $uploads_dir . '/' . $pname);
+
     #sql query to insert into database
     $sql = "INSERT into fileup(title,image) VALUES('$title','$pname')";
- 
-    if(mysqli_query($conn,$sql)){
- 
-    echo "File Sucessfully uploaded";
-    }
-    else{
+
+    if (mysqli_query($conn, $sql)) {
+
+        echo "File Sucessfully uploaded";
+    } else {
         echo "Error";
     }
 }
@@ -149,7 +147,6 @@ $duan_id = $_GET['id'];
                 <th>Ngày kết thúc</th>
             </tr>
         </thead>
-
         <tbody>
             <?php
             $sql = "select * from chucvu where id >1";
@@ -187,12 +184,6 @@ $duan_id = $_GET['id'];
                                 <input class="form-control" style="wordwrap" id="txttenduan" type="text" placeholder="" value="<?= $row2['task']; ?>" name="task" />
                             </td>
                             <td>
-                                <select name="pheduyet" id="">
-                                    <option value="Phê duyệt">Phê duyệt</option>
-                                    <option value="Phê duyệt">Không phê duyệt</option>
-                                </select>
-                            </td>
-                            <td>
                                 <input class="form-control" id="txttenduan" type="text" placeholder="" value="<?= $row2['ngaybatdau']; ?>" name="ngaybatdau" />
                             </td>
                             <td>
@@ -204,22 +195,6 @@ $duan_id = $_GET['id'];
 
                             <td>
                                 <input class="form-control" style="wordwrap" id="txttenduan" type="text" placeholder="" value="" name="task" />
-                            </td>
-                            <td>
-                                <input class="form-control" id="key" type="text" placeholder="" value="" name="phantram" />
-                            </td>
-                            <td>
-                                <input class="form-control" id="txttenduan" type="text" placeholder="" value="" name="tiendo" />
-                                <!-- <textarea name="" id="" w cols="30" rows="10"></textarea> -->
-                            </td>
-                            <td>
-                                <input class="form-control" style="wordwrap" id="txttenduan" type="text" placeholder="" value="" name="file" />
-                            </td>
-                            <td>
-                                <select name="" id="">
-                                    <option value="Phê duyệt">Phê duyệt</option>
-                                    <option value="Phê duyệt">Không phê duyệt</option>
-                                </select>
                             </td>
                             <td>
                                 <input class="form-control" id="txttenduan" type="date" placeholder="" value="" name="ngaybatdau" />
@@ -240,11 +215,12 @@ $duan_id = $_GET['id'];
 </form>
 
 <script type="text/javascript">
-    function closeFrmpccv(){
+    function closeFrmpccv() {
         document.getElementById('frmpccv').style.display = 'none';
         // document.getElementById("frmAdd").style.display = 'none';
 
     };
+
     function validateForm() {
         var tenduan = document.forms["formsuaduan"]["tenduan"].value;
         var maloaiduan = document.forms["formsuaduan"]["loaiduan_id"].value;
