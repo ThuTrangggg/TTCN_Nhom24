@@ -173,110 +173,111 @@ $duan_id = $_GET['id'];
                         </div>
                     <?php } ?>
 
-
                 </div>
-                <!-- End of Main Content -->
-
-                <!-- Footer -->
-
-
-                <!-- End of Footer -->
-
             </div>
-            <!-- End of Content Wrapper -->
-            <div id="frmAdd" class="justify-content-center">
-                <div class="card shadow-lg border-0 rounded-lg mt-5">
-                    <div class="card-header">
-                        <h3 class="text-center font-weight-light my-4">Thêm mới dự án </h3>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+
+
+            <!-- End of Footer -->
+
+        </div>
+    </div>
+    <!-- End of Content Wrapper -->
+    <div id="frmAdd" class="justify-content-center">
+        <div class="card shadow-lg border-0 rounded-lg mt-5">
+            <div class="card-header">
+                <h3 class="text-center font-weight-light my-4">Thêm mới dự án </h3>
+            </div>
+            <div class="card-body">
+                <form method="POST" id="noti_frm" action="duan/duan_them.php" enctype="multipart/form-data">
+                    <div class="form-floating mb-3">
+                        <label for="txttenduan">Tên dự án </label>
+                        <input class="form-control" id="txttenduan" type="text" placeholder="Tên dự án" name="txttenduan" />
                     </div>
-                    <div class="card-body">
-                        <form method="POST" id="noti_frm" action="duan/duan_them.php" enctype="multipart/form-data">
-                            <div class="form-floating mb-3">
-                                <label for="txttenduan">Tên dự án </label>
-                                <input class="form-control" id="txttenduan" type="text" placeholder="Tên dự án" name="txttenduan" />
-                            </div>
-                            <!-- <div class="form-floating mb-3">
+                    <!-- <div class="form-floating mb-3">
                             <label for="txtmaloaiduan">Mã loại dự án </label>
                             <input class="form-control" id="txtmaloaiduan" type="text" placeholder="Mã loại dự án " name="txtmaloaiduan" />
                         </div> -->
-                            <div class="form-floating mb-3">
-                                <label for="txtmaloaiduan">Loại dự án </label>
-                                <select class="form-control" name="txtmaloaiduan" id="txtmaloaiduan">
-                                    <Option value="#"></Option>
+                    <div class="form-floating mb-3">
+                        <label for="txtmaloaiduan">Loại dự án </label>
+                        <select class="form-control" name="txtmaloaiduan" id="txtmaloaiduan">
+                            <Option value="#"></Option>
 
-                                    <?php $sql = "SELECT *
+                            <?php $sql = "SELECT *
                                     FROM loaiduan";
-                                    $result = $conn->query($sql);
-                                    if ($result->num_rows > 0) {
-                                        $i = 1;
-                                        while ($loaiduan = $result->fetch_assoc()) {
-                                    ?>
-                                            <option value="<?= $loaiduan['id'] ?>"><?= $loaiduan['ten_loai_du_an'] ?></option>
-                                    <?php }
-                                    } ?>
-                                </select>
-                            </div>
-                            <!-- <div class="form-floating mb-3">
+                            $result = $conn->query($sql);
+                            if ($result->num_rows > 0) {
+                                $i = 1;
+                                while ($loaiduan = $result->fetch_assoc()) {
+                            ?>
+                                    <option value="<?= $loaiduan['id'] ?>"><?= $loaiduan['ten_loai_du_an'] ?></option>
+                            <?php }
+                            } ?>
+                        </select>
+                    </div>
+                    <!-- <div class="form-floating mb-3">
                             <label for="txtytuong">Ý tưởng </label>
                             <input class="form-control" id="txtytuong" type="text" placeholder="Ý tưởng" name="txtytuong" />
                         </div> -->
-                            <!-- <div class="form-floating mb-3">
+                    <!-- <div class="form-floating mb-3">
                             <label for="txttenbaocao">Tên báo cáo  </label>
                             <input class="form-control" id="txttenbaocao" type="text" placeholder="Tên báo cáo " name="txttenbaocao" />
                         </div> -->
-                            <div class="form-floating mb-3">
-                                <label for="txttinhtrang">Tình trạng </label>
-                                <select class="form-control" name="txttinhtrang" id="txtmaloaiduan">
-                                    <Option value="#"></Option>
-                                    <option value="1">Đang thực hiện</option>
-                                    <option value="2">Hoàn thành</option>
-                                    <option value="3">Tạm dừng</option>
+                    <div class="form-floating mb-3">
+                        <label for="txttinhtrang">Tình trạng </label>
+                        <select class="form-control" name="txttinhtrang" id="txtmaloaiduan">
+                            <Option value="#"></Option>
+                            <option value="1">Đang thực hiện</option>
+                            <option value="2">Hoàn thành</option>
+                            <option value="3">Tạm dừng</option>
 
-                                    <!-- <option value="3">3</option> -->
-                                </select>
-                            </div>
-                            <div class="form-floating mb-3">
-                                <label for="txtchiphi">Chi phí </label>
-                                <input class="form-control" id="txtchiphi" type="text" placeholder="Chi phí  " name="txtchiphi" />
-                            </div>
-                            <div class="form-floating mb-3">
-                                <label for="txtchiphi">Mô tả</label>
-                                <input class="col-sm-4 form-control" id="txtchiphi" type="text" placeholder="Mô tả dự án" name="txtmota" />
-                                <input class="col-sm-4 form-control" id="txtchiphi" type="file" placeholder="Mô tả dự án" name="txtmota" />
-                            </div>
-                            <div class="form-floating mb-3">
-                                <label for="txtchiphi">Hình ảnh</label>
-                                <input class="col-sm-4 form-control" id="txtchiphi" type="text" placeholder="Mô tả dự án" name="txthinhanh" />
-                                <input class="col-sm-4 form-control" id="txtchiphi" type="file" placeholder="Mô tả dự án" name="txthinhanh" />
-                            </div>
-                            <!-- <div class="form-floating mb-3">
+                            <!-- <option value="3">3</option> -->
+                        </select>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <label for="txtchiphi">Chi phí </label>
+                        <input class="form-control" id="txtchiphi" type="text" placeholder="Chi phí  " name="txtchiphi" />
+                    </div>
+                    <div class="form-floating mb-3">
+                        <label for="txtchiphi">Mô tả</label>
+                        <input class="col-sm-4 form-control" id="txtchiphi" type="text" placeholder="Mô tả dự án" name="txtmota" />
+                        <input class="col-sm-4 form-control" id="txtchiphi" type="file" placeholder="Mô tả dự án" name="txtmota" />
+                    </div>
+                    <div class="form-floating mb-3">
+                        <label for="txtchiphi">Hình ảnh</label>
+                        <input class="col-sm-4 form-control" id="txtchiphi" type="text" placeholder="Mô tả dự án" name="txthinhanh" />
+                        <input class="col-sm-4 form-control" id="txtchiphi" type="file" placeholder="Mô tả dự án" name="txthinhanh" />
+                    </div>
+                    <!-- <div class="form-floating mb-3">
                             <label for="txtchiphi">Hình ảnh </label>
                             <input class="form-control" id="txtimg" type="file" placeholder="Hình ảnh" name="txtimg" />
                         </div> -->
-                            <div class="mt-4 mb-0 btn-frm">
-                                <ul>
-                                    <li>
+                    <div class="mt-4 mb-0 btn-frm">
+                        <ul>
+                            <li>
 
-                                        <input type="submit" class="btn" name="btnSubmit" value="Thêm">
-                                    </li>
-                                    <li>
+                                <input type="submit" class="btn" name="btnSubmit" value="Thêm">
+                            </li>
+                            <li>
 
-                                        <div class="btn" onclick="closeFrm()">Hủy</div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </form>
-
+                                <div class="btn" onclick="closeFrm()">Hủy</div>
+                            </li>
+                        </ul>
                     </div>
-                </div>
-            </div>
-            <script>
-                function closeFrm() {
-                    document.getElementById("frmAdd").style.display = 'none';
-                }
-            </script>
-            <!-- End of Page Wrapper -->
+                </form>
 
+            </div>
+        </div>
+    </div>
+    <script>
+        function closeFrm() {
+            document.getElementById("frmAdd").style.display = 'none';
+        }
+    </script>
+    <!-- End of Page Wrapper -->
+    </div>
 </body>
 
 <?php

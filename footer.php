@@ -110,9 +110,9 @@
             load_unseen_notification('yes');
         });
 
-        // setInterval(function() {
-        //     load_unseen_notification();;
-        // }, 2000);
+        setInterval(function() {
+            load_unseen_notification();;
+        }, 2000);
 
     });
 </script>
