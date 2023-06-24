@@ -26,7 +26,7 @@ echo "
     ";
 
 $sql2 = "
-    INSERT INTO noti (tenduan,img,loai,tennhanvien,text,noti_status) VALUES ('" . $tenduan . "','" . $img . "','dự án','" . $tenTaikhoan . "','thêm dự án',0)";
+    INSERT INTO noti (tenduan,img,loai,tennhanvien,text,noti_status,from_roleid, to) VALUES ('" . $tenduan . "','" . $img . "','dự án','" . $tenTaikhoan . "','thêm dự án',0,'".$_SESSION['role_id']."')";
 $kq = mysqli_query($ket_noi, $sql2);
 
     // $sql2 = "

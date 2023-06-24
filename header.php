@@ -90,7 +90,7 @@ include("head.php");
 
                         </div>
                     </a> -->
-                    <ul id="noti" class="dropdown-notice dropdown-menu dropdown-menu-right shadow animated--grow-in" style="height: 431px; overflow-y:scroll" aria-labelledby="alertsDropdown">
+                    <ul id="noti" class="dropdown-notice dropdown-menu dropdown-menu-right shadow animated--grow-in" style="max-width: 400px;height: 431px;    overflow-x: hidden; overflow-y:scroll" aria-labelledby="alertsDropdown">
                     
                     </ul>
                 </div>

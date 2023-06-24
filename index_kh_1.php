@@ -1,9 +1,7 @@
-
 <!DOCTYPE html>
 <?php include 'connect.php';
 include 'head.php';
 session_start();
-
 ?>
 <html lang="en">
 
@@ -18,7 +16,6 @@ session_start();
 </head>
 
 <body>
-<div id="content wrapper">
     <div id="main">
         <div id="header">
             <!-- Begin nav -->
@@ -151,112 +148,127 @@ session_start();
                     </div>
                 </div> -->
             </div>
+
+            <!-- TOUR SECTION -->
             <div id="band" class="tour-section">
-           
                 <div class="content-section">
-                    <h2 class="section-heading text-black" >ỨNG DỤNG </h2> <!--Sử dụng lại ở các phần dưới -->
-                    <p class="section-sub-heading text-black">Sản phẩm nổi bật </p>
-                
-           
-                    <!-- <div class="second row" style="margin-right: 30px; padding-left:80px"> -->
-      <div class="col-sm-2">
-        <!-- <p class="heading-slick">Hàng mới</p> -->
-      </div>
-      <div class="col-sm-10">
-        <div class="row slick ">
-          <!-- <div class="row"> -->
+                    <h2 class="section-heading text-white">ỨNG DỤNG </h2> <!--Sử dụng lại ở các phần dưới -->
+                    <p class="section-sub-heading text-white">Sản phẩm nổi bật </p>
+                    </script>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered"  width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Ảnh </th>
+                                        <th>Tên dự án </th>
+                                        <th>Tình trạng</th>
+                                    </tr>
+                                </thead>
 
-          <!-- <div class="slick"> -->
-          <?php $sql = "SELECT *from duan ";
-          // -- ORDER by created_date DESC ";
-          $ketquatruyvan = $conn->query($sql);
-          if ($ketquatruyvan->num_rows > 0) {
-            $i = 0;
-            while ($duan = $ketquatruyvan->fetch_assoc()) {
-              // if ($i % 3 == 0) {
-          ?>
-              <?php
-              // }
-              ?>
-              <div class="col-sm-3">
-                <div class="info">
-                  <div class="panel-body" style="padding: 0">
-                    <a href="index_kh_duan.php?id=<?= $duan['id'] ?>">
-                      <img src="<?php echo $duan['hinhanh'] ?>" class="img-responsive" style=" width:100%; object-fit: contain;border-radius: 30px;" alt="Image">
-                    </a>
-                  </div>
-                  <div class="panel-heading text-center">
-                    <a style="color: black;" href="index_kh_duan.php?id=<?= $duan['id'] ?>">
-                      <?php echo $duan['tenduan']; ?>
-                    </a>
-                  </div>
-                  <div class="text-center row">
-                    <?php
-                     ?></p>
-                  </div>
-                  <div class="row row-hide">
-                    <!-- <div class="row like" style="position: absolute; left: 265px;
-    bottom: 140px;">
-                      <a href="./Nhom14/danh_sach_mat_hang/chi_tiet_mat_hang.php?id=<?= $matHang['sanpham_id'] ?>" style="text-decoration: none; color: #000">
+                                <?php
 
-                        <button ><i class="fa-regular fa-heart" style=" translate: 77px 0;border: none; box-shadow: 0 2px 4px rgb(0 0 0 / 16%); border-radius: 20px; width: 30px; height: 30px; font-size: 18px; background-color: white;"></i></button>
-                      </a>
-                    </div> -->
-                    <div class="row tt" style="position: absolute;bottom: 100px;margin-left:40px">
-                      <div class="col-md-6">
-                        <!-- <select name="size" id="" style="border: none; outline: none; width: 150px; height: 25px; /* border-radius: 20px; */ text-align: center; font-size: 13px; translate: 20px 0;">
-                          <option value="Size">Size</option>
-                          <option value="S">S</option>
-                          <option value="M">M</option>
-                          <option value="L">L</option>
-                          <option value="XL">XL</option>
-                          <option value="XXL">XXL</option>
-                        </select> -->
-                      </div>
-                      <div class="col-md-6" style="position: absolute;
-    left: 169px;">
-                        <a href="index_kh_duan.php?id=<?= $duan['id'] ?>" style="text-decoration: none;">
+                                $servername = "localhost";
+                                $username = "root";
+                                $password = "";
+                                $dbname = "nhom_24";
+                                // tạo kết nối
+                                $conn = new mysqli($servername, $username, $password, $dbname);
+                                // kiểm kết nối
+                                if ($conn->connect_error) {
+                                    die("Connection failed: " . $conn->connect_error);
+                                }
+                                $sql = "SELECT id, hinhanh, tenduan, tinhtrang FROM duan ";
+                                $result = $conn->query($sql);
+                                if ($result->num_rows > 0) {
+                                    // Load dữ liệu lên website
+                                    while ($duan = $result->fetch_assoc()) {
+                                ?>
+                                        <tbody>
+                                            <tr>
+                                                <td><?= $duan['id'] ?></td>
+                                                <!-- <td>
+                                                    <img width="100px" src="<?= $duan['hinhanh'] ?>" alt="">
+                                                </td> -->
+                                                <td>
+                                                        <a href=" index_kh_duan.php?id=<?= $duan['id'] ?>">
+                                                            <img width="50px" height="50px" style="object-fit: contain" src="<?= $duan['hinhanh'] ?>" alt="">
+                                                        </a>
+                                                    </td>
+                                                    <td>
+                                                        <a href=" index_kh_duan.php?id=<?= $duan['id'] ?>" style="text-decoration: none; color: #858796">
 
-                          <!-- <input type="submit" class="button-capnhat text-uppercase offset-md-1 btn col-md-6" style="outline:none; background-color: #000; border-radius: 0; color: #fff; height: 25px; width: 150px; font-size: 13px; line-height: 14px;" name="btnSubmit" value="Thêm"> -->
-                        </a>
-                      </div>
+                                                            <?= $duan['tenduan'] ?>
+                                                        </a>
+                                                    </td>
+
+                                                <td><?= $duan['tinhtrang'] ?></td>
+
+
+                                        </tbody>
+                                <?php
+                                    }
+                                }
+                                ?>
+                            </table>
+                        </div>
                     </div>
-                  </div>
                 </div>
 
-              </div>
-              <?php
-              // if ($i % 3 == 2) {
-              ?>
-              <!-- <br> -->
-          <?php
-            }
-            // $i++;
-          }
-          // }
-          ?>
+            </div>
+
+            <!-- while($colum = $result->fetch_assoc()) {
+ echo "id: " . $colum["id"]. " - Tên dự án: " . $colum["tenduan"].  " - hình ảnh: ". $colum["hinhanh"]. " - Tình trạng: ". $colum["tinhtrang"]."<br>";
+}
+} else {
+echo "0 results";
+ }
+$conn->close();
+?> -->
+
+            <!-- <ul class="tickets-list">
+                        <li>September <span class="Sold-out">Sold out</span></li>
+                        <li>October <span class="Sold-out">Sold out</span></li>
+                        <li>November <span class="quantity">3</span></li>
+                    </ul>-->
+
+            <!-- Places -->
+            <!-- <div class="place-lists row">
+                        <div class="place-item col col-third">
+                            <img src="./assets/img/newyork.jpg" alt="Newyork" class="place-img">
+                            <div class="place-body">
+                                <h3 class="place-heading">Newyork</h3>
+                                <p class="place-time">Fri 27 Nov 2016</p>
+                                <p class="place-desc">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
+                                <a href="" class="btn">Buy Tickets</a>
+                            </div>
+                        </div>
+                        <div class="place-item col col-third">
+                            <img src="./assets/img/paris.jpg" alt="Newyork" class="place-img">
+                            <div class="place-body">
+                                <h3 class="place-heading">Paris</h3>
+                                <p class="place-time">Sat 28 Nov 2016</p>
+                                <p class="place-desc">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
+                                <a href="" class="btn">Buy Tickets</a>
+                            </div>
+                        </div>
+                        <div class="place-item col col-third">
+                            <img src="./assets/img/sanfran.jpg" alt="Newyork" class="place-img">
+                            <div class="place-body">
+                                <h3 class="place-heading">San Francisco</h3>
+                                <p class="place-time">Sun 29 Nov 2016</p>
+                                <p class="place-desc">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
+                                <a href="" class="btn">Buy Tickets</a>
+                            </div>
+                        </div> -->
+            <!-- <div class="clear"></div>  Sử dụng để khắc phục vấn đề float : Đã thay thế bằng row::after -->
         </div>
-      </div>
     </div>
-  </div>
+    </div>
 
-  <script>
-    $(document).ready(function() {
-      $('.slick').slick({
-        infinite: true,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        prevArrow: "<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
-        nextArrow: "<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>"
-      });
-    });
-  </script>
-  </div>
-
-    
     <!-- Begin CONTACT SECTION -->
-    <div id="lh" class="content-section" style=" margin-left: 450px;
-"> 
+    <div id="lh" class="content-section" style=" margin-left: 450px;"> 
         <h2 class="section-heading">CONTACT APERO</h2> <!--Sử dụng lại ở các phần dưới -->
         <!-- <p class="section-sub-heading">Fan? Drop a note!</p> -->
         <div class="map-section">

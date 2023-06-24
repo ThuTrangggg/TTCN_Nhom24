@@ -58,11 +58,10 @@
                                             <th>STT</th>
                                             <th>Hình ảnh</th>
                                             <th>Tên dự án</th>
-                                            <th>Mã loai dự án </th>
-                                            <th>Ý tưởng </th>
-                                            <th>Tên báo cáo </th>
+                                            <th>Loại dự án </th>
                                             <th>Tình trạng </th>
                                             <th>Chi phí </th>
+                                            <th>Ngày lập</th>
                                             <th>Sửa</th>
                                             <th>Xóa</th>
 
@@ -73,11 +72,10 @@
                                             <th>STT</th>
                                             <th>Hình ảnh</th>
                                             <th>Tên dự án</th>
-                                            <th>mã loai dự án </th>
-                                            <th>Ý tưởng </th>
-                                            <th>Kế hoạch quảng cáo </th>
-                                            <th>báo cáo </th>
-                                            <th>Feedback</th>
+                                            <th>Loai dự án </th>
+                                            <th>Tình trạng </th>
+                                            <th>Chi phí</th>
+                                            <th>Ngày lập</th>
                                             <th>Sửa</th>
                                             <th>Xóa</th>
                                         </tr>
@@ -86,9 +84,8 @@
                                     // $sql = "SELECT hinhanh,tenduan,loaiduan_id,tenytuong,tenbaocao,tenKHQC, noidung
                                     // from duan join ytuong
                                     // on duan_id = ytuong.duan_id order by duan.ytuong asc, id";
-                                    $sql = "SELECT duan.id,hinhanh,tenduan,loaiduan_id,tenytuong,tenbaocao,tinhtrang,chiphi
-                                    FROM duan left JOIN ytuong ON duan.id = ytuong.duan_id
-                                    left JOIN baocao as b ON duan.id = b.duan_id";
+                                    $sql = "SELECT  hinhanh,tenduan,ten_loai_du_an, duan.id, mota, tinhtrang, chiphi, ngaylap FROM duan join loaiduan 
+                                    on duan.loaiduan_id = loaiduan.id order by ngaylap desc";
                                     $result = $conn->query($sql);
                                     if ($result->num_rows > 0) {
                                         $i = 1;
@@ -109,11 +106,10 @@
                                                             <?= $duan['tenduan'] ?>
                                                         </a>
                                                     </td>
-                                                    <td><?= $duan['loaiduan_id'] ?></td>
-                                                    <td><?= $duan['tenytuong'] ?></td>
-                                                    <td><?= $duan['tenbaocao'] ?></td>
+                                                    <td><?= $duan['ten_loai_du_an'] ?></td>
                                                     <td><?= $duan['tinhtrang'] ?></td>
                                                     <td><?= $duan['chiphi'] ?></td>
+                                                    <td><?= date('d-m-Y', strtotime($duan['ngaylap']) ) ?></td>
 
                                                     <td>
                                                         <a class="btn btn-success" href="duan/duan_sua.php?id=<?= $duan["id"]; ?>">Sửa</a>
