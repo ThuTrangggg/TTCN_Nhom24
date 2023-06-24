@@ -129,14 +129,15 @@ $duan_id = $_GET['id'];
                                 <th><?= $row['chucvu'] ?></th>
 
                                 <?php
-                                $sqlnhanvien = "SELECT ten, tenviettat, nhanvien.id FROM nhanvien join chucvu on nhanvien.chucvu_id = chucvu.id 
+                                $sqlnhanvien = "SELECT ten, tenviettat, nhanvien.id 
+                                FROM nhanvien join chucvu on nhanvien.chucvu_id = chucvu.id 
                                 where chucvu_id = '" . $i . "'";
                                 $resultnv = $conn->query($sqlnhanvien);
                                 $nhanvien = mysqli_fetch_assoc($resultnv);
 
                                 $sqlchitiet = "select * from chitietduan join nhanvien on nhanvien.id = chitietduan.nhanvien_id 
                                 join chucvu on chucvu.id = nhanvien.chucvu_id 
-                                where duan_id ='".$duan_id."' and chucvu.id ='" . $i . "'";
+                                where duan_id ='" . $duan_id . "' and chucvu.id ='" . $i . "'";
                                 $kq1 = mysqli_query($conn, $sqlchitiet);
                                 $row2 = mysqli_fetch_assoc($kq1);
                                 ?>

@@ -99,7 +99,7 @@ $duan_id = $_GET['id'];
                                 <?php
                                 $sqlcheck = "select * from chitietduan where duan_id = '" . $duan_id . "'";
                                 $result = mysqli_query($conn, $sqlcheck);
-                                // include "table_phanchiacv.php";
+                                include "table_phanchiacv.php";
                                 ?>
                             </div>
                         </div>
