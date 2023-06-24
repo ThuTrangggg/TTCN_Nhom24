@@ -18,14 +18,13 @@ $duan_id = $_GET['id'];
     <tbody>
         <?php
         $sql1 = 'select chucvu.id, chucvu.chucvu, nhanvien.ten, task,ngaybatdau,ngayketthuc from chitietduan join nhanvien on chitietduan.nhanvien_id = nhanvien.id 
-        join chucvu on nhanvien.chucvu_id = chucvu.id where duan_id = "' . $duan_id . '" and nhanvien_id ="' . $_SESSION['nhanvienId'] . '" ORDER by chucvu desc, ngaynop asc';
-        // echo $_SESSION['nhanvienId'];
+        join chucvu on nhanvien.chucvu_id = chucvu.id where duan_id = "' . $duan_id . '" and nhanvien_id ="' . $_SESSION['nhanvienId'] . '" ORDER by chucvu desc';
         $result1 = mysqli_query($conn, $sql1);
         $arr = array();
         if ($result1->num_rows > 0) {
             while ($row1 = mysqli_fetch_assoc($result1)) {
                 $arr[]  = array(
-                    'chucvu' => $row1['chucvu'], 'ten' => $row1['ten'],
+                    'id' => $row1['id'],'chucvu' => $row1['chucvu'], 'ten' => $row1['ten'],
                     'task' => $row1['task'], 'ngaybatdau' => $row1['ngaybatdau'],
                     'ngayketthuc' => $row1['ngayketthuc']
 
@@ -171,21 +170,10 @@ $duan_id = $_GET['id'];
                             <tr>
                                 <th><?= $row['chucvu'] ?></th>
 
-                        $sqlchitiet = "select * from chitietduan where duan_id ='" . $duan_id . "' ";
-                        $kq1 = mysqli_query($conn, $sqlchitiet);
-                        $row2 = mysqli_fetch_assoc($kq1);
-                        ?>
-                        <td>
-                            <select name="nhanvien_id" id="">
-                                <option value="<?= $nhanvien['id'] ?>" name="idNhanvien">
-                                    <?php
-                                    echo $nhanvien['tenviettat'] . '-' . $nhanvien['ten'];
-                                    ?>
-                                </option>
-                            </select>
-                        </td>
-                        <?php
-                        if ($kq1->num_rows > 0) {
+                                <?php
+                                $sqlnhanvien = "SELECT * FROM nhanvien join chucvu on nhanvien.chucvu_id = chucvu.id where chucvu_id = '" . $i . "'";
+                                $resultnv = $conn->query($sqlnhanvien);
+                                $nhanvien = mysqli_fetch_assoc($resultnv);
 
                                 $sqlchitiet = "select * from chitietduan where duan_id ='" . $duan_id . "'";
                                 $kq1 = mysqli_query($conn, $sqlchitiet);
