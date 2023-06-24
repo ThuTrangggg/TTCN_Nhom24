@@ -45,7 +45,7 @@ $duan_id = $_GET['id'];
                         $result = mysqli_query($conn, $sqlcheck);
                         $rowduan = mysqli_fetch_assoc($result);
                         ?>
-                         <?php
+                        <?php
                         $sql3 = "select AVG(rate) from feedback where duan_id ='" . $duan_id . "' group by duan_id ";
                         $result = mysqli_query($conn, $sql3);
                         $row3 = mysqli_fetch_array($result);
@@ -65,13 +65,16 @@ $duan_id = $_GET['id'];
                                 <p>Tình trạng dự án: <?= $rowduan['tinhtrang'] ?></p>
                                 <p>Mô tả: <?= $rowduan['mota'] ?></p>
                                 <i><b>Đánh giá:</b></i>
-                            <?php if (isset($row3['AVG(rate)'])) 
+                                <?php if (isset($row3['AVG(rate)'])) {
 
-                                $rate_round= round($row3['AVG(rate)']);
-                                for($i = 0; $i <$rate_round; $i++){
-                                    ?>
-                            <i style="color: orange" class="fa-solid fa-star"></i>
-                            <?php }?>
+
+                                    $rate_round = round($row3['AVG(rate)']);
+                                    for ($i = 0; $i < $rate_round; $i++) {
+                                ?>
+                                        <i style="color: orange" class="fa-solid fa-star"></i>
+                                <?php }
+                                }
+                                ?>
 
                             </div>
                         </div>
