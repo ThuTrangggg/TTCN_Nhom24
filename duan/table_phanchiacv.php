@@ -21,6 +21,7 @@ $duan_id = $_GET['id'];
         join nhanvien on chitietduan.nhanvien_id = nhanvien.id 
         join chucvu on nhanvien.chucvu_id = chucvu.id 
         where duan_id = "' . $duan_id . '"';
+
         $result1 = mysqli_query($conn, $sql1);
         $arr = array();
         if ($result1->num_rows > 0) {
@@ -77,6 +78,7 @@ $duan_id = $_GET['id'];
                 <thead>
                     <tr>
                         <th colspan="2">Thông tin dự án</th>
+
                     </tr>
                 </thead>
                 <?php
@@ -192,6 +194,7 @@ $duan_id = $_GET['id'];
 
             <input type="submit" value="Lưu" name="submitpccv">
             <div class="btn" onclick="closeFrmpccv()">Hủy</div>
+
         </div>
     </div>
     </div>
