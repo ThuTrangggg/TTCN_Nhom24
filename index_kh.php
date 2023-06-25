@@ -103,7 +103,7 @@ session_start();
                         <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="login.php" id="userDropdown" role="button">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small" style="margin-left: 1400px;">Đăng nhập</span>
+                            <span class="mr-2 d-none d-lg-inline text-white" style="margin-left: 1400px;">Đăng nhập</span>
                             <!-- <img class="img-profile rounded-circle" src="img/undraw_profile.svg"> -->
                         </a>
                     </li>
@@ -154,7 +154,7 @@ session_start();
             <div id="band" class="tour-section">
            
                 <div class="content-section">
-                    <h2 class="section-heading text-black" >ỨNG DỤNG </h2> <!--Sử dụng lại ở các phần dưới -->
+                    <h2 class="section-heading " style="color: black;" >ỨNG DỤNG </h2> <!--Sử dụng lại ở các phần dưới -->
                     <p class="section-sub-heading text-black">Sản phẩm nổi bật </p>
                 
            
@@ -257,20 +257,22 @@ session_start();
     <!-- Begin CONTACT SECTION -->
     <div id="lh" class="content-section" style=" margin-left: 450px;
 "> 
-        <h2 class="section-heading">CONTACT APERO</h2> <!--Sử dụng lại ở các phần dưới -->
+        <h2 class="section-heading" style="margin-left: 180px;
+    color: black;">CONTACT APERO</h2> <!--Sử dụng lại ở các phần dưới -->
         <!-- <p class="section-sub-heading">Fan? Drop a note!</p> -->
         <div class="map-section">
         </div>
 
         <div class="row contact-content">
-            <div class="col col-half contact-info" style="margin-left: -230px;">
+            <div class="col col-half contact-info" style="margin-left: -350px;
+    color: black;">
                 <p><i class="ti-location-pin"></i>Địa chỉ: Thanh Xuân, Ha Noi, Viet Nam</p>
                 <p><i class="ti-mobile"></i>Phone: (+84) 0562996203 </p>
                 <p><i class="ti-email"></i>Email: admin@apero.vn</p>
             </div>
 
             <div class="col col-half contact-form">
-                <img src="https://play-lh.googleusercontent.com/rN25n4E_A9y_hHjH9NiBLbwwi2ZnK9A5H6goyOeK3Swz9YrXnggV7TyqIH9ol4mo2ls=w3840-h2160-rw" alt="" style="width: 600px;">
+                <img src="https://play-lh.googleusercontent.com/rN25n4E_A9y_hHjH9NiBLbwwi2ZnK9A5H6goyOeK3Swz9YrXnggV7TyqIH9ol4mo2ls=w3840-h2160-rw" alt="" style="width: 800px;">
 
                 <!-- <form action="">
                             <div class="row" style="margin-left: -230px">
