@@ -36,7 +36,7 @@
                     <div class="card">
                         <!-- Page Heading -->
                         <div class="card-header">
-                            <h5 style="text-align: center;font-weight: bold; margin:0;">SỬA SẢN PHẨM</h5>
+                            <h5 style="text-align: center;font-weight: bold; margin:0;">SỬA Ý TƯỞNG</h5>
                         </div>
 
                         <!-- DataTales Example -->
@@ -46,7 +46,7 @@
                         ?>
                         <div class="card shadow mb-4">
                             <div class="card-body">
-                                <form class="form form-horizontal" method="post" action="admin/s_ytuong1.php">
+                                <form class="form form-horizontal" method="post" enctype="multipart/form-data" action="admin/s_ytuong1.php">
                                     <div class="form-group">
                                         <div class="row">          
                                             <label class="control-label col-sm-2" style="color:#000">Tên dự án: </label>
@@ -90,9 +90,9 @@
                                                     <?php
                                                         if($ketQuaTruyVan2->num_rows > 0){
                                                         while ($ytuong2 = $ketQuaTruyVan2->fetch_assoc()) {
-                                                            if ($ytuong2['id'] == $nhanvienid) {
+                                                            if ($ytuong2['id'] == $NVid) {
                                                     ?>
-                                                    <option selected="selected" value="<?php echo $ytuong2['id'] ?>"><?php echo $ytuong2['ten'] ?></option>
+                                                    <option selected="selected" value="<?php echo $ytuong2['id'] ?>"> <?php echo $ytuong2['ten'] ?> </option>
                                                     <?php
                                                         } else {
                                                     ?>
@@ -111,16 +111,17 @@
                                         <div class="row">
                                             <label class="col-sm-2" style="color:#000">Tên ý tưởng: </label>
                                             <div class="col-sm-7 ">
-                                                <input type="text" class="form-control" name="tenytuong" placeholder="Tên ý tưởng">
+                                                <input type="text" class="form-control" name="tenytuong" placeholder="Tên ý tưởng" value="<?=$tenyt?>">
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <div class="row">
-                                            <label class="col-sm-2" style="color:#000">Nội dung: </label>
+                                            <label class="col-sm-2" style="color:#000" for="noidung">Tên file:</label>
                                             <div class="col-sm-7 ">
-                                                <input type="text" class="form-control" name="noidung" placeholder="Nội dung">
+                                                <input type="hidden" name="size" value="1000000">
+                                                <input type="file" class="form-control" name="noidung" value="<?=$noidung?>">
                                             </div>
                                         </div>
                                     </div>
@@ -131,10 +132,11 @@
                                         <div class="row">
                                             <div class="col-sm-2"></div>
                                             <div class="col-sm-9">
-                                                <input class="btn btn-success" type="submit" value="Lưu" />
+                                                <input class="btn btn-success" type="submit" value="Lưu" name="upload" />
                                             </div>
                                         </div>
                                     </div>
+                                    <?php require "s_ytuong1.php" ?>
                                 </form>
                             </div>
                         </div>

@@ -5,7 +5,7 @@ $count=mysqli_num_rows($stmt);
 if($count==1) {
     $row=mysqli_fetch_array($stmt);
      $file1=$row['noidung'];
-$file='admin/'.$file1;
+$file='file/'.$file1;
 if (headers_sent()) {
     echo 'HTTP header already sent';
 } else {
