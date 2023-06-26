@@ -33,10 +33,10 @@ $duan_id = $_GET['id'];
         if ($result1->num_rows > 0) {
             while ($row1 = mysqli_fetch_assoc($result1)) {
                 $arr[]  = array(
-                    'id' => $row1['id'], 'ghichu' =>$row1['ghichu'],
+                    'id' => $row1['id'], 'ghichu' => $row1['ghichu'],
                     'chucvu' => $row1['chucvu'], 'ngaynop' => $row1['ngaynop'], 'ten' => $row1['ten'], 'tiendo' => $row1['tiendo'],
                     'task' => $row1['task'], 'phantram' => $row1['phantram'], 'file' => $row1['file'], 'pheduyet' => $row1['pheduyet'], 'ngaybatdau' => $row1['ngaybatdau'],
-                    'ngayketthuc' => $row1['ngayketthuc'], 'loaifile'=>$row1['loaifile']
+                    'ngayketthuc' => $row1['ngayketthuc'], 'loaifile' => $row1['loaifile']
 
                 );
             }
@@ -56,46 +56,47 @@ $duan_id = $_GET['id'];
                 $ngaynop  = date('d-m-Y h:i:s', strtotime($arr[$count]['ngaynop']));
                 $ngaybatdau = date('d-m-Y', strtotime($arr[$count]['ngaybatdau']));
                 $ngayketthuc = date('d-m-Y', strtotime($arr[$count]['ngayketthuc']));
-
+                if ($arr[$count]['ngaynop'] != '0000-00-00 00:00:00') {
         ?>
-                <tr style="font-size: 14px;">
-                    <th><?php echo $chucvu ?></th>
+                    <tr style="font-size: 14px;">
+                        <th><?php echo $chucvu ?></th>
 
-                    <td> <?php echo $ten ?> </td>
-                    <td> <?php echo $task ?> </td>
-                    <td> <?php echo $phantram . '%' ?> </td>
-                    <td> <?php
-                            if ($tiendo == 'Chậm tiến độ') {
+                        <td> <?php echo $ten ?> </td>
+                        <td> <?php echo $task ?> </td>
+                        <td> <?php echo $phantram . '%' ?> </td>
+                        <td> <?php
+                                if ($tiendo == 'Chậm tiến độ') {
 
-                                echo '<p style="color: red">' . $tiendo . ' </p>';
-                            } else echo '<p style="color: green">' . $tiendo . ' </p>';
+                                    echo '<p style="color: red">' . $tiendo . ' </p>';
+                                } else echo '<p style="color: green">' . $tiendo . ' </p>';
 
-                            ?>
-                        <p style="color: red"></p>
-                        <!-- <textarea name="" id="" w cols="30" rows="10"></textarea> -->
-                    </td>
-                    <td> <?php echo $file ?> </td>
-                    <td> <?php echo $loaifile ?> </td>
+                                ?>
+                            <p style="color: red"></p>
+                            <!-- <textarea name="" id="" w cols="30" rows="10"></textarea> -->
+                        </td>
+                        <td> <?php echo $file ?> </td>
+                        <td> <?php echo $loaifile ?> </td>
 
-                    <td>
-                        <?php
-                        if ($pheduyet == 'Không phê duyệt') {
-                            echo '<a href="#" width:150px class="btn btn-outline-danger disabled submit-process" tabindex="-1" role="button" aria-disabled="true">' . $pheduyet . '</a>';
-                        } else if ($pheduyet == 'Chờ phê duyệt') {
-                            echo '<a href="#"  style ="width: 150px" class="btn btn-outline-warning disabled submit-process" tabindex="-1" role="button" aria-disabled="true">' . $pheduyet . '</a>';
-                        } else echo '<a href="#" style ="width: 150px" class="btn btn-outline-success disabled submit-process" tabindex="-1" role="button" aria-disabled="true">' . $pheduyet . ' </a>';
+                        <td>
+                            <?php
+                            if ($pheduyet == 'Không phê duyệt') {
+                                echo '<a href="#" width:150px class="btn btn-outline-danger disabled submit-process" tabindex="-1" role="button" aria-disabled="true">' . $pheduyet . '</a>';
+                            } else if ($pheduyet == 'Chờ phê duyệt') {
+                                echo '<a href="#"  style ="width: 150px" class="btn btn-outline-warning disabled submit-process" tabindex="-1" role="button" aria-disabled="true">' . $pheduyet . '</a>';
+                            } else echo '<a href="#" style ="width: 150px" class="btn btn-outline-success disabled submit-process" tabindex="-1" role="button" aria-disabled="true">' . $pheduyet . ' </a>';
 
-                        ?> </td>
+                            ?> </td>
 
-                    <td style="font-size: 14px;"><?= $ngaynop ?></td>
-                    <td style="font-size: 14px;"> <?php echo $ngaybatdau ?> </td>
-                    <td> <?php echo $ngayketthuc ?> </td>
-                    <td class="sticky-header ">
-                        <button id="chitietduanId" name="submit-process" class="btn btn-info" onclick="checkAuthorization(this.value)" value="<?= $arr[$count]['id'] ?>">Sửa</button>
-                    </td>
-                </tr>
+                        <td style="font-size: 14px;"><?= $ngaynop ?></td>
+                        <td style="font-size: 14px;"> <?php echo $ngaybatdau ?> </td>
+                        <td> <?php echo $ngayketthuc ?> </td>
+                        <td class="sticky-header ">
+                            <button id="chitietduanId" name="submit-process" class="btn btn-info" onclick="checkAuthorization(this.value)" value="<?= $arr[$count]['id'] ?>">Sửa</button>
+                        </td>
+                    </tr>
 
             <?php
+                }
             }
         } else { ?>
             <tr style="font-size: 14px;">
@@ -107,8 +108,6 @@ $duan_id = $_GET['id'];
                 <td> </td>
 
                 <td>
-                    </p>
-                    <!-- <textarea name="" id="" w cols="30" rows="10"></textarea> -->
                 </td>
                 <td> </td>
                 <td></td>
