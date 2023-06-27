@@ -1,5 +1,7 @@
 <?php
 include 'connect.php';
+include './Chat/Chat.php';
+$chat = new Chat();
 // Lấy các dữ liệu 
 $email = $_POST['email'];
 $password = $_POST['matkhau'];
@@ -9,9 +11,9 @@ $sql = " SELECT * FROM taikhoan where email = '" . $email . "' and matkhau = '" 
 
 $sqlnhanvien  = "SELECT nhanvien.id FROM taikhoan 
 join nhanvien 
-on taikhoan.id = nhanvien.taikhoan_id where taikhoan.email = '".$email."' and matkhau = '".$password."'";
-$result = mysqli_query($conn,$sqlnhanvien);
-while($row = mysqli_fetch_assoc($result)){
+on taikhoan.id = nhanvien.taikhoan_id where taikhoan.email = '" . $email . "' and matkhau = '" . $password . "'";
+$result = mysqli_query($conn, $sqlnhanvien);
+while ($row = mysqli_fetch_assoc($result)) {
 
     $nhanvienId = $row['id'];
     // return $nhanvienId;
@@ -41,11 +43,13 @@ if ($result->num_rows > 0) {
     // $_SESSION["wishlist"]["tong_so_wishlist"] = 0;
     // $_SESSION["wishlist"]["mat_hang_wishlist"] = array();
     $_SESSION['mat_khau'] = $mat_khau_cu;
+    $lastInsertId = $chat->insertUserLoginDetails($userId);
+    $_SESSION['login_details_id'] = $lastInsertId;
     // Muốn làm việc với SESSION luôn phải dùng hàm khởi tạo này
-    $status = "Đang hoạt động";
+    $status = "1";
     $sql2 = mysqli_query(
         $conn,
-        "UPDATE taikhoan SET status = '{$status}' WHERE id = '{$userId}'"
+        "UPDATE taikhoan SET online = '{$status}' WHERE id = '{$userId}'"
     );
     if ($_SESSION['role_id'] == 3) {
         echo "
@@ -53,7 +57,8 @@ if ($result->num_rows > 0) {
                     window.location.href='index_kh.php';
                 </script>
             ";
-    } else if ($_SESSION['role_id'] == 1 || $_SESSION['role_id'] == 2) {echo
+    } else if ($_SESSION['role_id'] == 1 || $_SESSION['role_id'] == 2) {
+        echo
         "
                 <script type='text/javascript'>
                     window.location.href='index.php';

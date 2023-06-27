@@ -64,6 +64,7 @@
                                                 <td><?php echo $ytuong['ten']; ?></td>
                                                 <td><?php echo $ytuong['ngaylap']; ?></td>
                                                 <td> <a href="down.php?id=<?php echo $ytuong['id']?>" style="color:#858796"><?=$ytuong['noidung']?></a></td>
+                                                <td><img src="./file/<?=$ytuong['noidung']?>" alt=""></td>
                                                 <td><a class="btn btn-success btn-circle" href="admin/s_ytuong.php?id=<?php echo $ytuong['id'];?>">Sửa</a>  
                                                 <a class="btn btn-danger btn-circle" href="admin/x_ytuong.php?id=<?php echo $ytuong['id'];?>"><i class="fas fa-trash"></a></td>
                                             </tr>
