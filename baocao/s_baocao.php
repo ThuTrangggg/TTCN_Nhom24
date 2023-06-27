@@ -15,7 +15,7 @@ if ($ketQuaTruyVan->num_rows > 0) {
     while ($baocao = $ketQuaTruyVan->fetch_assoc()) {
         $duanid = $baocao['duan_id'];
         $NVid = $baocao['nhanvien_id'];
-        $tenyt = $baocao['tenbaocao'];
+        $tenbc = $baocao['tenbaocao'];
         $noidung = $baocao['noidung'];
         $ngay = $baocao['ngaylap'];
     }
@@ -38,7 +38,7 @@ if ($ketQuaTruyVan->num_rows > 0) {
                 <div class="card">
                     <!-- Page Heading -->
                     <div class="card-header">
-                        <h5 style="text-align: center;font-weight: bold; margin:0;">SỬA SẢN PHẨM</h5>
+                        <h5 style="text-align: center;font-weight: bold; margin:0;">SỬA BÁO CÁO</h5>
                     </div>
 
                     <!-- DataTales Example -->
@@ -48,7 +48,7 @@ if ($ketQuaTruyVan->num_rows > 0) {
                     ?>
                     <div class="card shadow mb-4">
                         <div class="card-body">
-                            <form class="form form-horizontal" method="post" action="baocao/s_baocao1.php">
+                            <form class="form form-horizontal" method="post" enctype="multipart/form-data" action="baocao/s_baocao1.php">
                                 <div class="form-group">
                                     <div class="row">
                                         <label class="control-label col-sm-2" style="color:#000">Tên dự án: </label>
@@ -92,7 +92,7 @@ if ($ketQuaTruyVan->num_rows > 0) {
                                                 <?php
                                                 if ($ketQuaTruyVan2->num_rows > 0) {
                                                     while ($baocao2 = $ketQuaTruyVan2->fetch_assoc()) {
-                                                        if ($baocao2['id'] == $nhanvienid) {
+                                                        if ($baocao2['id'] == $NVid) {
                                                 ?>
                                                             <option selected="selected" value="<?php echo $baocao2['id'] ?>"><?php echo $baocao2['ten'] ?></option>
                                                         <?php
@@ -113,16 +113,17 @@ if ($ketQuaTruyVan->num_rows > 0) {
                                     <div class="row">
                                         <label class="col-sm-2" style="color:#000">Tên báo cáo: </label>
                                         <div class="col-sm-7 ">
-                                            <input type="text" class="form-control" name="tenbaocao" placeholder="Tên ý tưởng">
+                                            <input type="text" class="form-control" name="tenbaocao" placeholder="Tên báo cáo" value="<?=$tenbc?>" >
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <div class="row">
-                                        <label class="col-sm-2" style="color:#000">Nội dung: </label>
+                                        <label class="col-sm-2" style="color:#000" for="noidung">Tên file:</label>
                                         <div class="col-sm-7 ">
-                                            <input type="text" class="form-control" name="noidung" placeholder="Nội dung">
+                                            <input type="hidden" name="size" value="1000000">
+                                            <input type="file" class="form-control" name="noidung" value="<?= $noidung ?>">
                                         </div>
                                     </div>
                                 </div>
@@ -133,10 +134,11 @@ if ($ketQuaTruyVan->num_rows > 0) {
                                     <div class="row">
                                         <div class="col-sm-2"></div>
                                         <div class="col-sm-9">
-                                            <input class="btn btn-success" type="submit" value="Lưu" />
+                                            <input class="btn btn-success" type="submit" value="Lưu" name="upload" />
                                         </div>
                                     </div>
                                 </div>
+                                <?php require "s_baocao1.php" ?>
                             </form>
                         </div>
                     </div>

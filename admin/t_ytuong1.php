@@ -29,8 +29,18 @@ if (isset($_POST["upload"])) {
 
     if (move_uploaded_file($_FILES['noidung']['tmp_name'], $target)) {
         echo '<script language="javascript">alert("Đã upload thành công!");</script>';
+        echo "
+            <script>
+            window.location = 'ytuong_t.php';
+            </script>
+        ";
     } else {
         echo '<script language="javascript">alert("Đã upload thất bại!");</script>';
+        echo "
+            <script>
+            window.location = 'ytuong_t.php';
+            </script>
+        ";
     }
 }
 $sql1="SELECT * FROM ytuong";

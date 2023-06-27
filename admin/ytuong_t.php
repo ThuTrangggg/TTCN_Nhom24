@@ -48,7 +48,7 @@
                                                 <th>Tên ý tưởng</th>
                                                 <th>Người thực hiện</th>
                                                 <th>Ngày</th>
-                                                <th>noidung</th>
+                                                <th>Nội dung</th>
                                             </tr>
                                         </thead>
                                         <?php
