@@ -74,12 +74,7 @@ table.dataTable>thead .sorting::before {
 
 /* Chat Area */
 .chat-section {
-  background-color: white;
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  width: 370px;
-  border: 1px solid #ccc;
+  
 }
 
 .chat-section .chat-section-header {
@@ -113,9 +108,13 @@ table.dataTable>thead .sorting::before {
 }
 
 .chat-section-list {
+  background-color: white;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 370px;
+  border: 1px solid #ccc;
   display: none;
-  padding: 16px 20px;
-
   max-height: 400px;
   overflow-y: scroll;
 }
