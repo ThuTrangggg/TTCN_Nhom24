@@ -3,10 +3,10 @@ include 'connect.php';
 session_start();
 // $logout_id = mysqli_real_escape_string($conn, $_GET['logout_id']);
 if (isset($_SESSION['userId'])) {
-    $status = "Không hoạt động";
+    $status = "0";
     $sql = mysqli_query(
         $conn,
-        "UPDATE taikhoan SET status = '{$status}' WHERE id={$_SESSION['userId']}"
+        "UPDATE taikhoan SET online = '{$status}' WHERE id={$_SESSION['userId']}"
     );
     if ($sql) {
         session_unset();

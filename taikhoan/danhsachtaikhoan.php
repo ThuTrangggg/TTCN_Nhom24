@@ -186,7 +186,7 @@ include '../connect.php';
             }
         </script>
         <?php
-        include('../Chat/chat.php')
+        include('../Chat/chat-old.php')
         ?>
     </div>
     <!-- End of Page Wrapper -->
