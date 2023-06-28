@@ -158,7 +158,7 @@ $row1 = mysqli_fetch_array($kq);
 
             </div>
             <br>
-            <div class="col-md-6">
+            <div class="col-md-6" style="margin-right :1000px;">
                 <input type="hidden" value="<?= $row1["id"] ?>" name="duan_id" >
                 <input type="hidden" value="<?= $_SESSION['userId'] ?>" name="taikhoan_id">
                 <!-- <input type=""> -->
@@ -189,7 +189,7 @@ $row1 = mysqli_fetch_array($kq);
 
                         <label class="col-md-6" style="display: inline-block; font-weight: 100px;margin-top: 30px;margin-left: 10px;" for="">Xếp hạng của bạn</label>
 
-                        <div class="col-md-6 stars" style="translate: -233px -9px;">
+                        <div class="col-md-6 stars" style="translate: -233px -9px;    margin-left: 150px;">
                             <input class="star star-5" value="5" id="star-5" type="radio" name="star" />
                             <label class="star star-5" for="star-5"></label>
                             <input class="star star-4" value="4" id="star-4" type="radio" name="star" />
@@ -217,7 +217,7 @@ $row1 = mysqli_fetch_array($kq);
     color: #fff;
     width: 100px;
     height: 34px;
-    margin-left: 1300px;" class="">Gửi đánh giá</button>
+    margin-left: 900px;" class="">Gửi đánh giá</button>
                     </div>
                 </div>
             </div>
@@ -244,7 +244,7 @@ $row1 = mysqli_fetch_array($kq);
             <?php
             while ($row = mysqli_fetch_array($kq_fb)) { ?>
                 <div class="comment "style= "margin-top: 30px;
-    margin-left: 30px;">
+    margin-left: 50px;">
                     <div>
 
                         <div class="comment-user">
@@ -307,8 +307,12 @@ $row1 = mysqli_fetch_array($kq);
 
 
 
+<br>
+<br>
+<br>
+<br>
+<br>
 
-
-<?php include 'footer.php'?>
+<?php include 'footer_kh.php'?>
 
 </html>

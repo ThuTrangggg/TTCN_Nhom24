@@ -82,7 +82,7 @@ session_start();
                                 Logout
                             </a>
                         </div>
-                        <!-- <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -98,7 +98,7 @@ session_start();
                                     </div>
                                 </div>
                             </div>
-                        </div> -->
+                        </div>
                     <?php } elseif (!isset($_SESSION['login'])) {  ?><div class="topbar-divider d-none d-sm-block"></div>
                         <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
