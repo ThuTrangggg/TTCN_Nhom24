@@ -125,7 +125,7 @@ $duan_id = $_GET['id'];
 
     </tbody>
 </table>
-<form id="frmCapnhattiendo" style="" onsubmit="return validateForm()" action="./duan/table_tiendo_code.php" method="post" name="table-process" width="100%">
+<form id="frmCapnhattiendo" onsubmit="return validateForm()" action="./duan/table_tiendo_code.php" method="post" name="table-process" width="100%">
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <center class="m-0 font-weight-bold text-primary">CẬP NHẬT TIẾN ĐỘ
