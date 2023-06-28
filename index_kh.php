@@ -257,13 +257,13 @@ session_start();
     <!-- Begin CONTACT SECTION -->
     <div id="lh" class="content-section" style=" margin-left: 450px;
 "> 
-        <h2 class="section-heading" style="margin-left: 180px;
+        <h2 class="section-heading" style="margin-left: 10px;
     color: black;">CONTACT APERO</h2> <!--Sử dụng lại ở các phần dưới -->
         <!-- <p class="section-sub-heading">Fan? Drop a note!</p> -->
         <div class="map-section">
         </div>
 
-        <div class="row contact-content">
+        <!-- <div class="row contact-content">
             <div class="col col-half contact-info" style="margin-left: -350px;
     color: black;">
                 <p><i class="ti-location-pin"></i>Địa chỉ: Thanh Xuân, Ha Noi, Viet Nam</p>
@@ -274,7 +274,7 @@ session_start();
             <div class="col col-half contact-form">
                 <img src="https://play-lh.googleusercontent.com/rN25n4E_A9y_hHjH9NiBLbwwi2ZnK9A5H6goyOeK3Swz9YrXnggV7TyqIH9ol4mo2ls=w3840-h2160-rw" alt="" style="width: 800px;">
 
-                <!-- <form action="">
+                 <form action="">
                             <div class="row" style="margin-left: -230px">
                                 <div class="col col-half">
                                     <input type="text" name="" placeholder="Name" id="" class="form-control" required>
@@ -291,10 +291,10 @@ session_start();
                             <input type="submit" value="SEND" class="btn mt-16" style="float: right ;">
                         </form>  -->
             </div>
-        </div>
+        </div> 
 
     </div>
-    <!-- END contact -->
+    <!-- END contact
 
     <div class="map-section">
         <img src="https://map.coccoc.com/map/35028389351396725?borders=21.035480353414883,105.88966369628906,20.971377949994018,105.67371368408203&zoom=12" alt="">
@@ -313,11 +313,11 @@ session_start();
         <p class="copyright">
             Powered by <a href=""> </a>
         </p>
-    </div>
+    </div> -->
 
     </div>
     <?php
-    include("footer.php");
+    include("footer_kh.php");
     ?>
     <!-- <a href="">New</a> -->
 </body>
