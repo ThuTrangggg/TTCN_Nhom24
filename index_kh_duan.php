@@ -68,18 +68,18 @@ session_start();
             <!-- Main Content -->
             <div id="content">
                 <?php //include 'header.php' ?> 
-                <li class="dropdown-menu">
+                <!-- <li class="dropdown-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <span class="label label-pill label-danger count" style="border-radius:20px;"></span>
                         <span class="glyphicon glyphicon-bell" style="font-size:18px;"></span>
                     </a>
                     <ul class="dropdown-menu"></ul>
-                </li>
+                </li> -->
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800" style=" margin-left: 20px;">CHI TIẾT DỰ ÁN </h1>
+                    <h1 class="h3 mb-2 text-gray-800" style=" margin-left: 30px; margin-top: 60px;">CHI TIẾT DỰ ÁN </h1>
                     <!-- <h1 class="h3 mb-2 text-gray-800">CHI TIẾT DỰ ÁN </h1> -->
                     <!-- <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
                         For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p> -->
