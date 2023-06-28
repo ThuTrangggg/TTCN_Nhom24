@@ -28,7 +28,8 @@
     height: 100vh;
   }
 }
-#frame #sidepanel {
+#sidepanel {
+  /* display: none; */
   float: left;
   min-width: 280px;
   max-width: 340px;

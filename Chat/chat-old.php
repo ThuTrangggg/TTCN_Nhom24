@@ -31,19 +31,18 @@
     <div class="chat-section">
 
         <!-- <section class="users"> -->
-        <!-- <div class="chat-section-header" onclick="openChat()">
+        <div class="chat-section-list" style="display: block;" onclick="openChat()">
+            <div class="chat-section-header" onclick="openChat()">
                 <b>
-
                     <center>Messenger</center>
                 </b>
-            </div> -->
-        <div class="search" style="">
-            <div style="display: flex; margin-top: 10px">
-                <input class="" style="width: 100%" type="text" name="search" id="" placeholder="Nhập tên để tìm kiếm">
-                <button class=""><i class="fas fa-search"></i></button>
             </div>
-        </div>
-        <div class="chat-section-list" style="display: block;">
+            <div class="search" style="">
+                <div style="display: flex; margin-top: 10px">
+                    <input class="" style="width: 100%" type="text" name="search" id="" placeholder="Nhập tên để tìm kiếm">
+                    <button class=""><i class="fas fa-search"></i></button>
+                </div>
+            </div>
             <div id="sidepanel">
                 <div id="contacts">
                     <?php
@@ -116,14 +115,17 @@
         </div>
         <script>
             $(document).ready(function() {
-                document.getElementById('conversation').scrollIntoView({ behavior: "smooth", block: "end" });
+                document.getElementById('conversation').scrollIntoView({
+                    behavior: "smooth",
+                    block: "end"
+                });
 
                 $('.submit_on_enter').keydown(function(event) {
                     // enter has keyCode = 13, change it if you want to use another button
                     if (event.keyCode == 13) {
                         // alert(1);
                         // $('.submit').on('click');
-                        document.getElementById('submit').addEventListener('click',);
+                        document.getElementById('submit').addEventListener('click', );
                         // this.form.submit();
                         // return false;
                     }
@@ -131,57 +133,6 @@
 
             });
         </script>
-        <!-- getusser list -->
-        <?php
-        // // include('index.php');
-        // if ($result->num_rows > 0) {
-        //     // echo $result->num_rows;
-        //     while ($row = $result->fetch_assoc()) {
-        ?>
-        <!-- <div class="chat-area-wrap chat-area"> -->
-        <!-- <div class="chat-section-item">
-                                <div class="content" style="display: inline-flex;">
-                                    <img width="50px" height="50px" style="object-fit: cover; border-radius: 50%" src="<?php
-                                                                                                                        //  echo $row['img']; 
-                                                                                                                        ?>" alt="">
-                                    <div class="details">
-                                        <?php
-                                        // if ($row['status'] != 'Không hoạt động') {
-                                        ?>
-                                            <span style="display: block;">
-                                                <?php
-                                                // echo
-                                                // $row['tentaikhoan']
-                                                ?>
-                                                <i style="color:green" class="dot-active fa-solid fa-circle"></i>
-                                            </span>
-                                            <span style="color: green">
-                                                <?php
-                                                // $row['status']; 
-                                                ?>
-                                            </span>
-                                        <?php
-                                    } else { ?>
-                                            <span style="display: block;"><?php
-                                                                            // echo
-                                                                            // $row['tentaikhoan']
-                                                                            ?>
-                                                <i class="dot-active fa-solid fa-circle"></i></span>
-                                            <span>
-                                            <?php
-                                            // $row['status'];
-                                        } ?>
-                                            </span>
-                                    </div>
-                                </div>
-                            </div> -->
-
-        <!-- </section> -->
-
-        <?php
-        // }
-        // } 
-        ?>
     </div>
     </div>
 
@@ -189,7 +140,9 @@
         function closeChat() {}
 
         function openChat() {
-            document.getElementsByClassName('chat-section-list')[0].classList.toggle('show');
+            document.getElementById('#sidepanel').classList.toggle('show');
+            document.getElementById('#sidepanel').style.display = 'none';
+            // document.getElementsByClassName('chat-section-list')[0].classList.toggle('show');
             document.getElementsByClassName('search')[0].classList.toggle('show');
         }
     </script>

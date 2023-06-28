@@ -84,7 +84,7 @@ table.dataTable>thead .sorting::before {
 }
 
 .chat-section .search {
-  display: none;
+  display: block;
   padding: 0 20px 16px;
 
   border-bottom: 1px solid #ccc
