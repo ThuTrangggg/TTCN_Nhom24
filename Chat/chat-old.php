@@ -24,7 +24,7 @@
 
         $sql = 'select * from taikhoan where role_id = 1 or role_id = 2 order by online desc ';
         $result = $conn->query($sql);
-    ?>
+        ?>
 
 <body>
     <!-- <div class="wrapper" style="display:flex; width:350px; flex-direction: column"> -->
@@ -97,6 +97,7 @@
                     echo '<i class="fa fa-instagram" aria-hidden="true"></i>';
                     echo '</div>';
                 }
+    }
                 ?>
             </div>
             <div class="messages" id="conversation">

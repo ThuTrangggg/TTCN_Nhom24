@@ -116,7 +116,6 @@ table.dataTable>thead .sorting::before {
   border: 1px solid #ccc;
   display: none;
   max-height: 400px;
-  overflow-y: scroll;
 }
 
 .chat-section .chat-section-item {
