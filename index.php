@@ -1,15 +1,16 @@
 <?php include 'connect.php' ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <body id="page-top">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
 
         <!-- Sidebar -->
-        
+
         <?php
-         include 'sidebar.php'
+        include 'sidebar.php'
         ?>
         <!-- End of Sidebar -->
 
@@ -20,7 +21,7 @@
             <div id="content">
 
                 <!-- Topbar -->
-                <?php 
+                <?php
                 include 'header.php'
                 ?>
                 <!-- End of Topbar -->
@@ -37,9 +38,9 @@
                     <div class="row">
 
                         <!-- Earnings (Monthly) Card Example -->
-                        <?php 
+                        <?php
                         $sql = "SELECT count(id) from duan";
-                        $result = mysqli_query($conn,$sql);
+                        $result = mysqli_query($conn, $sql);
                         $row = mysqli_fetch_assoc($result);
                         ?>
                         <div class="col-xl-3 col-md-6 mb-4">
@@ -49,7 +50,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 Tổng số dự án</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?=$row['count(id)']?></div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $row['count(id)'] ?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -60,9 +61,9 @@
                         </div>
 
                         <!-- Earnings (Monthly) Card Example -->
-                        <?php 
+                        <?php
                         $sql = "SELECT sum(chiphi) from duan";
-                        $result = mysqli_query($conn,$sql);
+                        $result = mysqli_query($conn, $sql);
                         $row = mysqli_fetch_assoc($result);
                         ?>
                         <div class="col-xl-3 col-md-6 mb-4">
@@ -72,7 +73,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 Tổng chi phí </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$<?=number_format($row['sum(chiphi)'], 3, '.', '.');?></div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$<?= number_format($row['sum(chiphi)'], 3, '.', '.'); ?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -83,13 +84,13 @@
                         </div>
 
                         <!-- Earnings (Monthly) Card Example -->
-                        <?php 
+                        <?php
                         $sql = "SELECT count(id) from duan WHERE tinhtrang = 'Hoàn thành'";
-                        $result = mysqli_query($conn,$sql);
-                        $row = mysqli_fetch_assoc($result);
+                        $result = mysqli_query($conn, $sql);
+                        $rowhoanthanh = mysqli_fetch_assoc($result);
 
                         $sql1 = "SELECT count(id) from duan";
-                        $result1 = mysqli_query($conn,$sql1);
+                        $result1 = mysqli_query($conn, $sql1);
                         $row1 = mysqli_fetch_assoc($result1);
                         ?>
                         <div class="col-xl-3 col-md-6 mb-4">
@@ -101,11 +102,11 @@
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?=$row['count(id)']?></div>
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?= $rowhoanthanh['count(id)'] ?></div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="progress progress-sm mr-2">
-                                                        <div class="progress-bar bg-info" role="progressbar" style="width: <?=$row['count(id)']?>0%" aria-valuenow="<?=$row['count(id)']?>" aria-valuemin="0" aria-valuemax="<?=$row1['count(id)']?>"></div>
+                                                        <div class="progress-bar bg-info" role="progressbar" style="width: <?= $rowhoanthanh['count(id)'] ?>0%" aria-valuenow="<?= $rowhoanthanh['count(id)'] ?>" aria-valuemin="0" aria-valuemax="<?= $row1['count(id)'] ?>"></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -119,10 +120,10 @@
                         </div>
 
                         <!-- Pending Requests Card Example -->
-                        <?php 
+                        <?php
                         $sql = "SELECT count(id) from duan WHERE tinhtrang = 'Tạm dừng'";
-                        $result = mysqli_query($conn,$sql);
-                        $row = mysqli_fetch_assoc($result);
+                        $result = mysqli_query($conn, $sql);
+                        $rowtamdung = mysqli_fetch_assoc($result);
                         ?>
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-warning shadow h-100 py-2">
@@ -134,7 +135,7 @@
                                                     Dự án tạm dừng
                                                 </a>
                                             </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?=$row['count(id)']?></div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $rowtamdung['count(id)'] ?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -150,11 +151,11 @@
                     <div class="row">
 
                         <!-- Area Chart -->
-                        <div class="col-xl-8 col-lg-7">
+                        <div class="col-xl-6 col-lg-6">
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Số liệu dự án</h6>
                                     <div class="dropdown no-arrow">
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -168,53 +169,130 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- Card Body -->
+                                <!-- Card Body --><?php $chuahoanthanh = ""; 
+                                 $sql = "SELECT count(id) from duan WHERE tinhtrang = 'Đang thực hiện'";
+                                 $result = mysqli_query($conn, $sql);
+                                 $rowdangthuchien = mysqli_fetch_assoc($result);
+
+                                 $tamdung = $rowtamdung['count(id)'];
+                                 $hoanthanh = $rowhoanthanh['count(id)'];
+                                 $dangthuchien = $rowdangthuchien['count(id)'];
+                                ?>
+
+                                <!-- (B) USE PHP TO ECHO JAVASCRIPT CODE -->
+                                <script>
+                                    <?php 
+                                    echo "var tamdung = '$tamdung';"; 
+                                    echo "var hoanthanh = '$hoanthanh';"; 
+                                    echo "var dangthuchien = '$dangthuchien';"; 
+                                    
+                                    ?>
+                                </script>
                                 <div class="card-body">
-                                    <div class="chart-area">
-                                        <canvas id="myAreaChart"></canvas>
+                                    <div style="">
+                                        <canvas id="myChart"></canvas>
                                     </div>
+
+                                    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+                                    <script>
+                                        const ctx = document.getElementById('myChart');
+
+                                        new Chart(ctx, {
+                                            type: 'bar',
+                                            data: {
+                                                labels: ['Đang thực hiện', 'Hoàn thành', 'Tạm dừng'],
+                                                datasets: [{
+                                                    label: 'Tình trạng của dự án',
+                                                    data: [dangthuchien, hoanthanh, tamdung],
+                                                    borderWidth: 1
+                                                }]
+                                            },
+                                            options: {
+                                                scales: {
+                                                    y: {
+                                                        beginAtZero: true
+                                                    }
+                                                }
+                                            }
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Đánh giá dự án</h6>
+                                    <div class="dropdown no-arrow">
+                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                                            <div class="dropdown-header">Dropdown Header:</div>
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Card Body --><?php $chuahoanthanh = ""; 
+                                 $sql = "SELECT AVG(rate), duan_id, tenduan FROM `feedback` JOIN duan on feedback.duan_id = duan.id  GROUP by duan_id order by rate desc limit 5";
+                                 $result = mysqli_query($conn, $sql);
+                                 $rowrate = mysqli_fetch_assoc($result);
+
+                                 $tamdung = $rowtamdung['count(id)'];
+                                 $hoanthanh = $rowhoanthanh['count(id)'];
+                                 $dangthuchien = $rowdangthuchien['count(id)'];
+                                ?>
+
+                                <!-- (B) USE PHP TO ECHO JAVASCRIPT CODE -->
+                                <script>
+                                    <?php 
+                                    echo "var tamdung = '$tamdung';"; 
+                                    echo "var hoanthanh = '$hoanthanh';"; 
+                                    echo "var dangthuchien = '$dangthuchien';"; 
+                                    
+                                    ?>
+                                </script>
+                                <div class="card-body">
+                                    <div style="">
+                                        <canvas id="myChart2"></canvas>
+                                    </div>
+
+                                    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+                                    <script>
+                                        const rate = document.getElementById('myChart2');
+
+                                        new Chart(rate, {
+                                            type: 'bar',
+                                            data: {
+                                                labels: ['Puzzle Defenders', 'Hero Craft: Stumble Race', 'Save the puppy: Pet dog rescue','Hero Craft: Stumble Race','Alphabet Love: Merge Puzzle'],
+                                                datasets: [{
+                                                    label: 'Tình trạng của dự án',
+                                                    data: [5,4, 4, 2,2 
+],
+                                                    borderWidth: 1
+                                                }]
+                                            },
+                                            options: {
+                                                scales: {
+                                                    y: {
+                                                        beginAtZero: true
+                                                    }
+                                                }
+                                            }
+                                        });
+                                    </script>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Pie Chart -->
-                        <div class="col-xl-4 col-lg-5">
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
-                                    <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">Dropdown Header:</div>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="chart-pie pt-4 pb-2">
-                                        <canvas id="myPieChart"></canvas>
-                                    </div>
-                                    <div class="mt-4 text-center small">
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-primary"></i> Direct
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-success"></i> Social
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-info"></i> Referral
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
 
                 </div>
@@ -222,9 +300,9 @@
 
             </div>
             <!-- End of Main Content -->
-<?php
-//  include 'Chat/chat.php'
-?>
+            <?php
+            //  include 'Chat/chat.php'
+            ?>
             <!-- Footer -->
             <!-- <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
@@ -246,7 +324,7 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-    
+
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -268,7 +346,7 @@
 
 </html>
 
-<?php 
+<?php
 include 'footer.php'
 ?>
 <!-- 
