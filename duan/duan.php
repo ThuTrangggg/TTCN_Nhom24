@@ -150,7 +150,7 @@
                     <h3 class="text-center font-weight-light my-4">Thêm mới dự án </h3>
                 </div>
                 <div class="card-body">
-                    <form method="POST" id="noti_frm" action="duan/duan_them.php" enctype="multipart/form-data">
+                    <form method="POST" id="noti_frm" enctype="multipart/form-data" action="duan/duan_them.php" enctype="multipart/form-data">
                         <div class="form-floating mb-3">
                             <label for="txttenduan">Tên dự án </label>
                             <input class="form-control" id="txttenduan" type="text" placeholder="Tên dự án" name="txttenduan" />
@@ -201,13 +201,11 @@
                         </div>
                         <div class="form-floating mb-3">
                             <label for="txtchiphi">Mô tả</label>
-                            <input class="col-sm-4 form-control" id="txtchiphi" type="text" placeholder="Mô tả dự án" name="txtmota" />
-                            <input class="col-sm-4 form-control" id="txtchiphi" type="file" placeholder="Mô tả dự án" name="txtmota" />
+                            <input class="col-sm-4 form-control" id="txtchiphi" type="file" placeholder="Mô tả dự án" name="mota" />
                         </div>
                         <div class="form-floating mb-3">
                             <label for="txtchiphi">Hình ảnh</label>
-                            <input class="col-sm-4 form-control" id="txtchiphi" type="text" placeholder="Mô tả dự án" name="txthinhanh" />
-                            <input class="col-sm-4 form-control" id="txtchiphi" type="file" placeholder="Mô tả dự án" name="txthinhanh" />
+                            <input class="col-sm-4 form-control" id="txtchiphi" type="file" placeholder="Mô tả dự án" name="hinhanh" />
                         </div>
                         <!-- <div class="form-floating mb-3">
                             <label for="txtchiphi">Hình ảnh </label>
@@ -217,7 +215,7 @@
                             <ul>
                                 <li>
 
-                                    <input type="submit" class="btn" name="btnSubmit" value="Thêm">
+                                    <input type="submit" class="btn" name="upload" value="Thêm">
                                 </li>
                                 <li>
 
