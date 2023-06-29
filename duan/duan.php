@@ -59,6 +59,7 @@
                                             <th>Hình ảnh</th>
                                             <th>Tên dự án</th>
                                             <th>Loại dự án </th>
+                                            <th>Nội dung</th>
                                             <th>Tình trạng </th>
                                             <th>Chi phí </th>
                                             <th>Ngày lập</th>
@@ -73,6 +74,7 @@
                                             <th>Hình ảnh</th>
                                             <th>Tên dự án</th>
                                             <th>Loai dự án </th>
+                                            <th>Nội dung</th>
                                             <th>Tình trạng </th>
                                             <th>Chi phí</th>
                                             <th>Ngày lập</th>
@@ -84,7 +86,7 @@
                                     // $sql = "SELECT hinhanh,tenduan,loaiduan_id,tenytuong,tenbaocao,tenKHQC, noidung
                                     // from duan join ytuong
                                     // on duan_id = ytuong.duan_id order by duan.ytuong asc, id";
-                                    $sql = "SELECT  hinhanh,tenduan,ten_loai_du_an, duan.id, mota, tinhtrang, chiphi, ngaylap FROM duan join loaiduan 
+                                    $sql = "SELECT  noidung,hinhanh,tenduan,ten_loai_du_an, duan.id, mota, tinhtrang, chiphi, ngaylap FROM duan join loaiduan 
                                     on duan.loaiduan_id = loaiduan.id order by ngaylap desc";
                                     $result = $conn->query($sql);
 
@@ -132,6 +134,8 @@
                                                         </a>
                                                     </td>
                                                     <td><?= $duan['ten_loai_du_an'] ?></td>
+                                                    <td><?= $duan['noidung'] ?></td>
+
                                                     <td><?= $duan['tinhtrang'] ?></td>
                                                     <td><?= $duan['chiphi'] ?></td>
                                                     <td><?= date('d-m-Y', strtotime($duan['ngaylap'])) ?></td>
@@ -269,7 +273,9 @@
 <?php
 include '../footer.php'
 ?>
-
+<?php
+        include('../Chat/chat-old.php')
+        ?>
 </html>
 <!-- 
 <script>

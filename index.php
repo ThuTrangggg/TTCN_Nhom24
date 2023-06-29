@@ -87,6 +87,10 @@
                         $sql = "SELECT count(id) from duan WHERE tinhtrang = 'Hoàn thành'";
                         $result = mysqli_query($conn,$sql);
                         $row = mysqli_fetch_assoc($result);
+
+                        $sql1 = "SELECT count(id) from duan";
+                        $result1 = mysqli_query($conn,$sql1);
+                        $row1 = mysqli_fetch_assoc($result1);
                         ?>
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-info shadow h-100 py-2">
@@ -101,7 +105,7 @@
                                                 </div>
                                                 <div class="col">
                                                     <div class="progress progress-sm mr-2">
-                                                        <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        <div class="progress-bar bg-info" role="progressbar" style="width: <?=$row['count(id)']?>0%" aria-valuenow="<?=$row['count(id)']?>" aria-valuemin="0" aria-valuemax="<?=$row1['count(id)']?>"></div>
                                                     </div>
                                                 </div>
                                             </div>
