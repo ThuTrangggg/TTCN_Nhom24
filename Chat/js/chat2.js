@@ -1,5 +1,10 @@
 $(document).ready(function () {
+	$(document).on("click",".xmark-chat", function(event){
+		$('.contact').removeClass('active');
+		$('.content-chat').addClass('close');
+		$('.content-chat').removeClass('show');
 
+	})
 	$(".messages").animate({
 		scrollTop: $(document).height()
 	}, "fast");
@@ -32,6 +37,9 @@ $(document).ready(function () {
 	});
 	$(document).on('click', '.contact', function () {
 		$('.contact').removeClass('active');
+		$('.content-chat').removeClass('close');
+
+		$('.content-chat').addClass('show');
 		$(this).addClass('active');
 		var to_user_id = $(this).data('touserid');
 		showUserChat(to_user_id);

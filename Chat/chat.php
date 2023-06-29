@@ -125,10 +125,12 @@ class Chat{
 			$toUserAvatar = $user['img'];
 			$userSection = '<img src="'.$user['img'].'" alt="" />
 				<p>'.$user['tentaikhoan'].'</p>
-				<div class="social-media">
-					<i class="fa fa-facebook" aria-hidden="true"></i>
-					<i class="fa fa-twitter" aria-hidden="true"></i>
-					 <i class="fa fa-instagram" aria-hidden="true"></i>
+				<div style="    width: 80%;" class="social-media">
+				<i style="    align-items: center;
+				float: right;
+				right: 0;
+				line-height: 61px;
+				font-size: 22px;" class="fa-sharp fa-solid fa-xmark xmark-chat"></i>
 				</div>';
 		}		
 		// get user conversation
@@ -207,4 +209,3 @@ class Chat{
 		}
 	}	
 }
-?>

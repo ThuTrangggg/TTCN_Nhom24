@@ -24,15 +24,15 @@
 
         $sql = 'select * from taikhoan where role_id = 1 or role_id = 2 order by online desc ';
         $result = $conn->query($sql);
-        ?>
+    ?>
 
 <body>
     <!-- <div class="wrapper" style="display:flex; width:350px; flex-direction: column"> -->
     <div class="chat-section">
 
         <!-- <section class="users"> -->
-        <div class="chat-section-list" style="display: block;" onclick="openChat()">
-            <div class="chat-section-header" onclick="openChat()">
+        <div class="chat-section-list" style="display: block;">
+            <div class="chat-section-header">
                 <b>
                     <center>Messenger</center>
                 </b>
@@ -72,7 +72,7 @@
                         echo '<span id="status_' . $user['id'] . '" class="contact-status ' . $status . '"></span>';
                         echo '<img width="50px" height="50px" style="object-fit: cover; border-radius: 50%; border: 1px solid #ccc" src="' . $user['img'] . '" alt="" />';
                         echo '<div class="meta">';
-                        echo '<p class="name">' . $user['tentaikhoan'] . '<span id="unread_' . $user['id'] . '" class="unread">' . $chat->getUnreadMessageCount($user['id'], $_SESSION['userId']) . '</span></p>';
+                        echo '<p class="name">' . $user['tentaikhoan'] . '' . $chat->getUnreadMessageCount($user['id'], $_SESSION['userId']) . '</span></p>';
                         echo '<p class="preview"><span id="isTyping_' . $user['id'] . '" class="isTyping"></span></p>';
                         echo '</div>';
                         echo '</div>';
@@ -84,21 +84,19 @@
 
             </div>
         </div>
-        <div class="content-chat" id="content-chat" style="background-color: #ccc;">
+        <div class="content-chat" id="content-chat" style="background-color: #ccc; border: 1px solid #ccc; margin-right: 10px">
             <div class="contact-profile" id="userSection">
-                <?php
-                $userDetails = $chat->getUserDetails($currentSession);
-                foreach ($userDetails as $user) {
-                    echo '<img src="' . $user['img'] . '" alt="" />';
-                    echo '<p>' . $user['tentaikhoan'] . '</p>';
-                    echo '<div class="social-media">';
-                    echo '<i class="fa fa-facebook" aria-hidden="true"></i>';
-                    echo '<i class="fa fa-twitter" aria-hidden="true"></i>';
-                    echo '<i class="fa fa-instagram" aria-hidden="true"></i>';
-                    echo '</div>';
-                }
-    }
-                ?>
+            <?php
+            $userDetails = $chat->getUserDetails($currentSession);
+            foreach ($userDetails as $user) {
+                echo '<img src="' . $user['img'] . '" alt="" />';
+                echo '<p>' . $user['tentaikhoan'] . '</p>';
+                echo '<div class="social-media">';
+                echo '<i class="fa-sharp fa-solid fa-xmark"></i>';
+                echo '</div>';
+            }
+        }
+            ?>
             </div>
             <div class="messages" id="conversation">
                 <?php
@@ -136,18 +134,31 @@
         </script>
     </div>
     </div>
-
     <script>
+        // document.getElementsByClassName('contact').onclick = function(){
+        //     document.getElementById('content-chat').classList.toggle('show');
+
+        // }
+        document.getElementsByClassName("chat-section-header")[0].onclick = function() {
+            openChat()
+        };
+        document.getElementById("userSection").onclick = function() {
+            document.getElementById('conversation').classList.toggle('show');
+            document.getElementById('replySection').classList.toggle('show');
+            
+        };
         function closeChat() {}
 
         function openChat() {
-            document.getElementById('#sidepanel').classList.toggle('show');
-            document.getElementById('#sidepanel').style.display = 'none';
+            // alert(1);
+            document.getElementById('sidepanel').classList.toggle('show');
+
+            // document.getElementById('sidepanel').style.display = 'none';
             // document.getElementsByClassName('chat-section-list')[0].classList.toggle('show');
             document.getElementsByClassName('search')[0].classList.toggle('show');
         }
     </script>
-
+    
     <!-- <div class="chat-area">
             <header>
                 <div onclick="openChat()" class="chat-info" style="display: flex">

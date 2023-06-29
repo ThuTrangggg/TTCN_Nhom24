@@ -20,6 +20,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.js"></script>
     <title>BOO.VN-NHOM14</title> -->
     <title></title>
+    
 </head>
 <footer id="footer" class="container-fluid text-center">
     <!-- import icon font awesome -->
@@ -76,7 +77,7 @@
             </ul>
 
         </div> -->
-    </div> 
+    </div>
 
     <script>
         function dangkyemail() {
@@ -116,8 +117,8 @@
                         <h3 class="footer_header">
                             <img src="https://apero.vn/wp-content/uploads/2022/10/logofooter.png" width="60px" alt="">
                         </h3>
-                        <ul class="footer_detail" >
-                            
+                        <ul class="footer_detail">
+
                             <li><a href="">Thông tin công ty </a></li>
                             <li><a href="">Tuyển dụng</a></li>
                             <li><a href="">Phát triển ứng dụng </a></li>
@@ -125,7 +126,7 @@
                         </ul>
                     </div>
                 </div>
-            </div> 
+            </div>
             <div class="col-lg-2 col-sm-9">
                 <div class="d-flex align-items-center">
                     <div class="noidung" style="margin-left: 30px;">
@@ -158,7 +159,7 @@
                             <!-- <li>Đơn hàng: 0936303632</li> -->
                             <li>Email: admin@apero.vn</li>
                             <div class="noidung">
-                        <!-- <h4 class="footer_header">CÁC HÌNH THỨC THANH TOÁN</h4>
+                                <!-- <h4 class="footer_header">CÁC HÌNH THỨC THANH TOÁN</h4>
                         <ul class="footer_detail">
                             <li>
                                 <img width="70px" src="/Nhom14/assets/logo/momo.png" alst="">
@@ -166,21 +167,21 @@
 
                             </li>
                         </ul> -->
-                    </div>
+                            </div>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="col-lg-2 col-sm-6" style="margin-left: 320px;">
                 <div class="d-flex align-items-center">
-                <h3 class="footer_header" style="margin: 0 ; translate: 10px 20px;margin-right: -10px;
+                    <h3 class="footer_header" style="margin: 0 ; translate: 10px 20px;margin-right: -10px;
     margin-top: -230px;">Map</h3>
                     <div id="map" class="text-center" style="width:200;height:200px;">
-                        <iframe  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.602070402842!2d105.82623881447564!3d21.008582486009235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ac8041a9648d%3A0xe487dd495fdfd676!2zMTIgUC4gQ2jDuWEgQuG7mWMsIFRydW5nIExp4buHdCwgxJDhu5FuZyDEkGEsIEjDoCBO4buZaSwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1672800684612!5m2!1svi!2s" width="600" height="450" style="width: 191px;
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.602070402842!2d105.82623881447564!3d21.008582486009235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ac8041a9648d%3A0xe487dd495fdfd676!2zMTIgUC4gQ2jDuWEgQuG7mWMsIFRydW5nIExp4buHdCwgxJDhu5FuZyDEkGEsIEjDoCBO4buZaSwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1672800684612!5m2!1svi!2s" width="600" height="450" style="width: 191px;
     border: 0;
     height: 247px;translate: -32px 24px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
-                    
+
                 </div>
             </div>
 

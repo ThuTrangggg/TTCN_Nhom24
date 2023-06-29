@@ -309,6 +309,6 @@ $row1 = mysqli_fetch_array($kq);
 
 
 
-<?php include 'footer.php'?>
+<?php include 'footer_kh.php'?>
 
 </html>
