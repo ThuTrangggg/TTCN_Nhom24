@@ -230,17 +230,18 @@
                             <input class="form-control" id="txtchiphi" type="text" placeholder="Chi phí  " name="txtchiphi" />
                         </div>
                         <div class="form-floating mb-3">
-                            <label for="txtchiphi">Mô tả</label>
-                            <input class="col-sm-4 form-control" id="txtchiphi" type="file" placeholder="Mô tả dự án" name="mota" />
+                            <label for="mota">Mô tả</label>
+                            <input class="col-sm-4 form-control" id="mota" type="text" placeholder="Mô tả dự án" name="mota" />
                         </div>
                         <div class="form-floating mb-3">
-                            <label for="txtchiphi">Hình ảnh</label>
-                            <input class="col-sm-4 form-control" id="txtchiphi" type="file" placeholder="Mô tả dự án" name="hinhanh" />
+                        <label for="noidung">Nội dung</label>
+                            <input class="col-sm-4 form-control" id="noidung" type="file" placeholder="Nội dung" name="noidung" />
                         </div>
-                        <!-- <div class="form-floating mb-3">
-                            <label for="txtchiphi">Hình ảnh </label>
-                            <input class="form-control" id="txtimg" type="file" placeholder="Hình ảnh" name="txtimg" />
-                        </div> -->
+
+                        <div class="form-floating mb-3">
+                            <label for="hinhanh">Hình ảnh </label>
+                            <input class="form-control" type="file" placeholder="Hình ảnh" name="hinhanh" />
+                        </div> 
                         <div class="mt-4 mb-0 btn-frm">
                             <ul>
                                 <li>
@@ -253,6 +254,7 @@
                                 </li>
                             </ul>
                         </div>
+                        <?php require "duan_them.php" ?>
                     </form>
 
                 </div>

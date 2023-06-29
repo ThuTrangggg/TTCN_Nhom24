@@ -48,7 +48,6 @@
         mysqli_query($conn,$sqlDel);
         ?>
         <script>
-            window.alert('dự án được xóa thành công');
             window.location.href = 'duan.php';
         </script>
         <?php
