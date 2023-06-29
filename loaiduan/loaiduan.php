@@ -80,7 +80,7 @@
                                                     </td>
                                                     <td>
                                                         <!-- <a class="btn btn-danger" href="loaiduan/loaiduan_xoa.php" onclick="alert('Không xóa được')">Xóa</a> -->
-                                                        <a class="btn btn-danger" href="loaiduan/loaiduan_xoa.php" >Xóa</a>
+                                                        <a class="btn btn-danger" href="loaiduan/loaiduan_xoa.php?id=<?= $loaiduan["id"];?>" >Xóa</a>
                                                     </td>
                                                 </tr>
 

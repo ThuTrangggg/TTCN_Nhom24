@@ -33,95 +33,131 @@ include('../connect.php')
 </head>
 
 <body class="sb-nav-fixed">
-<div id="wrapper" style="width: 100%">
+    <div id="wrapper" style="width: 100%">
 
-<!-- Sidebar -->
-<?php include '../sidebar.php' ?>
-<!-- End of Sidebar -->
+        <!-- Sidebar -->
+        <?php include '../sidebar.php' ?>
+        <!-- End of Sidebar -->
 
-<!-- Content Wrapper -->
-<div id="content-wrapper" class="d-flex flex-column">
-    
-    <!-- Main Content -->
-    <div id="content">
-            <?php include '../header.php';
-    
-    $nhanVien_id = $_GET["id"];
-    // $loaisanphamid;
-    // if(isset($_GET['loaisanphamid'])) $loaisanphamid=$_GET['loaisanphamid'];
-    $sql1 = "
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+                <?php include '../header.php';
+
+                $nhanVien_id = $_GET["id"];
+                // $loaisanphamid;
+                // if(isset($_GET['loaisanphamid'])) $loaisanphamid=$_GET['loaisanphamid'];
+                $sql1 = "
                               SELECT *
                               FROM nhanvien
                               Where id='" . $nhanVien_id . "'
                     ";
-    $kq1 = mysqli_query($ket_noi, $sql1);
-    $row1 = mysqli_fetch_array($kq1);
-    ?>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-7">
-                <div class="card shadow-lg border-0 rounded-lg mt-5">
-                    <div class="card-header">
-                        <h3 class="text-center font-weight-light my-4">Cập nhật thông tin nhân sự</h3>
-                    </div>
-                    <div class="card-body">
-                        <form method="POST" action="taikhoan/taikhoan_fixcode.php<?php echo "?id=$nhanVien_id"; ?>" enctype="multipart/form-data" id="formsua" onsubmit="return validateForm()">
-                        <div class="form-floating mb-3">
-                            <label for="txtten">Tên nhân viên</label>
-                            <input class="form-control" id="txtten" type="text" placeholder="<?=$row1['ten']?>" name="txtten" />
-                        </div>
-                        <div class="form-floating mb-3">
-                            <label for="txtcccd">CCCD</label>
-                            <input class="form-control" id="txtcccd" type="text" placeholder="<?=$row1['cccd']?>" name="txtcccd" />
-                        </div>
-                        <div class="form-floating mb-3">
-                            <label for="txtsdt">Số điện thoại</label>
-                            <input class="form-control" id="txtsdt" type="text" placeholder="<?=$row1['sdt']?>" name="txtsdt" />
-                        </div>
-                        <div class="form-floating mb-3">
-                            <label for="txtemail">Email</label>
-                            <input class="form-control" id="txtemail" type="text" placeholder="<?=$row1['email']?>" name="txtemail" />
-                        </div>
-                        <div class="form-floating mb-3">
-                            <label for="txtgioitinh">Giới tính</label>
-                            <select class="form-control" name="" id="">
-                                <option value="#"></option>
-                                <option value="Nam">Nam</option>
-                                <option value="Nữ">Nữ</option>
+                $kq1 = mysqli_query($ket_noi, $sql1);
+                $row1 = mysqli_fetch_array($kq1);
+                ?>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-7">
+                            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                <div class="card-header">
+                                    <h3 class="text-center font-weight-light my-4">Cập nhật thông tin nhân sự</h3>
+                                </div>
+                                <div class="card-body">
+                                    <form method="POST" action="nhansu/nhansu_fixcode.php<?php echo "?id=$nhanVien_id"; ?>" enctype="multipart/form-data" id="formsua" onsubmit="return validateForm()">
+                                        <div class="form-floating mb-3">
+                                            <label for="txtten">Tên nhân viên</label>
+                                            <input class="form-control" id="txtten" type="text" value="<?= $row1['ten'] ?>" name="txtten" />
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <label for="txtcccd">CCCD</label>
+                                            <input class="form-control" id="txtcccd" type="text" value="<?= $row1['cccd'] ?>" name="txtcccd" />
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <label for="txtsdt">Số điện thoại</label>
+                                            <input class="form-control" id="txtsdt" type="text" value="<?= $row1['sdt'] ?>" name="txtsdt" />
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <label for="txtemail">Email</label>
+                                            <input class="form-control" id="txtemail" type="text" value="<?= $row1['email'] ?>" name="txtemail" />
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <label for="ngaysinh">Ngày sinh</label>
+                                            <input class="form-control" id="txtemail" type="date" value="<?= $row1['ngaysinh'] ?>" name="txtngaysinh" />
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <label for="diachi">Địa chỉ</label>
+                                            <input class="form-control" id="txtdiachi" type="text" value="<?= $row1['diachi'] ?>" name="txtdiachi" />
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <label for="txtmaloaiduan">Tài khoản</label>
+                                            <select class="form-control" name="txttaikhoan" id="txtmaloaiduan">
+                                                <Option value="<?=$row1['taikhoan_id']?>"></Option>
 
-                            </select>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <label for="txtchucvu">Chức vụ</label>
-                            <select class="form-control" name="txtchucvu" id="txtchucvu">
-                                <Option value="#"></Option>
-                                <option value="1">Project Manager</option>
-                                <option value="2">Marketer</option>
-                                <option value="3">Game Designer</option>
-                                <option value="4">Tester</option>
-                                <option value="5">Developer</option>
-                            </select>
-                        </div>
-                            <div class="mt-4 mb-0 btn-frm">
-                            <ul>
-                            
-                                <li>
-                                    <input type="hidden" name="nhanVien_id" value="<?=$row1["id"]?>" id="">
-                                    <input type="submit" class="btn" name="btnSubmit" value="Cập nhật">
-                                </li>
-                                <li>
+                                                <?php $sql = "SELECT *
+                                    FROM taikhoan";
+                                                $result = $conn->query($sql);
+                                                if ($result->num_rows > 0) {
+                                                    $i = 1;
+                                                    while ($taikhoan = $result->fetch_assoc()) {
+                                                ?>
+                                                        <option value="<?= $taikhoan['id'] ?>"><?= $taikhoan['tentaikhoan'] ?></option>
+                                                <?php }
+                                                } ?>
+                                            </select>
+                                        </div>
 
-                                    <a class="btn" href="nhansu/danhsachnhansu.php">Hủy</div>
-                                </li>
-                            </ul>
+                                        <div class="form-floating mb-3">
+                                            <label for="txtgioitinh">Giới tính</label>
+                                            <select class="form-control" name="txtgioitinh" id="">
+                                                <option value="<?=$row1['gioitinh']?>"></option>
+                                                <option value="Nam">Nam</option>
+                                                <option value="Nữ">Nữ</option>
+
+                                            </select>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <label for="trangthai">Trạng thái</label>
+                                            <select class="form-control" name="txttrangthai" id="">
+                                                <option value="<?=$row1['trangthai']?>"></option>
+                                                <option value="Đang làm">Đang làm</option>
+                                                <option value="Đã nghỉ">Đã nghỉ</option>
+
+                                            </select>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <label for="txtchucvu">Chức vụ</label>
+                                            <select class="form-control" name="txtchucvu" id="txtchucvu">
+                                                <Option value="<?=$row1['chucvu_id']?>"></Option>
+                                                <option value="1">Project Manager</option>
+                                                <option value="2">Marketer</option>
+                                                <option value="3">Game Designer</option>
+                                                <option value="4">Tester</option>
+                                                <option value="5">Developer</option>
+                                            </select>
+                                        </div>
+                                        <div class="mt-4 mb-0 btn-frm">
+                                            <ul>
+
+                                                <li>
+                                                    <input type="hidden" name="nhanVien_id" value="<?= $row1["id"] ?>" id="">
+                                                    <input type="submit" class="btn" name="btnSubmit" value="Cập nhật">
+                                                </li>
+                                                <li>
+
+                                                    <a class="btn" href="nhansu/danhsachnhansu.php">Hủy
+                                        </div>
+                                        </li>
+                                        </ul>
+                                </div>
+                                </form>
+                            </div>
                         </div>
-                        </form>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="js/scripts.js"></script>
