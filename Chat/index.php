@@ -69,7 +69,7 @@ include('header.php');
 						echo '<span id="status_'.$user['userid'].'" class="contact-status '.$status.'"></span>';
 						echo '<img src="userpics/'.$user['avatar'].'" alt="" />';
 						echo '<div class="meta">';
-						echo '<p class="name">'.$user['username'].'<span id="unread_'.$user['userid'].'" class="unread">'.$chat->getUnreadMessageCount($user['userid'], $_SESSION['userid']).'</span></p>';
+						// echo '<p class="name">'.$user['username'].'<span id="unread_'.$user['userid'].'" class="unread">'.$chat->getUnreadMessageCount($user['userid'], $_SESSION['userid']).'</span></p>';
 						echo '<p class="preview"><span id="isTyping_'.$user['userid'].'" class="isTyping"></span></p>';
 						echo '</div>';
 						echo '</div>';

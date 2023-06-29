@@ -1,7 +1,7 @@
 <?php 
     include("../connect.php");
 
-    $loaiduan_id=$_GET['loaiduan.id'];
+    $loaiduan_id=$_GET['id'];
     $sql = "SELECT loaiduan.id FROM loaiduan JOIN duan ON  loaiduan.id = duan.loaiduan_id
     WHERE loaiduan.id = '".$loaiduan_id."' ";
     $kq = mysqli_query($conn, $sql);

@@ -59,6 +59,7 @@
                                             <th>Hình ảnh</th>
                                             <th>Tên dự án</th>
                                             <th>Loại dự án </th>
+                                            <th>Nội dung</th>
                                             <th>Tình trạng </th>
                                             <th>Chi phí </th>
                                             <th>Ngày lập</th>
@@ -73,6 +74,7 @@
                                             <th>Hình ảnh</th>
                                             <th>Tên dự án</th>
                                             <th>Loai dự án </th>
+                                            <th>Nội dung</th>
                                             <th>Tình trạng </th>
                                             <th>Chi phí</th>
                                             <th>Ngày lập</th>
@@ -84,9 +86,11 @@
                                     // $sql = "SELECT hinhanh,tenduan,loaiduan_id,tenytuong,tenbaocao,tenKHQC, noidung
                                     // from duan join ytuong
                                     // on duan_id = ytuong.duan_id order by duan.ytuong asc, id";
-                                    $sql = "SELECT  hinhanh,tenduan,ten_loai_du_an, duan.id, mota, tinhtrang, chiphi, ngaylap FROM duan join loaiduan 
+                                    $sql = "SELECT  noidung,hinhanh,tenduan,ten_loai_du_an, duan.id, mota, tinhtrang, chiphi, ngaylap FROM duan join loaiduan 
                                     on duan.loaiduan_id = loaiduan.id order by ngaylap desc";
                                     $result = $conn->query($sql);
+
+
                                     if ($result->num_rows > 0) {
                                         $i = 1;
                                         while ($duan = $result->fetch_assoc()) {
@@ -96,20 +100,45 @@
                                                     <td><?= $i ?>
 
                                                     <td>
-                                                        <a href="./duan/chitietduan.php?id=<?= $duan['id'] ?>">
+                                                        <?php
+                                                        $sqlchitietnv = "SELECT nhanvien_id FROM chitietduan WHERE duan_id= '" . $duan['id'] . "'";
+                                                        $resultchitietnv = mysqli_query($conn, $sqlchitietnv);
+                                                        $a = 0;
+                                                        if ($resultchitietnv->num_rows > 0) {
+                                                            while ($duanchitietnv = $resultchitietnv->fetch_assoc()) {
+                                                                if ($duanchitietnv['nhanvien_id'] != '') {
+                                                                    if ($_SESSION['role_id'] != 1 && $_SESSION['nhanvienId'] != $duanchitietnv['nhanvien_id']) {
+                                                                        $url = "javascript:alert('Bạn không có quyền truy cập dự án này!');";
+                                                                    } else {
+                                                                        $url = "./duan/chitietduan.php?id=" . $duan['id'] . "";
+                                                                    };
+                                                                } else {
+                                                                    $url = "javascript:alert('Bạn không có quyền truy cập dự án này!');";
+                                                                };
+                                                                $a++;
+                                                            }
+                                                        }else if($_SESSION['role_id'] == 1){
+                                                            $url = "./duan/chitietduan.php?id=" . $duan['id'] . "";
+
+                                                        } else {
+                                                            $url = "javascript:alert('Bạn không có quyền truy cập dự án này!');";}
+                                                        ?>
+                                                        <a href="<?= $url ?>">
                                                             <img width="50px" height="50px" style="object-fit: contain" src="<?= $duan['hinhanh'] ?>" alt="">
                                                         </a>
                                                     </td>
                                                     <td>
-                                                        <a href="./duan/chitietduan.php?id=<?= $duan['id'] ?>" style="text-decoration: none; color: #858796">
+                                                        <a href="<?= $url?>" style="text-decoration: none; color: #858796">
 
                                                             <?= $duan['tenduan'] ?>
                                                         </a>
                                                     </td>
                                                     <td><?= $duan['ten_loai_du_an'] ?></td>
+                                                    <td><?= $duan['noidung'] ?></td>
+
                                                     <td><?= $duan['tinhtrang'] ?></td>
                                                     <td><?= $duan['chiphi'] ?></td>
-                                                    <td><?= date('d-m-Y', strtotime($duan['ngaylap']) ) ?></td>
+                                                    <td><?= date('d-m-Y', strtotime($duan['ngaylap'])) ?></td>
 
                                                     <td>
                                                         <a class="btn btn-success" href="duan/duan_sua.php?id=<?= $duan["id"]; ?>">Sửa</a>
@@ -125,6 +154,7 @@
                                     <?php $i++;
                                         }
                                     }
+
                                     ?>
                                 </table>
                             </div>
@@ -243,6 +273,9 @@
 <?php
 include '../footer.php'
 ?>
+<?php
+        include('../Chat/chat-old.php')
+        ?>
 </html>
 <!-- 
 <script>
